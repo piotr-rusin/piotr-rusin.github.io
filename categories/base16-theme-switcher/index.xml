@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Base16 Theme Switcher on Reusing the wheel</title>
+    <link>https://piotr-rusin.github.io/categories/base16-theme-switcher/</link>
+    <description>Recent content in Base16 Theme Switcher on Reusing the wheel</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 02 Nov 2017 09:22:29 +0000</lastBuildDate>
+    
+	<atom:link href="https://piotr-rusin.github.io/categories/base16-theme-switcher/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Designing a plugin system for base16-theme-switcher</title>
+      <link>https://piotr-rusin.github.io/2017/11/designing-a-plugin-system-for-base16-theme-switcher/</link>
+      <pubDate>Thu, 02 Nov 2017 09:22:29 +0000</pubDate>
+      
+      <guid>https://piotr-rusin.github.io/2017/11/designing-a-plugin-system-for-base16-theme-switcher/</guid>
+      <description>&lt;p&gt;I&amp;#8217;ve been working on a plugin system for my &lt;a href=&#34;https://github.com/piotr-rusin/base16-theme-switcher&#34;&gt;theme switcher project&lt;/a&gt;, and I think now it&amp;#8217;s the time to introduce it here and describe my rationale behind its design.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>A new project: base16-theme-switcher</title>
+      <link>https://piotr-rusin.github.io/2017/10/a-new-project-base16-theme-switcher/</link>
+      <pubDate>Sun, 22 Oct 2017 14:39:20 +0000</pubDate>
+      
+      <guid>https://piotr-rusin.github.io/2017/10/a-new-project-base16-theme-switcher/</guid>
+      <description>&lt;p&gt;Configurability and availability of multiple desktop environments and window managers are some of the things I like about using Linux-based operating systems. In recent months I gradually migrated from using full-fledged desktop environments like &lt;a href=&#34;https://en.wikipedia.org/wiki/Cinnamon_(software)&#34;&gt;Cinnamon&lt;/a&gt; and &lt;a href=&#34;https://xfce.org/&#34;&gt;Xfce&lt;/a&gt; to using &lt;a href=&#34;https://i3wm.org/&#34;&gt;i3wm&lt;/a&gt; in combination with &lt;a href=&#34;https://wiki.archlinux.org/index.php/rxvt-unicode&#34;&gt;urxvt&lt;/a&gt;, &lt;a href=&#34;https://dunst-project.org/&#34;&gt;dunst&lt;/a&gt; and other applications commonly used with light window managers. While experimenting with their configuration, I discovered &lt;a href=&#34;https://chriskempson.github.io/base16/&#34;&gt;base16&lt;/a&gt; and its derivative: &lt;a href=&#34;https://github.com/chriskempson/base16-xresources&#34;&gt;base16-xresources&lt;/a&gt; &amp;#8211; projects providing color schemes for syntax highlighting and application theming, each based on 16 colors.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

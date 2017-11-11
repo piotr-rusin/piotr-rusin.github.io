@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progress in development of spam-lists</title>
+
+<meta name="generator" content="Hugo 0.30.2" />
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+<link rel="dns-prefetch" href="//fonts.gstatic.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
+<script type="text/javascript" src="/js/scripts.js"></script>
+<link rel="shortcut icon" href="/favicon.ico">
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-109495807-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="/" title="Reusing the wheel" rel="home">
+						<h1 class="logo__title">Reusing the wheel</h1>
+						
+					</a>
+				</div>
+			</div>
+			
+<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item"><a class="menu__link" href="/">POSTS</a></li>
+		<li class="menu__item"><a class="menu__link" href="/projects/">PROJECTS</a></li>
+		<li class="menu__item"><a class="menu__link" href="/about/">ABOUT</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+
+<main class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">Progress in development of spam-lists</h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2016-07-09T19:19:49">July 09, 2016</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/projects" rel="category">Projects</a>, <a class="meta-categories__link" href="/categories/spam-lists" rel="category">spam-lists</a></span>
+			</p>
+		</header>
+		<div class="post__content clearfix">
+			<p>Since the introduction of my spam-lists library on this blog, I made some progress in its development.</p>
+
+<p>I reorganized the library a bit, changed the inheritance hierarchy of exception classes, fixed some errors and published the package on PyPI. In this post, I&#8217;m going to describe the changes and explain my reasoning behind them.</p>
+
+<p></p>
+
+<h2 id="splitting-spam-lists-service-models-module">Splitting spam_lists.service_models module</h2>
+
+<p>The <code>spam_lists.service_models</code> module contained two groups of classes:</p>
+
+<ul>
+<li>client classes for various services</li>
+<li>classes representing custom host lists</li>
+</ul>
+
+<p>Originally, the whole project consisted of only one module. Later I decided to split its code into separate modules, including <code>service_models</code>, defined as a module containing &#8220;classes of objects serving as clients for remote and local spam listing services&#8221;, that is: classes representing clients for various third party services and those representing user-made host lists.</p>
+
+<p>Adding more custom host list classes made me think of splitting the module, but I think it would probably have been better to split it even earlier. Although I did not have any preconfigured instances of clients at the time of introducing the <code>service_models</code> module, I think it would have been better to have a <code>clients</code> module already. It would have contained definitions of client classes, and later I would have added instances of some DNSBL service clients to it. At the time I had only one class representing a custom host list, but it would have been put in some different module.</p>
+
+<p>Taking this into account, I decided to:</p>
+
+<ul>
+<li>introduce new <code>host_collections</code> module and move the host collection classes there</li>
+<li>move the client classes to <code>clients</code> module</li>
+</ul>
+
+<p>After these changes, the only class left in <code>service_models</code> was <code>HostList</code>: a base class for both the client and the host collection classes. I changed the name of the module to <code>host_list</code> as I thought it was better for its current purpose as a container for this class.</p>
+
+<h2 id="a-better-name-for-spam-lists-utils">A better name for spam_lists.utils</h2>
+
+<p>The <code>spam_lists.utils</code> module was intended to contain various utilities that could be used by a user of my library to:</p>
+
+<ul>
+<li>create composite URL testers</li>
+<li>create custom implementations of functions and methods responsible for testing URLs or registered hostnames</li>
+<li>etc.</li>
+</ul>
+
+<p>The usage of a very general term &#8220;util&#8221; as the name of the module reflected that it probably was not well defined. It ended up containing two classes representing composite URL testers and a class of a dependency of one of them: <code>RedirectUrlResolver</code>. Therefore, I decided to rename the module to <code>composites</code>.</p>
+
+<h2 id="inheritance-hierarchy-of-exception-classes">Inheritance hierarchy of exception classes</h2>
+
+<p>My project contains a few exception classes, some of them being <code>UnathorizedAPIKeyError</code>, <code>InvalidHostError</code> and <code>InvalidURLError</code>. All three directly extended two classes: <code>SpamListsError</code> and <code>ValueError</code>, which was a bit repetitive. I introduced <code>SpamListsValueError</code> class as a subclass of both <code>SpamListsError</code> and <code>ValueError</code> classes, and I made it a base class for all the classes that previously extended <code>SpamListsError</code> and <code>ValueError</code>.</p>
+
+<h2 id="fixing-errors-in-a-rich-comparison-method">Fixing errors in a rich comparison method</h2>
+
+<p>The host classes of my project depend on the following classes from other modules:</p>
+
+<ul>
+<li><code>dns.name.Name</code> of the dnspython and dnspython3 projects</li>
+<li><code>IPv4Address</code> and <code>IPv6Address</code> from the <code>ipaddress</code> module of Python 3, or from ipaddress library for Python 2</li>
+</ul>
+
+<p>Originally, the relationship was that of inheritance: <code>Hostname</code> class extended the <code>Name</code> class, and the ip address classes extended their counterparts from <code>ipaddress</code> module. All the third party classes provide their own implementations of rich comparison methods, so my classes naturally inherited them, although they didn&#8217;t need them at the time.</p>
+
+<p>At some moment, I decided to replace inheritance with composition for these classes. Instances of my own host object classes were going to store and use instances of the dependency classes in their value attribute. I was already planning to introduce a custom host list class that would utilize sorting, and for that, my host classes needed to implement <code>__lt__(other)</code> method (responsible for overloading &#8220;&lt;&#8221; comparison operator), and with the change of their relationship to the third-party classes, they could no longer use their implementations of the method directly. I had to implement it myself, and I did it for the <code>IPAddress</code> class (a base class for both of my ip address classes), but I forgot about it when modifying the <code>Hostname</code> class. I realized it only after writing my first blog post, and I fixed the omission by introducing <code>Host</code>: a common base class for <code>Hostname</code> and <code>IPAddress</code>, and moving <code>__lt__(other)</code> method from <code>IPAddress</code> class to it. I also added unit tests for this method for all of my host object classes, not only for those extending <code>IPAddress</code> class.</p>
+
+<p>At this moment, the code of the method looked like this:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> __lt__(self, other):
+    <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;&#39;&#39; Check if the other is smaller
+</span><span style="color:#e6db74">    This method is necessary for sorting and search
+</span><span style="color:#e6db74">    algorithms using bisect_right. It handles TypeError
+</span><span style="color:#e6db74">    by returning NotImplemented
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    :param other: a value to be compared
+</span><span style="color:#e6db74">    :returns: result of comparison as implemented in base
+</span><span style="color:#e6db74">        classes, or NotImplemented
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    <span style="color:#66d9ef">try</span>:
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>value <span style="color:#f92672">&lt;</span> other
+    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">TypeError</span>:
+        <span style="color:#66d9ef">return</span> NotImplemented</code></pre></div>
+
+<p>I also had to fix an error in its original implementation: it compared <code>self.value</code> to the <code>other</code> object, not to <code>other.value</code>.</p>
+
+<p>Another problem arised from the ways the <code>__lt__(other)</code> method has been implemented by the possible classes of value attribute.</p>
+
+<p>The IP address classes support only comparison with instances of the same class, and when attempting to compare an instance of one of them to an object of a different base type, the method <a href="https://hg.python.org/cpython/file/3.5/Lib/ipaddress.py#l562">returns NotImplemented constant</a>. When this object is another type of IP address, <a href="https://hg.python.org/cpython/file/3.5/Lib/ipaddress.py#l564">a TypeError is raised</a>.</p>
+
+<p>In the port of the module for Python 2, <a href="https://github.com/phihag/ipaddress/blob/master/ipaddress.py#L681">this looks a bit different</a>, but in practice works the same.</p>
+
+<p>The <code>Name</code> class also supports comparison with an object of the same type, but in case of the other object being of a different type, it never raises <code>TypeError</code>, but instead <a href="https://github.com/rthalley/dnspython/blob/master/dns/name.py#L330">returns the NotImplemented constant</a>.</p>
+
+<p>The return value <code>NotImplemented</code> is handled differently by Python 2 and 3 interpreters: in Python 2, it causes the comparison operation to be handled elsewhere, while in Python 3, it results in a <code>TypeError</code> being raised, with its message stating the types are not orderable.</p>
+
+<p>As you can see in the code, my method handled <code>TypeError</code> raised by the comparison operation by returning <code>NotImplemented</code> constant. It means that my rich comparsion method could not handle comparison for some combinations of versions of the Python interpreter and types of the objects being compared.</p>
+
+<p>I fixed this compatibility error by modifying the code like this:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> __lt__(self, other):
+    <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;&#39;&#39; Check if the other is smaller.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    This method is necessary for sorting and search
+</span><span style="color:#e6db74">    algorithms using bisect_right.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    :param other: a value to be compared
+</span><span style="color:#e6db74">    :returns: result of comparison between value attributes of
+</span><span style="color:#e6db74">        both this object and the other, or of comparison between
+</span><span style="color:#e6db74">        their unicode string representations.
+</span><span style="color:#e6db74">        In case of the other not having necessary attributes,
+</span><span style="color:#e6db74">        NotImplemented constant is returned.
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    <span style="color:#66d9ef">try</span>:
+        <span style="color:#66d9ef">try</span>:
+            <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>value <span style="color:#f92672">&lt;</span> other<span style="color:#f92672">.</span>value
+        <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">TypeError</span>:
+            <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>to_unicode() <span style="color:#f92672">&lt;</span> other<span style="color:#f92672">.</span>to_unicode()
+    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">AttributeError</span>:
+        <span style="color:#66d9ef">return</span> NotImplemented</code></pre></div>
+
+<p>Still, the behaviour of the method was inconsistent between the versions: when using Python 2 to execute the comparison of an object of a <code>Hostname</code> type to an object of <code>IPv4Address</code> type, the <code>Name.__lt__(other)</code> method of <code>Hostname.value</code> returned <code>NotImplemented</code> value, and Python interpreter handled the comparison. However, when using Python 3, the comparison operation raised <code>TypeError</code> to be handled by my method.</p>
+
+<p>Returning <code>NotImplemented</code> constant in response to an <code>AttributeError</code> being raised also resulted in inconsistent behaviour of my method in different Python versions. Because of this, I had to modify the code again to fix this inconsistency.</p>
+
+<p>I also noticed the docstring of my method was misleading, because its first line sounded like the method was responsible for &#8220;other &lt; self&#8221; comparison, not &#8220;self &lt; other&#8221;. I fixed it, too, and the current code of the method looks like this:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> __lt__(self, other):
+    <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;&#39;&#39; Check if self is less than the other
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    This method is necessary for sorting and search
+</span><span style="color:#e6db74">    algorithms using bisect_right.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    :param other: a value to be compared
+</span><span style="color:#e6db74">    :returns: result of comparison between value
+</span><span style="color:#e6db74">        attributes of both this object and the other,
+</span><span style="color:#e6db74">        or of comparison between their unicode string
+</span><span style="color:#e6db74">        representations.
+</span><span style="color:#e6db74">    :raises TypeError: in case of the other not having
+</span><span style="color:#e6db74">        either value or to_unicode attributes.
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    <span style="color:#66d9ef">try</span>:
+        <span style="color:#66d9ef">try</span>:
+            result <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>value<span style="color:#f92672">.</span>__lt__(other<span style="color:#f92672">.</span>value)
+        <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">TypeError</span>:
+            <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_compare_strings(other)
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">if</span> result <span style="color:#f92672">==</span> NotImplemented:
+            result <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>_compare_strings(other)
+        <span style="color:#66d9ef">return</span> result
+    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">AttributeError</span>:
+        msg <span style="color:#f92672">=</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;Unorderable types: {}() &lt; {}()&#39;</span><span style="color:#f92672">.</span>format(
+            self<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__name__,
+            other<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__name__
+        )
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">TypeError</span>(msg)
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_compare_strings</span>(self, other):
+    <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>to_unicode() <span style="color:#f92672">&lt;</span> other<span style="color:#f92672">.</span>to_unicode()</code></pre></div>
+
+<h2 id="releasing-the-project">Releasing the project</h2>
+
+<p>I decided to publish my project on PyPI, partially because I thought it was already usable, and partially because I already used it in another project, so installing it from PyPI using pip would be easier than using it as a git submodule.</p>
+
+<p>I added a setup module, updated the project&#8217;s README, registered and published it in the repository. Although the library seemed to work properly, I knew there might still be some bugs I should fix and improvements I should make before declaring it stable, so I published it as a beta version. I was right: the initial package turned out not to contain LICENSE and requirements.txt files. I added MANIFEST.in file to fix it, and I converted the README from markdown to reStructuredText, so its rendering could be handled by PyPI website. I made a few other improvements and published the second beta of the package: since then, I further improved the README, fixed some errors and published a few more beta versions.</p>
+
+<p>I think version numbers of the project need an explanation: the current version is 1.0.0b7, the first beta version was 1.0.0b1, and the version before that was 0.9. The previous number was result of me realising I should apply a version number to the library. At the moment, I thought I was close to publishing its first stable, &#8220;finished&#8221; release, with all functionality that was planned for it already implemented and all errors either fixed or still undetected. I wanted to mark such a version as 1.0, so I thought it was reasonable for the last versions before it to be given the number 0.9. After that, I read more about versioning systems, and although I decided to still follow the 0.9 version with a 1.0 one, I also decided to apply <a href="https://www.python.org/dev/peps/pep-0440/#public-version-identifiers">the pattern recommended by PEP 440</a> and the suggestions provided by <a href="http://stackoverflow.com/a/8867153/5069081">this answer on stackoverflow</a>. Hence the version 1.0.0b1, with the initial section marking the release of the stable version of the library and the change in the versioning pattern. The middle number is going to change for subsequent feature updates, and the third number is going to signify stable bugfix-only releases. The final &#8220;b1&#8221; segment signifies the first beta version, and it follows the pattern from the PEP.</p>
+
+<p>I think I will spend a little more time reading the code, looking for errors to fix and improvements to documentation I could make. I do not plan to make any major changes to it until after I release the library as a stable version 1.0.0.</p>
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/python-2/" rel="tag">Python 2</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/python-3/" rel="tag">Python 3</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/spam-lists/" rel="tag">spam-lists</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+	
+
+	
+<div class="comments">
+	<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "piotr-rusin.github.io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+</main>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://piotr-rusin.github.io" />
+	</form>
+</div>
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2017/11/designing-a-plugin-system-for-base16-theme-switcher/">Designing a plugin system for base16-theme-switcher</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2017/10/a-new-project-base16-theme-switcher/">A new project: base16-theme-switcher</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2017/09/the-first-working-version-of-yule/">The first working version of Yule</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2017/06/implementing-service-layer-for-yule/">Implementing service layer for Yule</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2017/05/a-new-blog-engine-project/">A new blog engine project</a></li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/categories/base16-theme-switcher">Base16-Theme-Switcher</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/blog-engine">Blog-Engine</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/projects">Projects</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/spam-lists">Spam-Lists</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/url-shortener">Url-Shortener</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/yule">Yule</a></li>
+		</ul>
+	</div>
+</div>
+	
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">Social</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/piotr-rusin" target="_blank">
+				<svg class="widget-social__link-icon icon-github" viewBox="0 0 384 374" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Email" href="mailto:piotr.rusin88@gmail.com">
+				<svg class="widget-social__link-icon icon-mail" viewBox="0 0 416 288" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="m0 16v256 16h16 384 16v-16-256-16h-16-384-16zm347 16-139 92.5-139-92.5zm-148 125.5 9 5.5 9-5.5 167-111.5v210h-352v-210z"/></svg>
+				<span>piotr.rusin88@gmail.com</span>
+			</a>
+		</div>
+	</div>
+</div>
+
+	
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget__link widget__link--taglist" href="/tags/api" title="api">api</a>
+		<a class="widget__link widget__link--taglist" href="/tags/bash" title="bash">bash</a>
+		<a class="widget__link widget__link--taglist" href="/tags/blog-engine" title="blog-engine">blog-engine</a>
+		<a class="widget__link widget__link--taglist" href="/tags/configuration" title="configuration">configuration</a>
+		<a class="widget__link widget__link--taglist" href="/tags/database-migration" title="database-migration">database-migration</a>
+		<a class="widget__link widget__link--taglist" href="/tags/dependency-injection" title="dependency-injection">dependency-injection</a>
+		<a class="widget__link widget__link--taglist" href="/tags/flask" title="flask">flask</a>
+		<a class="widget__link widget__link--taglist" href="/tags/front-end" title="front-end">front-end</a>
+		<a class="widget__link widget__link--taglist" href="/tags/hibernate" title="hibernate">hibernate</a>
+		<a class="widget__link widget__link--taglist" href="/tags/injector" title="injector">injector</a>
+		<a class="widget__link widget__link--taglist" href="/tags/integration-testing" title="integration-testing">integration-testing</a>
+		<a class="widget__link widget__link--taglist" href="/tags/java" title="java">java</a>
+		<a class="widget__link widget__link--taglist" href="/tags/java-bean-validation" title="java-bean-validation">java-bean-validation</a>
+		<a class="widget__link widget__link--taglist" href="/tags/jpa" title="jpa">jpa</a>
+		<a class="widget__link widget__link--taglist" href="/tags/linux" title="linux">linux</a>
+		<a class="widget__link widget__link--taglist" href="/tags/maven" title="maven">maven</a>
+		<a class="widget__link widget__link--taglist" href="/tags/php" title="php">php</a>
+		<a class="widget__link widget__link--taglist" href="/tags/plugin-system" title="plugin-system">plugin-system</a>
+		<a class="widget__link widget__link--taglist" href="/tags/plugins" title="plugins">plugins</a>
+		<a class="widget__link widget__link--taglist" href="/tags/python-2" title="python-2">python-2</a>
+		<a class="widget__link widget__link--taglist" href="/tags/python-3" title="python-3">python-3</a>
+		<a class="widget__link widget__link--taglist" href="/tags/refactoring" title="refactoring">refactoring</a>
+		<a class="widget__link widget__link--taglist" href="/tags/responsive-web-design" title="responsive-web-design">responsive-web-design</a>
+		<a class="widget__link widget__link--taglist" href="/tags/single-responsibility-principle" title="single-responsibility-principle">single-responsibility-principle</a>
+		<a class="widget__link widget__link--taglist" href="/tags/spam-lists" title="spam-lists">spam-lists</a>
+		<a class="widget__link widget__link--taglist" href="/tags/spring" title="spring">spring</a>
+		<a class="widget__link widget__link--taglist" href="/tags/sqlalchemy" title="sqlalchemy">sqlalchemy</a>
+		<a class="widget__link widget__link--taglist" href="/tags/symfony" title="symfony">symfony</a>
+		<a class="widget__link widget__link--taglist" href="/tags/testing" title="testing">testing</a>
+		<a class="widget__link widget__link--taglist" href="/tags/unit-testing" title="unit-testing">unit-testing</a>
+		<a class="widget__link widget__link--taglist" href="/tags/url-shortener" title="url-shortener">url-shortener</a>
+		<a class="widget__link widget__link--taglist" href="/tags/wtforms" title="wtforms">wtforms</a>
+	</div>
+</div>
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2017 Reusing the wheel. <span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad theme</a>.</span></p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+</body>
+</html>

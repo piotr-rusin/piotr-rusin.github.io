@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Designing a plugin system for base16-theme-switcher</title>
+
+<meta name="generator" content="Hugo 0.30.2" />
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+<link rel="dns-prefetch" href="//fonts.gstatic.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
+<script type="text/javascript" src="/js/scripts.js"></script>
+<link rel="shortcut icon" href="/favicon.ico">
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-109495807-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="/" title="Reusing the wheel" rel="home">
+						<h1 class="logo__title">Reusing the wheel</h1>
+						
+					</a>
+				</div>
+			</div>
+			
+<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item"><a class="menu__link" href="/">POSTS</a></li>
+		<li class="menu__item"><a class="menu__link" href="/projects/">PROJECTS</a></li>
+		<li class="menu__item"><a class="menu__link" href="/about/">ABOUT</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+
+<main class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">Designing a plugin system for base16-theme-switcher</h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2017-11-02T09:22:29">November 02, 2017</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/base16-theme-switcher" rel="category">base16-theme-switcher</a>, <a class="meta-categories__link" href="/categories/projects" rel="category">Projects</a></span>
+			</p>
+		</header>
+		<div class="post__content clearfix">
+			<p>I&#8217;ve been working on a plugin system for my <a href="https://github.com/piotr-rusin/base16-theme-switcher">theme switcher project</a>, and I think now it&#8217;s the time to introduce it here and describe my rationale behind its design.</p>
+
+<p></p>
+
+<h2 id="architecture-of-a-theme-switcher-class">Architecture of a theme switcher class</h2>
+
+<p>I described the actions performed by the previous, bash-based theme switcher in <a href="/2017/10/a-new-project-base16-theme-switcher/">the previous post</a>.</p>
+
+<p>The application will contain a <code>ThemeSwitcher</code> class responsible for reloading an already set theme or switching to a new one. It will have the following dependencies:</p>
+
+<ul>
+<li>an instance of <a href="/2017/10/a-new-project-base16-theme-switcher/"><code>RootConfigMapping</code></a></li>
+<li>a collection of objects representing themes</li>
+<li>a callable prompt for choosing a theme to be set</li>
+<li>a collection of theme appliers &#8211; components for performing application-specific operations necessary for setting a theme, like changing colors for dunst, setting a theme for vim, restarting i3wm, etc.</li>
+</ul>
+
+<p>Saving color changes to X resources database will be performed by the theme switcher object itself. It will also differ from its original, Bash implementation in that it will not rely on reading .Xresources and having it source a symlink to the currently set theme &#8211; instead, the theme file will be directly merged with the current settings by executing <code>xrdb -merge</code> command, with a path to a newly selected theme as its argument.</p>
+
+<h2 id="coming-up-with-a-plugin-system">Coming up with a plugin system</h2>
+
+<p>Other than applications I&#8217;m using myself, there are many other projects for which color schemes could be configured. For example, instead of using rofi and i3wm, one could use dmenu and bspwm, or any other window manager. I could also imagine extending my project with a support for GTK themes and theming other applications that don&#8217;t read their colors from the database or that need additional operations to be performed when applying a theme change. Since I was already planning to make application-specific theme appliers as components of the theme switcher object, providing such dependencies by using a plugin system seemed like a natural choice.</p>
+
+<p>I considered using <a href="http://yapsy.sourceforge.net/index.html">Yapsy</a>, <a href="http://pluginbase.pocoo.org/">PluginBase</a> or a <a href="https://packaging.python.org/guides/creating-and-discovering-plugins/#using-naming-convention">custom solution based on plugin modules with an application-specific prefix</a>, and I chose the latter. It seems to be the simplest and, since it&#8217;s based on searching through top-level installed modules, it works well with package installation without any additional configuration. Yapsy and PluginBase rely on plugins being placed in specific directories, and the Yapsy plugin system requires plugins to provide things I didn&#8217;t think I needed for my use case.</p>
+
+<h2 id="initial-design-of-my-plugin-api">Initial design of my plugin API</h2>
+
+<p>My initial plans for the plugin system consisted of having it perform the following actions for each loaded plugin:</p>
+
+<ul>
+<li>unpack a mapping containing configuration options for the plugin</li>
+<li>call a function (let&#8217;s call it <code>initialize</code>) on a module representing the plugin, passing the options as its keyword arguments</li>
+<li>get a theme applier component object returned by the function</li>
+<li>add the component to the collection of theme appliers used by the theme switcher</li>
+</ul>
+
+<p>I also considered making the application more extensible by making it possible for plugins to provide other kinds of components to it, but since I had only the theme applier components on my mind, I didn&#8217;t feel very compelled to design it that way&#8230; until I realized I could make my application use a pluggable prompt for choosing a theme. I wanted to use a rofi-based theme menu myself, but I could imagine others preferring to use a command line prompt or dmenu for this. As a result, a more general plugin system became a requirement.</p>
+
+<p>Having this on my mind, I realized my current design for plugin interface might not be a very good idea. Now I knew my plugin system would need a way to recognize where a plugin-provided component belongs, and it would increase complexity of both the plugin system and the interface of a plugin module, and extending the system with more types of components would likely make the matters worse. Plus, I already knew it would be useful to provide some kind of debugging of plugin configuration. Since config options would be passed as keyword arguments of <code>initialize</code>, passing unexpected options or missing some required ones would result in a <code>TypeError</code> that should be handled in a way that would point a user to a possible error in his config file.</p>
+
+<h2 id="designing-a-better-api">Designing a better API</h2>
+
+<p>For these reasons, I decided to modify my design so that a theme switcher object would be passed to a plugin module function and modified by it. This way, I wouldn&#8217;t have to expect any return values from the function, and since the theme switcher object would also depend on the configuration, I wouldn&#8217;t need to provide the options as separate arguments of the function, so I wouldn&#8217;t need to implement a mechanism responsible for calling plugin module functions with different signatures. The configuration errors for a plugin would either be handled by the config object itself or by the function (now renamed to <code>apply_to</code>, as it would be responsible for applying changes brought by the plugin to the theme switcher object). Not only this solution would be simpler, but it would also be more flexible.</p>
+
+<p>There were still some problems with it, though:</p>
+
+<ul>
+<li>the flexibility is problematic, too. After all, by passing a whole theme switcher object to a plugin, I would expose every attribute of this object to the <code>apply_to</code> function, including ones I didn&#8217;t intend to be used by it, like methods responsible for switching a theme or any properties that shouldn&#8217;t be accessible to the function.</li>
+<li>the theme-switcher object would be in an invalid state until all its required pluggable dependencies were provided by plugins.</li>
+</ul>
+
+<p>I could solve the second problem by having the core application provide the theme switcher object with some defaults for required dependencies, but first: once I became convinced I&#8217;d like to implement a more general plugin system, I wanted all the pluggable dependencies to be provided as plugins, and second: the first problem would still persist.</p>
+
+<p>I decided to modify the solution: instead of passing a theme switcher object to a plugin module function, I decided to introduce a builder object that would expose properties for setting pluggable dependencies. After all configured plugins have been activated by running their <code>apply_to</code> function with the builder object as its argument, the <code>build</code> method of the object would be called and it would return an instance of theme switcher to be used by the application.</p>
+
+<p>This way I avoid giving plugins too much access to things they shouldn&#8217;t alter, having the theme switcher object in an invalid state and having core application provide defaults for pluggable dependencies.</p>
+
+<p>Of course, Python is a dynamic language and the limits imposed by an interface of an object aren&#8217;t as rigid as those imposed by classes and formal interface types in statically typed languages with access modifiers. For example, a developer of a plugin could easily access an attribute of the builder that is conventionally marked as &#8220;protected&#8221; and modify or replace it, or they could replace the <code>build</code> method with an alternative one. Python is flexible in that regard, but it doesn&#8217;t mean having an object provide a set of well documented methods designed for intended use cases isn&#8217;t important.</p>
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/api/" rel="tag">API</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/bash/" rel="tag">bash</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/configuration/" rel="tag">configuration</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/linux/" rel="tag">Linux</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/plugin-system/" rel="tag">plugin system</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/plugins/" rel="tag">plugins</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/python-3/" rel="tag">Python 3</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+	
+
+	
+<div class="comments">
+	<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "piotr-rusin.github.io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+</main>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://piotr-rusin.github.io" />
+	</form>
+</div>
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2017/11/designing-a-plugin-system-for-base16-theme-switcher/">Designing a plugin system for base16-theme-switcher</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2017/10/a-new-project-base16-theme-switcher/">A new project: base16-theme-switcher</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2017/09/the-first-working-version-of-yule/">The first working version of Yule</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2017/06/implementing-service-layer-for-yule/">Implementing service layer for Yule</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2017/05/a-new-blog-engine-project/">A new blog engine project</a></li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/categories/base16-theme-switcher">Base16-Theme-Switcher</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/blog-engine">Blog-Engine</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/projects">Projects</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/spam-lists">Spam-Lists</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/url-shortener">Url-Shortener</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/yule">Yule</a></li>
+		</ul>
+	</div>
+</div>
+	
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">Social</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/piotr-rusin" target="_blank">
+				<svg class="widget-social__link-icon icon-github" viewBox="0 0 384 374" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Email" href="mailto:piotr.rusin88@gmail.com">
+				<svg class="widget-social__link-icon icon-mail" viewBox="0 0 416 288" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="m0 16v256 16h16 384 16v-16-256-16h-16-384-16zm347 16-139 92.5-139-92.5zm-148 125.5 9 5.5 9-5.5 167-111.5v210h-352v-210z"/></svg>
+				<span>piotr.rusin88@gmail.com</span>
+			</a>
+		</div>
+	</div>
+</div>
+
+	
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget__link widget__link--taglist" href="/tags/api" title="api">api</a>
+		<a class="widget__link widget__link--taglist" href="/tags/bash" title="bash">bash</a>
+		<a class="widget__link widget__link--taglist" href="/tags/blog-engine" title="blog-engine">blog-engine</a>
+		<a class="widget__link widget__link--taglist" href="/tags/configuration" title="configuration">configuration</a>
+		<a class="widget__link widget__link--taglist" href="/tags/database-migration" title="database-migration">database-migration</a>
+		<a class="widget__link widget__link--taglist" href="/tags/dependency-injection" title="dependency-injection">dependency-injection</a>
+		<a class="widget__link widget__link--taglist" href="/tags/flask" title="flask">flask</a>
+		<a class="widget__link widget__link--taglist" href="/tags/front-end" title="front-end">front-end</a>
+		<a class="widget__link widget__link--taglist" href="/tags/hibernate" title="hibernate">hibernate</a>
+		<a class="widget__link widget__link--taglist" href="/tags/injector" title="injector">injector</a>
+		<a class="widget__link widget__link--taglist" href="/tags/integration-testing" title="integration-testing">integration-testing</a>
+		<a class="widget__link widget__link--taglist" href="/tags/java" title="java">java</a>
+		<a class="widget__link widget__link--taglist" href="/tags/java-bean-validation" title="java-bean-validation">java-bean-validation</a>
+		<a class="widget__link widget__link--taglist" href="/tags/jpa" title="jpa">jpa</a>
+		<a class="widget__link widget__link--taglist" href="/tags/linux" title="linux">linux</a>
+		<a class="widget__link widget__link--taglist" href="/tags/maven" title="maven">maven</a>
+		<a class="widget__link widget__link--taglist" href="/tags/php" title="php">php</a>
+		<a class="widget__link widget__link--taglist" href="/tags/plugin-system" title="plugin-system">plugin-system</a>
+		<a class="widget__link widget__link--taglist" href="/tags/plugins" title="plugins">plugins</a>
+		<a class="widget__link widget__link--taglist" href="/tags/python-2" title="python-2">python-2</a>
+		<a class="widget__link widget__link--taglist" href="/tags/python-3" title="python-3">python-3</a>
+		<a class="widget__link widget__link--taglist" href="/tags/refactoring" title="refactoring">refactoring</a>
+		<a class="widget__link widget__link--taglist" href="/tags/responsive-web-design" title="responsive-web-design">responsive-web-design</a>
+		<a class="widget__link widget__link--taglist" href="/tags/single-responsibility-principle" title="single-responsibility-principle">single-responsibility-principle</a>
+		<a class="widget__link widget__link--taglist" href="/tags/spam-lists" title="spam-lists">spam-lists</a>
+		<a class="widget__link widget__link--taglist" href="/tags/spring" title="spring">spring</a>
+		<a class="widget__link widget__link--taglist" href="/tags/sqlalchemy" title="sqlalchemy">sqlalchemy</a>
+		<a class="widget__link widget__link--taglist" href="/tags/symfony" title="symfony">symfony</a>
+		<a class="widget__link widget__link--taglist" href="/tags/testing" title="testing">testing</a>
+		<a class="widget__link widget__link--taglist" href="/tags/unit-testing" title="unit-testing">unit-testing</a>
+		<a class="widget__link widget__link--taglist" href="/tags/url-shortener" title="url-shortener">url-shortener</a>
+		<a class="widget__link widget__link--taglist" href="/tags/wtforms" title="wtforms">wtforms</a>
+	</div>
+</div>
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2017 Reusing the wheel. <span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad theme</a>.</span></p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spam Lists on Reusing the wheel</title>
+    <link>https://piotr-rusin.github.io/categories/spam-lists/</link>
+    <description>Recent content in Spam Lists on Reusing the wheel</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 30 Nov 2016 10:44:41 +0000</lastBuildDate>
+    
+	<atom:link href="https://piotr-rusin.github.io/categories/spam-lists/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The first stable release of spam-lists</title>
+      <link>https://piotr-rusin.github.io/2016/11/the-first-stable-release-of-spam-lists/</link>
+      <pubDate>Wed, 30 Nov 2016 10:44:41 +0000</pubDate>
+      
+      <guid>https://piotr-rusin.github.io/2016/11/the-first-stable-release-of-spam-lists/</guid>
+      <description>I released the first stable version of spam-lists. It can be downloaded from github or PyPI.
+In comparison to the version described in this post, the stable version contains some changes, mostly spelling error corrections and reformatting of docstrings. I have also changed the license of the project from Apache License 2.0 to MIT.</description>
+    </item>
+    
+    <item>
+      <title>Progress in development of spam-lists</title>
+      <link>https://piotr-rusin.github.io/2016/07/progress-in-development-of-spam-lists/</link>
+      <pubDate>Sat, 09 Jul 2016 19:19:49 +0000</pubDate>
+      
+      <guid>https://piotr-rusin.github.io/2016/07/progress-in-development-of-spam-lists/</guid>
+      <description>&lt;p&gt;Since the introduction of my spam-lists library on this blog, I made some progress in its development.&lt;/p&gt;
+
+&lt;p&gt;I reorganized the library a bit, changed the inheritance hierarchy of exception classes, fixed some errors and published the package on PyPI. In this post, I&amp;#8217;m going to describe the changes and explain my reasoning behind them.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Spam-lists – a host blacklist/whitelist library</title>
+      <link>https://piotr-rusin.github.io/2016/06/spam-lists--a-host-blacklist/whitelist-library/</link>
+      <pubDate>Thu, 16 Jun 2016 15:59:43 +0000</pubDate>
+      
+      <guid>https://piotr-rusin.github.io/2016/06/spam-lists--a-host-blacklist/whitelist-library/</guid>
+      <description>&lt;p&gt;The first project I would like to present on this blog is spam-lists (&lt;a href=&#34;https://github.com/piotr-rusin/spam-lists&#34;&gt;GitHub&lt;/a&gt;): a library for querying custom and third party web address blacklists and whitelists.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

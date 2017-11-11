@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Changes in url-shortener</title>
+
+<meta name="generator" content="Hugo 0.30.2" />
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+<link rel="dns-prefetch" href="//fonts.gstatic.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
+<script type="text/javascript" src="/js/scripts.js"></script>
+<link rel="shortcut icon" href="/favicon.ico">
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-109495807-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="/" title="Reusing the wheel" rel="home">
+						<h1 class="logo__title">Reusing the wheel</h1>
+						
+					</a>
+				</div>
+			</div>
+			
+<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item"><a class="menu__link" href="/">POSTS</a></li>
+		<li class="menu__item"><a class="menu__link" href="/projects/">PROJECTS</a></li>
+		<li class="menu__item"><a class="menu__link" href="/about/">ABOUT</a></li>
+	</ul>
+</nav>
+
+		</header>
+		<div class="wrapper clearfix">
+
+<main class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">Changes in url-shortener</h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2016-12-04T16:09:24">December 04, 2016</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="/categories/projects" rel="category">Projects</a>, <a class="meta-categories__link" href="/categories/url-shortener" rel="category">url-shortener</a></span>
+			</p>
+		</header>
+		<div class="post__content clearfix">
+			<p><a href="/2016/08/introducing-my-url-shortener/">When I introduced my URL shortener project</a>, I already had a working version and I thought I only needed to improve its front-end to be able to release the first stable version of the application. I also had some ideas for new features to be added to it.</p>
+
+<p>However, the longer I looked at my code, the more room for improvements I saw. Although I ended up adding some new features, most of the changes I made since then were refactorizations, changes in design and architecture of the application and code style improvements.</p>
+
+<p>In this post, I&#8217;m going to describe some of them.</p>
+
+<p></p>
+
+<h2 id="front-end">Front-end</h2>
+
+<p>I designed the front-end according to rules of responsive web design. Initial CSS styles ensure it looks good on mobile screens, while the styles specified in media queries override the initial styles to adjust the front-end to larger displays.</p>
+
+<p>Here are examples of the current result: the main page <a href="http://i.imgur.com/RuRBETe.png">on a mobile</a> and <a href="http://i.imgur.com/P6xYoWF.png">on a desktop screen</a>. A full gallery is available <a href="http://imgur.com/a/mCU4E">here</a>.</p>
+
+<h2 id="new-classes-for-representing-creating-and-converting-aliases">New classes for representing, creating and converting aliases</h2>
+
+<p>Alias values are no longer represented by a dedicated class &#8211; they are just simple string objects.</p>
+
+<p><a href="https://github.com/piotr-rusin/url-shortener/blob/ee506ab166d3a170ee8790d33f20cf1ee88205a5/url_shortener/domain_and_persistence.py#L35">AliasAlphabet</a> partially replaces the old <a href="https://github.com/piotr-rusin/url-shortener/blob/2bbcb9bcc97f8226e7d90d201c57933421ee050e/url_shortener/models.py#L97">Alias</a> and <a href="https://github.com/piotr-rusin/url-shortener/blob/2bbcb9bcc97f8226e7d90d201c57933421ee050e/url_shortener/models.py#L31">NumeralSystem</a> classes. It represents an ordered set of characters that can appear in valid alias strings and contains methods for creating aliases.</p>
+
+<p><a href="https://github.com/piotr-rusin/url-shortener/blob/ee506ab166d3a170ee8790d33f20cf1ee88205a5/url_shortener/domain_and_persistence.py#L242">IntegerAlias</a> class is now the only one responsible for converting between alias strings and their integer representations, as it should have been from the beginning. It no longer just calls methods responsible for the conversion, but contains the code that actually performs it.</p>
+
+<p>Instances of the class depend on instances of <code>AliasAlphabet</code> and use them for the conversion. The constructor of <code>IntegerAlias</code> class makes sure all the alias strings generated by an instance of <code>AliasAlphabet</code> passed to it can be converted to an integer less or equal to the maximum 32 bit signed integer.</p>
+
+<p>The two responsibilities: that of creating an alias value and that of making sure each possible value has a valid integer representation, are now separated. This is good, because the second responsibility is related to storage, while the first is not, and the current design better adheres to the <a href="http://www.oodesign.com/single-responsibility-principle.html">single responsibility principle</a>. In addition, the current code responsible for generating an alias value is simpler, and each class in the system contains substantial code.</p>
+
+<p>There is only one downside to the current implementation: for some combinations of alias alphabet length and maximum new alias length, there are both aliases of maximum length whose integer values are smaller and larger than maximum value of int32. In current implementation, instances of <code>AliasAlphabet</code> configured with maximum new alias length of such values are treated as invalid.</p>
+
+<p>In the previous implementation, the responsibilities of creating a valid alias value and converting it to integer were assigned to <code>Alias</code> class. Alias values were first generated as integers, and if only some aliases of given maximum length were valid, that is: their respective integer values were smaller or equal to max int32, the factory simply chose max int32 as the upper limit for random number generator, instead of the maximum integer value of any alias of given length.</p>
+
+<p>The current implementation is not as flexible. I could have changed it, but I decided it wasn&#8217;t a big problem, so I didn&#8217;t do it.</p>
+
+<h2 id="new-way-of-shortening-a-url">New way of shortening a URL</h2>
+
+<p>Assigning a random alias to a target URL is no longer performed by <a href="https://github.com/piotr-rusin/url-shortener/blob/2bbcb9bcc97f8226e7d90d201c57933421ee050e/url_shortener/event_handlers.py#L18">an event handler</a>. Instead, the method responsible for creating a new, randomly generated alias &#8211; <a href="https://github.com/piotr-rusin/url-shortener/blob/ee506ab166d3a170ee8790d33f20cf1ee88205a5/url_shortener/domain_and_persistence.py#L149">AliasAlphabet.create_random</a> &#8211; <a href="https://github.com/piotr-rusin/url-shortener/blob/ee506ab166d3a170ee8790d33f20cf1ee88205a5/url_shortener/domain_and_persistence.py#L511">is passed as default_value parameter</a> of SQLAlchemy <code>Column</code> object representing the alias column in the database.</p>
+
+<p>Previously, both adding a URL object to database session and committing pending changes to the database were performed by the same function: <a href="https://github.com/piotr-rusin/url-shortener/blob/2bbcb9bcc97f8226e7d90d201c57933421ee050e/url_shortener/models.py#L288">url_shortener.models.register</a>. These operations have been split: adding a URL object to session and caching it to ensure it is always unique is now performed by <a href="https://github.com/piotr-rusin/url-shortener/blob/ee506ab166d3a170ee8790d33f20cf1ee88205a5/url_shortener/domain_and_persistence.py#L360">get_or_create class method</a> of the <a href="https://github.com/piotr-rusin/url-shortener/blob/ee506ab166d3a170ee8790d33f20cf1ee88205a5/url_shortener/domain_and_persistence.py#L324">BaseTargetURL class</a> (replacing previously used <a href="https://github.com/piotr-rusin/url-shortener/blob/2bbcb9bcc97f8226e7d90d201c57933421ee050e/url_shortener/models.py#L226">ShortenedURL class</a>). The code responsible for it is based on <a href="https://bitbucket.org/zzzeek/sqlalchemy/wiki/UsageRecipes/UniqueObject">this recipe</a>.</p>
+
+<p>With <code>BaseTargetURL</code> class and <a href="https://github.com/piotr-rusin/url-shortener/blob/ee506ab166d3a170ee8790d33f20cf1ee88205a5/url_shortener/domain_and_persistence.py#L400">commit function</a> (replacing the <code>register</code> function) as currently implemented, it is possible to create multiple target URL objects without performing any database insertions and then to commit all of them at once, in one transaction.</p>
+
+<p>In addition, the application never raises any exception when it generates an already existing random alias at least a certain number of times &#8211; instead, the generation is resumed without limit, until it is successful. The number of possible alias values is large enough for such an occurrence to be rare and for the integrity error to be quickly handled in case it finally occurs, so I don&#8217;t think it&#8217;s necessary to inform a user an error has occurred and to ask him to retry.</p>
+
+<h2 id="handling-homoglyphs">Handling homoglyphs</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/Homoglyph">Homoglyphs</a> are characters and sequences of characters that are similar to each other. In my URL shortener, for each group of homoglyphs I could think of, all characters are treated as identical to each other and are internally represented by just one of them.</p>
+
+<p>This is the case both when generating an alias and receiving a request with an existing one. This prevents mistakes resulting from users mistyping or misremembering potentially confusing characters in aliases &#8211; when someone uses such a mistyped alias, the application treats it just like the actual alias value similar to it. Thanks to this, a short URL with a mistyped alias can still work just like if it was typed in correctly &#8211; otherwise, the application wouldn&#8217;t recognize it and would just display a 404 error page, and the user might not even realize he made a mistake, and even if he suspected it, he would still be forced to look for a correct URL, either by trial and error or by looking it up again.</p>
+
+<h2 id="refactoring-view-functions">Refactoring view functions</h2>
+
+<p>A few functions in the <code>url_shortener.views</code> module, namely:</p>
+
+<ul>
+<li><a href="https://github.com/piotr-rusin/url-shortener/blob/2bbcb9bcc97f8226e7d90d201c57933421ee050e/url_shortener/views.py#L50">render_preview</a></li>
+<li><a href="https://github.com/piotr-rusin/url-shortener/blob/2bbcb9bcc97f8226e7d90d201c57933421ee050e/url_shortener/views.py#L96">preview</a></li>
+<li><a href="https://github.com/piotr-rusin/url-shortener/blob/2bbcb9bcc97f8226e7d90d201c57933421ee050e/url_shortener/views.py#L58">get_response</a></li>
+<li><a href="https://github.com/piotr-rusin/url-shortener/blob/2bbcb9bcc97f8226e7d90d201c57933421ee050e/url_shortener/views.py#L83">redirect_for</a></li>
+</ul>
+
+<p>were replaced by a single view class: <a href="https://github.com/piotr-rusin/url-shortener/blob/ee506ab166d3a170ee8790d33f20cf1ee88205a5/url_shortener/views.py#L77">ShowURL</a>. I think it is a better solution than having four very small functions, with two of them consisting of just a call to another function.</p>
+
+<h2 id="adding-migrations">Adding migrations</h2>
+
+<p>I added support for automatic database migrations using <a href="https://github.com/miguelgrinberg/Flask-Migrate">Flask-Migrate</a> package. I thought it would be a useful addition, and it proved to be useful during the whole refactoring process because it included some changes made to the database model, namely: changing the name of the class representing a shortened URL and changing a name of one of its attributes.</p>
+
+<h2 id="application-factory-and-dependency-injection-container">Application factory and dependency injection container</h2>
+
+<p>One of the first decisions I made after publishing my last article on the project was refactoring it so that it would use <a href="http://flask.pocoo.org/docs/0.11/blueprints/">flask blueprints</a> and an <a href="http://flask.pocoo.org/docs/0.11/patterns/appfactories/">application factory function</a>. I thought it would improve the architecture of my project by making it more modular and testable, which would be an improvement of the code by itself and would make it easier to extend my application in the future.</p>
+
+<p>The role of application factory is to create instances of <code>Flask</code> class representing applications, each of them configured differently.</p>
+
+<p>To be able to have non-global application objects, I had to remove the reliance of my code on a global app instance and its <code>config</code> property. Values of configuration options had to be injected not only into instances of classes, but also into functions, including ones representing views.</p>
+
+<p>For a short time I was considering solving it by simply creating all the objects representing services in the factory function and by introducing functions responsible for initialization of views. However, I decided it was better for dependencies to be created and managed automatically by a dependency injection container. I chose to use <a href="https://github.com/alecthomas/injector">Injector</a> because its author already provided <a href="https://github.com/alecthomas/flask_injector">a package</a> integrating it with Flask and adding the possibility of injecting dependencies directly into flask view functions.</p>
+
+<p>There was one problem with my application: some configuration options or application-instance-specific objects were dependencies of class objects. Having classes defined globally, directly in python modules, means that dependencies of the class objects representing them would also have to be shared globally. It was the case with SQLAlchemy model class &#8211; depending on an instance of <code>AliasAlphabet</code> &#8211; and a form class depending on a spam/blacklist validator object.</p>
+
+<p>For the model class, the problem could be solved by making it independent of SQLAlchemy and Flask-SQLAlchemy, creating an SQLALchemy <code>Table</code> object dynamically for each instance of application and mapping the class to it (like <a href="http://stackoverflow.com/a/973567">here</a>). However, I didn&#8217;t like that it would require explicitly doing things that Flask-SQLAlchemy already did automatically, especially since I already implemented migrations using a package that depended on Flask-SQLAlchemy. Instead, I decided to split the model class into a common base class and an application-object-specific class extending it. The second class was to be created dynamically and injected into views as a dependency.</p>
+
+<p>As for the form class, it depends on the validator being added to validators of its URL field. It was impossible (or at least: difficult and requiring modification to internals of WTForms library) to instantiate the field in the constructor of the form class &#8211; it was <a href="http://stackoverflow.com/a/31175306">necessary to define it as a class attribute</a>. For this reason, the form class needed to be dynamically created per instance of application, too.</p>
+
+<p>Creation of both class objects is managed by separate injector modules, and they are injected into views like any other dependency.</p>
+
+<p>Because Flask-Migrate requires instances of both <code>Flask</code> and <code>flask_sqlalchemy.SQLAlchemy</code>, my application factory returns both of the objects, not just the instance of Flask application.</p>
+
+<h2 id="changing-storage-mechanism-of-blacklist-and-adding-a-whitelist">Changing storage mechanism of blacklist and adding a whitelist</h2>
+
+<p>I replaced blacklist file with a simpler approach to storage: a host blacklist specified directly in a python config file. My URL shortener uses my <a href="https://github.com/piotr-rusin/spam-lists">spam-lists library</a>, and reading hosts from a text file was a legacy idea I had for this library until I realised that providing support for any specific storage mechanism in the library should not be part of its scope.</p>
+
+<p>I added a whitelist for hosts known to be safe. URLs with such hosts won&#8217;t be tested against the custom and third-party blacklists.</p>
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="/tags/database-migration/" rel="tag">database migration</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/dependency-injection/" rel="tag">dependency injection</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/front-end/" rel="tag">front-end</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/injector/" rel="tag">Injector</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/python-3/" rel="tag">Python 3</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/refactoring/" rel="tag">refactoring</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/responsive-web-design/" rel="tag">responsive web design</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/single-responsibility-principle/" rel="tag">single responsibility principle</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/spam-lists/" rel="tag">spam-lists</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/sqlalchemy/" rel="tag">SQLAlchemy</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/url-shortener/" rel="tag">url-shortener</a></li>
+		<li class="tags__item"><a class="tags__link" href="/tags/wtforms/" rel="tag">WTForms</a></li>
+	</ul>
+</div>
+
+	</article>
+	
+	
+
+	
+<div class="comments">
+	<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "piotr-rusin.github.io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+</main>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+<div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="//google.com/search">
+		<label>
+			<span class="screen-reader-text">Search for:</span>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://piotr-rusin.github.io" />
+	</form>
+</div>
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/2017/11/designing-a-plugin-system-for-base16-theme-switcher/">Designing a plugin system for base16-theme-switcher</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2017/10/a-new-project-base16-theme-switcher/">A new project: base16-theme-switcher</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2017/09/the-first-working-version-of-yule/">The first working version of Yule</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2017/06/implementing-service-layer-for-yule/">Implementing service layer for Yule</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2017/05/a-new-blog-engine-project/">A new blog engine project</a></li>
+		</ul>
+	</div>
+</div>
+
+	
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/categories/base16-theme-switcher">Base16-Theme-Switcher</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/blog-engine">Blog-Engine</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/projects">Projects</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/spam-lists">Spam-Lists</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/url-shortener">Url-Shortener</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/yule">Yule</a></li>
+		</ul>
+	</div>
+</div>
+	
+<div class="widget-social widget">
+	<h4 class="widget-social__title widget__title">Social</h4>
+	<div class="widget-social__content widget__content">
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/piotr-rusin" target="_blank">
+				<svg class="widget-social__link-icon icon-github" viewBox="0 0 384 374" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
+				<span>GitHub</span>
+			</a>
+		</div>
+		<div class="widget-social__item widget__item">
+			<a class="widget-social__link widget__link btn" title="Email" href="mailto:piotr.rusin88@gmail.com">
+				<svg class="widget-social__link-icon icon-mail" viewBox="0 0 416 288" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="m0 16v256 16h16 384 16v-16-256-16h-16-384-16zm347 16-139 92.5-139-92.5zm-148 125.5 9 5.5 9-5.5 167-111.5v210h-352v-210z"/></svg>
+				<span>piotr.rusin88@gmail.com</span>
+			</a>
+		</div>
+	</div>
+</div>
+
+	
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget__link widget__link--taglist" href="/tags/api" title="api">api</a>
+		<a class="widget__link widget__link--taglist" href="/tags/bash" title="bash">bash</a>
+		<a class="widget__link widget__link--taglist" href="/tags/blog-engine" title="blog-engine">blog-engine</a>
+		<a class="widget__link widget__link--taglist" href="/tags/configuration" title="configuration">configuration</a>
+		<a class="widget__link widget__link--taglist" href="/tags/database-migration" title="database-migration">database-migration</a>
+		<a class="widget__link widget__link--taglist" href="/tags/dependency-injection" title="dependency-injection">dependency-injection</a>
+		<a class="widget__link widget__link--taglist" href="/tags/flask" title="flask">flask</a>
+		<a class="widget__link widget__link--taglist" href="/tags/front-end" title="front-end">front-end</a>
+		<a class="widget__link widget__link--taglist" href="/tags/hibernate" title="hibernate">hibernate</a>
+		<a class="widget__link widget__link--taglist" href="/tags/injector" title="injector">injector</a>
+		<a class="widget__link widget__link--taglist" href="/tags/integration-testing" title="integration-testing">integration-testing</a>
+		<a class="widget__link widget__link--taglist" href="/tags/java" title="java">java</a>
+		<a class="widget__link widget__link--taglist" href="/tags/java-bean-validation" title="java-bean-validation">java-bean-validation</a>
+		<a class="widget__link widget__link--taglist" href="/tags/jpa" title="jpa">jpa</a>
+		<a class="widget__link widget__link--taglist" href="/tags/linux" title="linux">linux</a>
+		<a class="widget__link widget__link--taglist" href="/tags/maven" title="maven">maven</a>
+		<a class="widget__link widget__link--taglist" href="/tags/php" title="php">php</a>
+		<a class="widget__link widget__link--taglist" href="/tags/plugin-system" title="plugin-system">plugin-system</a>
+		<a class="widget__link widget__link--taglist" href="/tags/plugins" title="plugins">plugins</a>
+		<a class="widget__link widget__link--taglist" href="/tags/python-2" title="python-2">python-2</a>
+		<a class="widget__link widget__link--taglist" href="/tags/python-3" title="python-3">python-3</a>
+		<a class="widget__link widget__link--taglist" href="/tags/refactoring" title="refactoring">refactoring</a>
+		<a class="widget__link widget__link--taglist" href="/tags/responsive-web-design" title="responsive-web-design">responsive-web-design</a>
+		<a class="widget__link widget__link--taglist" href="/tags/single-responsibility-principle" title="single-responsibility-principle">single-responsibility-principle</a>
+		<a class="widget__link widget__link--taglist" href="/tags/spam-lists" title="spam-lists">spam-lists</a>
+		<a class="widget__link widget__link--taglist" href="/tags/spring" title="spring">spring</a>
+		<a class="widget__link widget__link--taglist" href="/tags/sqlalchemy" title="sqlalchemy">sqlalchemy</a>
+		<a class="widget__link widget__link--taglist" href="/tags/symfony" title="symfony">symfony</a>
+		<a class="widget__link widget__link--taglist" href="/tags/testing" title="testing">testing</a>
+		<a class="widget__link widget__link--taglist" href="/tags/unit-testing" title="unit-testing">unit-testing</a>
+		<a class="widget__link widget__link--taglist" href="/tags/url-shortener" title="url-shortener">url-shortener</a>
+		<a class="widget__link widget__link--taglist" href="/tags/wtforms" title="wtforms">wtforms</a>
+	</div>
+</div>
+</aside>
+
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2017 Reusing the wheel. <span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad theme</a>.</span></p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+</body>
+</html>

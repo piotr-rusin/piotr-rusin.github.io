@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/projects/</loc>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/about/</loc>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/2017/11/designing-a-plugin-system-for-base16-theme-switcher/</loc>
+    <lastmod>2017-11-02T09:22:29+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/2017/10/a-new-project-base16-theme-switcher/</loc>
+    <lastmod>2017-10-22T14:39:20+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/2017/09/the-first-working-version-of-yule/</loc>
+    <lastmod>2017-09-04T20:00:36+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/2017/06/implementing-service-layer-for-yule/</loc>
+    <lastmod>2017-06-05T09:17:41+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/2017/05/a-new-blog-engine-project/</loc>
+    <lastmod>2017-05-16T10:59:50+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/2016/12/url-shortener-a-demo-and-more-refactoring/</loc>
+    <lastmod>2016-12-31T16:13:22+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/2016/12/a-php-symfony-blog-engine/</loc>
+    <lastmod>2016-12-06T13:33:10+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/2016/12/changes-in-url-shortener/</loc>
+    <lastmod>2016-12-04T16:09:24+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/2016/11/the-first-stable-release-of-spam-lists/</loc>
+    <lastmod>2016-11-30T10:44:41+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/2016/08/introducing-my-url-shortener/</loc>
+    <lastmod>2016-08-05T13:18:43+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/2016/07/progress-in-development-of-spam-lists/</loc>
+    <lastmod>2016-07-09T19:19:49+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/2016/06/spam-lists--a-host-blacklist/whitelist-library/</loc>
+    <lastmod>2016-06-16T15:59:43+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/api/</loc>
+    <lastmod>2017-11-02T09:22:29+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/categories/base16-theme-switcher/</loc>
+    <lastmod>2017-11-02T09:22:29+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/bash/</loc>
+    <lastmod>2017-11-02T09:22:29+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/blog-engine/</loc>
+    <lastmod>2017-05-16T10:59:50+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/categories/blog-engine/</loc>
+    <lastmod>2016-12-06T13:33:10+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/categories/</loc>
+    <lastmod>2017-11-02T09:22:29+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/configuration/</loc>
+    <lastmod>2017-11-02T09:22:29+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/database-migration/</loc>
+    <lastmod>2016-12-04T16:09:24+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/dependency-injection/</loc>
+    <lastmod>2017-06-05T09:17:41+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/flask/</loc>
+    <lastmod>2016-08-05T13:18:43+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/front-end/</loc>
+    <lastmod>2016-12-04T16:09:24+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/hibernate/</loc>
+    <lastmod>2017-05-16T10:59:50+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/injector/</loc>
+    <lastmod>2016-12-04T16:09:24+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/integration-testing/</loc>
+    <lastmod>2017-06-05T09:17:41+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/java/</loc>
+    <lastmod>2017-09-04T20:00:36+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/java-bean-validation/</loc>
+    <lastmod>2017-05-16T10:59:50+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/jpa/</loc>
+    <lastmod>2017-06-05T09:17:41+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/linux/</loc>
+    <lastmod>2017-11-02T09:22:29+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/maven/</loc>
+    <lastmod>2017-09-04T20:00:36+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/php/</loc>
+    <lastmod>2016-12-06T13:33:10+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/plugin-system/</loc>
+    <lastmod>2017-11-02T09:22:29+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/plugins/</loc>
+    <lastmod>2017-11-02T09:22:29+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/post/</loc>
+    <lastmod>2017-11-02T09:22:29+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/categories/projects/</loc>
+    <lastmod>2017-11-02T09:22:29+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/python-2/</loc>
+    <lastmod>2016-11-30T10:44:41+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/python-3/</loc>
+    <lastmod>2017-11-02T09:22:29+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/refactoring/</loc>
+    <lastmod>2016-12-31T16:13:22+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/responsive-web-design/</loc>
+    <lastmod>2016-12-04T16:09:24+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/</loc>
+    <lastmod>2017-11-02T09:22:29+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/single-responsibility-principle/</loc>
+    <lastmod>2016-12-31T16:13:22+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/spam-lists/</loc>
+    <lastmod>2016-12-04T16:09:24+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/categories/spam-lists/</loc>
+    <lastmod>2016-11-30T10:44:41+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/spring/</loc>
+    <lastmod>2017-09-04T20:00:36+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/sqlalchemy/</loc>
+    <lastmod>2016-12-04T16:09:24+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/symfony/</loc>
+    <lastmod>2016-12-06T13:33:10+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/</loc>
+    <lastmod>2017-11-02T09:22:29+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/testing/</loc>
+    <lastmod>2017-06-05T09:17:41+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/unit-testing/</loc>
+    <lastmod>2017-06-05T09:17:41+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/url-shortener/</loc>
+    <lastmod>2016-12-31T16:13:22+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/categories/url-shortener/</loc>
+    <lastmod>2016-12-31T16:13:22+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/wtforms/</loc>
+    <lastmod>2016-12-04T16:09:24+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/categories/yule/</loc>
+    <lastmod>2017-09-04T20:00:36+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

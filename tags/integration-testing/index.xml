@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Integration Testing on Reusing the wheel</title>
+    <link>https://piotr-rusin.github.io/tags/integration-testing/</link>
+    <description>Recent content in Integration Testing on Reusing the wheel</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 05 Jun 2017 09:17:41 +0000</lastBuildDate>
+    
+	<atom:link href="https://piotr-rusin.github.io/tags/integration-testing/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Implementing service layer for Yule</title>
+      <link>https://piotr-rusin.github.io/2017/06/implementing-service-layer-for-yule/</link>
+      <pubDate>Mon, 05 Jun 2017 09:17:41 +0000</pubDate>
+      
+      <guid>https://piotr-rusin.github.io/2017/06/implementing-service-layer-for-yule/</guid>
+      <description>&lt;p&gt;Since my &lt;a href=&#34;https://piotr-rusin.github.io/2017/05/a-new-blog-engine-project/&#34;&gt;introductory post on Yule&lt;/a&gt;, I&amp;#8217;ve been doing some work on the project. I&amp;#8217;ve implemented an automatic article publication feature as a part of service layer and I added some methods used by it to the repository layer of my project.&lt;/p&gt;
+
+&lt;p&gt;This post covers these changes and some problems I encountered during testing.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

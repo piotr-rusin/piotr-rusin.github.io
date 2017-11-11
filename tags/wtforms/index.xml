@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Wtforms on Reusing the wheel</title>
+    <link>https://piotr-rusin.github.io/tags/wtforms/</link>
+    <description>Recent content in Wtforms on Reusing the wheel</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 04 Dec 2016 16:09:24 +0000</lastBuildDate>
+    
+	<atom:link href="https://piotr-rusin.github.io/tags/wtforms/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Changes in url-shortener</title>
+      <link>https://piotr-rusin.github.io/2016/12/changes-in-url-shortener/</link>
+      <pubDate>Sun, 04 Dec 2016 16:09:24 +0000</pubDate>
+      
+      <guid>https://piotr-rusin.github.io/2016/12/changes-in-url-shortener/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://piotr-rusin.github.io/2016/08/introducing-my-url-shortener/&#34;&gt;When I introduced my URL shortener project&lt;/a&gt;, I already had a working version and I thought I only needed to improve its front-end to be able to release the first stable version of the application. I also had some ideas for new features to be added to it.&lt;/p&gt;
+
+&lt;p&gt;However, the longer I looked at my code, the more room for improvements I saw. Although I ended up adding some new features, most of the changes I made since then were refactorizations, changes in design and architecture of the application and code style improvements.&lt;/p&gt;
+
+&lt;p&gt;In this post, I&amp;#8217;m going to describe some of them.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Introducing my URL shortener</title>
+      <link>https://piotr-rusin.github.io/2016/08/introducing-my-url-shortener/</link>
+      <pubDate>Fri, 05 Aug 2016 13:18:43 +0000</pubDate>
+      
+      <guid>https://piotr-rusin.github.io/2016/08/introducing-my-url-shortener/</guid>
+      <description>&lt;p&gt;URL addresses can be quite long, mainly because they often consist of path and query components, both containing a number of characters forming names of path segments and values of parameters (not necessarily meaningful to a human reader), or performing other functions. For that reason, they may be hard to type and memorize, or simply aesthetically unpleasing.&lt;/p&gt;
+
+&lt;p&gt;Because of that, URL shorteners were created. There are plenty of them already, so there is probably no reason to create yet another such application, perhaps with one exception: it seems like an interesting idea for a small programming project that could be later extended with other features. This is why I decided to create &lt;a href=&#34;https://github.com/piotr-rusin/url-shortener&#34;&gt;my own URL shortener&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
