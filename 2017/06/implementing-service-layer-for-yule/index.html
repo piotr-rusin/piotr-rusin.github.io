@@ -67,7 +67,7 @@ ga('send', 'pageview');
 
 <h2 id="repository-layer">Repository layer</h2>
 
-<p>Although in the previous post I promised the next one will be about the service layer, and <a href="https://stackoverflow.com/questions/22963352/difference-between-repository-and-service-layer">repositories constitute their own layer</a>, I decided to cover it here as I didn&#8217;t do it before. Plus, the repository layer is used by the service layer, and will also be used by the controllers, so it needs to be touched upon.</p>
+<p>Although in the previous post I promised the next one would be about the service layer, and <a href="https://stackoverflow.com/questions/22963352/difference-between-repository-and-service-layer">repositories constitute their own layer</a>, I decided to cover it here as I didn&#8217;t do it before. Plus, the repository layer is used by the service layer, and will also be used by the controllers, so it needs to be touched upon.</p>
 
 <p>In my project, this layer consists of only one interface (at least for now): <a href="https://github.com/piotr-rusin/yule/blob/1284de5285a8fb6d30531d5fc26d20231a851679/src/main/java/com/github/piotr_rusin/yule/repository/ArticleRepository.java"><code>ArticleRepository</code></a>. It declares methods responsible for database queries and commands. It&#8217;s not accompanied by my own implementation of it because Spring Data is able to <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods">generate beans implementing repository interfaces</a>, and because I didn&#8217;t need to implement any custom behaviour that would have to be provided by a custom implementation of the interface.</p>
 
