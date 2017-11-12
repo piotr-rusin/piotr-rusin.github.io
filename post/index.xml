@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Reusing the wheel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 02 Nov 2017 09:22:29 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 12 Nov 2017 16:43:40 +0100</lastBuildDate>
     
 	<atom:link href="https://piotr-rusin.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Migrating to Hugo and GitHub Pages</title>
+      <link>https://piotr-rusin.github.io/2017/11/migrating-to-hugo-and-github-pages/</link>
+      <pubDate>Sun, 12 Nov 2017 16:43:40 +0100</pubDate>
+      
+      <guid>https://piotr-rusin.github.io/2017/11/migrating-to-hugo-and-github-pages/</guid>
+      <description>&lt;p&gt;I wanted to have greater control over my blog, so I&amp;rsquo;ve been thinking about moving it to a self-hosted WordPress installation. In the end, I decided to migrate from WordPress to a static blog generated with &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; and hosted on &lt;a href=&#34;https://pages.github.com/&#34;&gt;GitHub Pages&lt;/a&gt;. This post will be the last one posted on &lt;a href=&#34;https://reusingthewheel.wordpress.com/&#34;&gt;reusingthewheel.wordpress.com&lt;/a&gt; - the future ones will be posted on &lt;a href=&#34;https://piotr-rusin.github.io&#34;&gt;piotr-rusin.github.io&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Designing a plugin system for base16-theme-switcher</title>

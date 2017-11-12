@@ -11,6 +11,11 @@
   </url>
   
   <url>
+    <loc>https://piotr-rusin.github.io/2017/11/migrating-to-hugo-and-github-pages/</loc>
+    <lastmod>2017-11-12T16:43:40+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://piotr-rusin.github.io/2017/11/designing-a-plugin-system-for-base16-theme-switcher/</loc>
     <lastmod>2017-11-02T09:22:29+00:00</lastmod>
   </url>
@@ -89,6 +94,12 @@
   </url>
   
   <url>
+    <loc>https://piotr-rusin.github.io/categories/blog/</loc>
+    <lastmod>2017-11-12T16:43:40+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://piotr-rusin.github.io/tags/blog-engine/</loc>
     <lastmod>2017-05-16T10:59:50+00:00</lastmod>
     <priority>0</priority>
@@ -125,6 +136,12 @@
   </url>
   
   <url>
+    <loc>https://piotr-rusin.github.io/tags/disqus/</loc>
+    <lastmod>2017-11-12T16:43:40+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://piotr-rusin.github.io/tags/flask/</loc>
     <lastmod>2016-08-05T13:18:43+00:00</lastmod>
     <priority>0</priority>
@@ -139,6 +156,12 @@
   <url>
     <loc>https://piotr-rusin.github.io/tags/hibernate/</loc>
     <lastmod>2017-05-16T10:59:50+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/hugo/</loc>
+    <lastmod>2017-11-12T16:43:40+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -167,6 +190,12 @@
   </url>
   
   <url>
+    <loc>https://piotr-rusin.github.io/tags/jekyll/</loc>
+    <lastmod>2017-11-12T16:43:40+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://piotr-rusin.github.io/tags/jpa/</loc>
     <lastmod>2017-06-05T09:17:41+00:00</lastmod>
     <priority>0</priority>
@@ -181,6 +210,12 @@
   <url>
     <loc>https://piotr-rusin.github.io/tags/maven/</loc>
     <lastmod>2017-09-04T20:00:36+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/pelican/</loc>
+    <lastmod>2017-11-12T16:43:40+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -204,7 +239,7 @@
   
   <url>
     <loc>https://piotr-rusin.github.io/post/</loc>
-    <lastmod>2017-11-02T09:22:29+00:00</lastmod>
+    <lastmod>2017-11-12T16:43:40+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -240,7 +275,7 @@
   
   <url>
     <loc>https://piotr-rusin.github.io/</loc>
-    <lastmod>2017-11-02T09:22:29+00:00</lastmod>
+    <lastmod>2017-11-12T16:43:40+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -271,6 +306,12 @@
   <url>
     <loc>https://piotr-rusin.github.io/tags/sqlalchemy/</loc>
     <lastmod>2016-12-04T16:09:24+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/static-website-generator/</loc>
+    <lastmod>2017-11-12T16:43:40+01:00</lastmod>
     <priority>0</priority>
   </url>
   
