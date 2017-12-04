@@ -6,7 +6,7 @@
     <description>Recent content on Reusing the wheel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 Nov 2017 16:43:40 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 04 Dec 2017 14:38:10 +0100</lastBuildDate>
     
 	<atom:link href="https://piotr-rusin.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -31,6 +31,17 @@ spam-lists A library providing clients for services recognizing web addresses of
       <description>My name is Piotr Rusin. I majored in civil engineering at Poznan University of Technology, but I&amp;#8217;m more interested in programming, both as a hobby and as a career choice. I&amp;#8217;m not yet a professional programmer, but I&amp;#8217;m working on becoming one.
 On this blog, I&amp;#8217;m going to describe my projects, ideas and progress I&amp;#8217;m making in learning programming and computer science.
 I chose the name &amp;#8220;Reusing the wheel&amp;#8221; as a reference to two approaches to software development: doing something from scratch (&amp;#8220;reinventing the wheel&amp;#8221;) and reusing existing code.</description>
+    </item>
+    
+    <item>
+      <title>Revisiting my blog engine project</title>
+      <link>https://piotr-rusin.github.io/2017/12/revisiting-my-blog-engine-project/</link>
+      <pubDate>Mon, 04 Dec 2017 14:38:10 +0100</pubDate>
+      
+      <guid>https://piotr-rusin.github.io/2017/12/revisiting-my-blog-engine-project/</guid>
+      <description>&lt;p&gt;I recently went back to developing &lt;a href=&#34;https://piotr-rusin.github.io/categories/yule/&#34;&gt;Yule&lt;/a&gt; - my blog engine project based, among others, on &lt;a href=&#34;https://projects.spring.io/spring-boot/&#34;&gt;the Spring Boot framework&lt;/a&gt;. I made some progress in both its front end and back end, and I would like to sum it up in this note&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

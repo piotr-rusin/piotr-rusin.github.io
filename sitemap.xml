@@ -11,6 +11,11 @@
   </url>
   
   <url>
+    <loc>https://piotr-rusin.github.io/2017/12/revisiting-my-blog-engine-project/</loc>
+    <lastmod>2017-12-04T14:38:10+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://piotr-rusin.github.io/2017/11/migrating-to-hugo-and-github-pages/</loc>
     <lastmod>2017-11-12T16:43:40+01:00</lastmod>
   </url>
@@ -82,6 +87,12 @@
   </url>
   
   <url>
+    <loc>https://piotr-rusin.github.io/tags/back-end/</loc>
+    <lastmod>2017-12-04T14:38:10+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://piotr-rusin.github.io/categories/base16-theme-switcher/</loc>
     <lastmod>2017-11-02T09:22:29+00:00</lastmod>
     <priority>0</priority>
@@ -112,6 +123,12 @@
   </url>
   
   <url>
+    <loc>https://piotr-rusin.github.io/tags/bootstrap/</loc>
+    <lastmod>2017-12-04T14:38:10+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://piotr-rusin.github.io/categories/</loc>
     <lastmod>2017-11-02T09:22:29+00:00</lastmod>
     <priority>0</priority>
@@ -120,6 +137,12 @@
   <url>
     <loc>https://piotr-rusin.github.io/tags/configuration/</loc>
     <lastmod>2017-11-02T09:22:29+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/css/</loc>
+    <lastmod>2017-12-04T14:38:10+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -149,7 +172,7 @@
   
   <url>
     <loc>https://piotr-rusin.github.io/tags/front-end/</loc>
-    <lastmod>2016-12-04T16:09:24+00:00</lastmod>
+    <lastmod>2017-12-04T14:38:10+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -179,13 +202,19 @@
   
   <url>
     <loc>https://piotr-rusin.github.io/tags/java/</loc>
-    <lastmod>2017-09-04T20:00:36+00:00</lastmod>
+    <lastmod>2017-12-04T14:38:10+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://piotr-rusin.github.io/tags/java-bean-validation/</loc>
     <lastmod>2017-05-16T10:59:50+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/tags/javascript/</loc>
+    <lastmod>2017-12-04T14:38:10+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -239,13 +268,13 @@
   
   <url>
     <loc>https://piotr-rusin.github.io/post/</loc>
-    <lastmod>2017-11-12T16:43:40+01:00</lastmod>
+    <lastmod>2017-12-04T14:38:10+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://piotr-rusin.github.io/categories/projects/</loc>
-    <lastmod>2017-11-02T09:22:29+00:00</lastmod>
+    <lastmod>2017-12-04T14:38:10+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -275,7 +304,7 @@
   
   <url>
     <loc>https://piotr-rusin.github.io/</loc>
-    <lastmod>2017-11-12T16:43:40+01:00</lastmod>
+    <lastmod>2017-12-04T14:38:10+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -299,7 +328,7 @@
   
   <url>
     <loc>https://piotr-rusin.github.io/tags/spring/</loc>
-    <lastmod>2017-09-04T20:00:36+00:00</lastmod>
+    <lastmod>2017-12-04T14:38:10+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -329,7 +358,7 @@
   
   <url>
     <loc>https://piotr-rusin.github.io/tags/testing/</loc>
-    <lastmod>2017-06-05T09:17:41+00:00</lastmod>
+    <lastmod>2017-12-04T14:38:10+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -359,7 +388,7 @@
   
   <url>
     <loc>https://piotr-rusin.github.io/categories/yule/</loc>
-    <lastmod>2017-09-04T20:00:36+00:00</lastmod>
+    <lastmod>2017-12-04T14:38:10+01:00</lastmod>
     <priority>0</priority>
   </url>
   
