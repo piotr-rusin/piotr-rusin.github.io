@@ -6,19 +6,10 @@
     <description>Recent content in Categories on Reusing the wheel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 02 Nov 2017 09:22:29 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 12 Nov 2017 16:43:40 +0100</lastBuildDate>
     
 	<atom:link href="https://piotr-rusin.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Base16 Theme Switcher</title>
-      <link>https://piotr-rusin.github.io/categories/base16-theme-switcher/</link>
-      <pubDate>Thu, 02 Nov 2017 09:22:29 +0000</pubDate>
-      
-      <guid>https://piotr-rusin.github.io/categories/base16-theme-switcher/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>Blog</title>
@@ -30,47 +21,11 @@
     </item>
     
     <item>
-      <title>Blog Engine</title>
-      <link>https://piotr-rusin.github.io/categories/blog-engine/</link>
-      <pubDate>Tue, 06 Dec 2016 13:33:10 +0000</pubDate>
-      
-      <guid>https://piotr-rusin.github.io/categories/blog-engine/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Projects</title>
-      <link>https://piotr-rusin.github.io/categories/projects/</link>
+      <title>Development</title>
+      <link>https://piotr-rusin.github.io/categories/development/</link>
       <pubDate>Mon, 04 Dec 2017 14:38:10 +0100</pubDate>
       
-      <guid>https://piotr-rusin.github.io/categories/projects/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Spam Lists</title>
-      <link>https://piotr-rusin.github.io/categories/spam-lists/</link>
-      <pubDate>Wed, 30 Nov 2016 10:44:41 +0000</pubDate>
-      
-      <guid>https://piotr-rusin.github.io/categories/spam-lists/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Url Shortener</title>
-      <link>https://piotr-rusin.github.io/categories/url-shortener/</link>
-      <pubDate>Sat, 31 Dec 2016 16:13:22 +0000</pubDate>
-      
-      <guid>https://piotr-rusin.github.io/categories/url-shortener/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Yule</title>
-      <link>https://piotr-rusin.github.io/categories/yule/</link>
-      <pubDate>Mon, 04 Dec 2017 14:38:10 +0100</pubDate>
-      
-      <guid>https://piotr-rusin.github.io/categories/yule/</guid>
+      <guid>https://piotr-rusin.github.io/categories/development/</guid>
       <description></description>
     </item>
     

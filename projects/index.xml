@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on Reusing the wheel</title>
+    <link>https://piotr-rusin.github.io/projects/</link>
+    <description>Recent content in Projects on Reusing the wheel</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 02 Nov 2017 09:22:29 +0000</lastBuildDate>
+    
+	<atom:link href="https://piotr-rusin.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Base16 Theme Switcher</title>
+      <link>https://piotr-rusin.github.io/projects/base16-theme-switcher/</link>
+      <pubDate>Thu, 02 Nov 2017 09:22:29 +0000</pubDate>
+      
+      <guid>https://piotr-rusin.github.io/projects/base16-theme-switcher/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Blog Engine</title>
+      <link>https://piotr-rusin.github.io/projects/blog-engine/</link>
+      <pubDate>Tue, 16 May 2017 10:59:50 +0000</pubDate>
+      
+      <guid>https://piotr-rusin.github.io/projects/blog-engine/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spam Lists</title>
+      <link>https://piotr-rusin.github.io/projects/spam-lists/</link>
+      <pubDate>Sun, 04 Dec 2016 16:09:24 +0000</pubDate>
+      
+      <guid>https://piotr-rusin.github.io/projects/spam-lists/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Url Shortener</title>
+      <link>https://piotr-rusin.github.io/projects/url-shortener/</link>
+      <pubDate>Sat, 31 Dec 2016 16:13:22 +0000</pubDate>
+      
+      <guid>https://piotr-rusin.github.io/projects/url-shortener/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Yule</title>
+      <link>https://piotr-rusin.github.io/projects/yule/</link>
+      <pubDate>Mon, 04 Dec 2017 14:38:10 +0100</pubDate>
+      
+      <guid>https://piotr-rusin.github.io/projects/yule/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

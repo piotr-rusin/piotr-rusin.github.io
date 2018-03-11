@@ -12,17 +12,6 @@
     
     
     <item>
-      <title>Projects</title>
-      <link>https://piotr-rusin.github.io/projects/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://piotr-rusin.github.io/projects/</guid>
-      <description>So far, I have described a number of my projects on this blog. Because most of the posts I have made were rather lengthy, I thought it would be good to provide an additional short description and a list of relevant links for each of my creations.
-All projects presented here (and some not presented) are publicly available in my github repositories.
-spam-lists A library providing clients for services recognizing web addresses of spam sources (SURBL, Google Safe Browsing API, etc.</description>
-    </item>
-    
-    <item>
       <title>About</title>
       <link>https://piotr-rusin.github.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

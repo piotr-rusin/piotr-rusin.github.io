@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Designing a plugin system for base16-theme-switcher</title>
 
-<meta name="generator" content="Hugo 0.30.2" />
+<meta name="generator" content="Hugo 0.37" />
 
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 <link rel="dns-prefetch" href="//fonts.gstatic.com" />
@@ -38,7 +38,6 @@ ga('send', 'pageview');
 <nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 	<ul class="menu__list">
 		<li class="menu__item"><a class="menu__link" href="/">POSTS</a></li>
-		<li class="menu__item"><a class="menu__link" href="/projects/">PROJECTS</a></li>
 		<li class="menu__item"><a class="menu__link" href="/about/">ABOUT</a></li>
 	</ul>
 </nav>
@@ -54,8 +53,20 @@ ga('send', 'pageview');
 				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
 				<time class="post__meta-date" datetime="2017-11-02T09:22:29">November 02, 2017</time>
 				<span class="post__meta-categories meta-categories">
-					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
-					<a class="meta-categories__link" href="/categories/base16-theme-switcher" rel="category">Base16-theme-switcher</a>, <a class="meta-categories__link" href="/categories/projects" rel="category">Projects</a></span>
+					<svg class="icon icon-category"
+								height="16" viewBox="0 0 16 16"
+								width="16" xmlns="http://www.w3.org/2000/svg">
+						<path d="m7 2l1 2h8v11h-16v-13z"/>
+					</svg>
+					
+						<a class="meta-categories__link"
+							href="/categories/development"
+							rel="category">Development</a>, 
+						<a class="meta-categories__link"
+							href="/projects/base16-theme-switcher"
+							rel="project">Base16-theme-switcher</a>
+					
+				</span>
 			</p>
 		</header>
 		<div class="post__content clearfix">
@@ -163,8 +174,8 @@ ga('send', 'pageview');
 </main>
 
 <aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
-	
-	
+		
+		
 <div class="widget-recent widget">
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
@@ -178,22 +189,31 @@ ga('send', 'pageview');
 	</div>
 </div>
 
-	
+		
 <div class="widget-categories widget">
 	<h4 class="widget__title">Categories</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/categories/base16-theme-switcher">Base16-Theme-Switcher</a></li>
 			<li class="widget__item"><a class="widget__link" href="/categories/blog">Blog</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/blog-engine">Blog-Engine</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/projects">Projects</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/spam-lists">Spam-Lists</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/url-shortener">Url-Shortener</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/yule">Yule</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/development">Development</a></li>
 		</ul>
 	</div>
 </div>
-	
+		
+<div class="widget-categories widget">
+	<h4 class="widget__title">Projects</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/projects/base16-theme-switcher">Base16-Theme-Switcher</a></li>
+			<li class="widget__item"><a class="widget__link" href="/projects/blog-engine">Blog-Engine</a></li>
+			<li class="widget__item"><a class="widget__link" href="/projects/spam-lists">Spam-Lists</a></li>
+			<li class="widget__item"><a class="widget__link" href="/projects/url-shortener">Url-Shortener</a></li>
+			<li class="widget__item"><a class="widget__link" href="/projects/yule">Yule</a></li>
+		</ul>
+	</div>
+</div>
+
+		
 <div class="widget-social widget">
 	<h4 class="widget-social__title widget__title">Social</h4>
 	<div class="widget-social__content widget__content">
@@ -212,7 +232,7 @@ ga('send', 'pageview');
 	</div>
 </div>
 
-	
+		
 <div class="widget-taglist widget">
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
@@ -248,14 +268,12 @@ ga('send', 'pageview');
 		<a class="widget__link widget__link--taglist" href="/tags/refactoring" title="refactoring">refactoring</a>
 		<a class="widget__link widget__link--taglist" href="/tags/responsive-web-design" title="responsive-web-design">responsive-web-design</a>
 		<a class="widget__link widget__link--taglist" href="/tags/single-responsibility-principle" title="single-responsibility-principle">single-responsibility-principle</a>
-		<a class="widget__link widget__link--taglist" href="/tags/spam-lists" title="spam-lists">spam-lists</a>
 		<a class="widget__link widget__link--taglist" href="/tags/spring" title="spring">spring</a>
 		<a class="widget__link widget__link--taglist" href="/tags/sqlalchemy" title="sqlalchemy">sqlalchemy</a>
 		<a class="widget__link widget__link--taglist" href="/tags/static-website-generator" title="static-website-generator">static-website-generator</a>
 		<a class="widget__link widget__link--taglist" href="/tags/symfony" title="symfony">symfony</a>
 		<a class="widget__link widget__link--taglist" href="/tags/testing" title="testing">testing</a>
 		<a class="widget__link widget__link--taglist" href="/tags/unit-testing" title="unit-testing">unit-testing</a>
-		<a class="widget__link widget__link--taglist" href="/tags/url-shortener" title="url-shortener">url-shortener</a>
 		<a class="widget__link widget__link--taglist" href="/tags/wtforms" title="wtforms">wtforms</a>
 	</div>
 </div>
