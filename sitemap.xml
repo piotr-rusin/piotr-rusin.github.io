@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://piotr-rusin.github.io/projects/</loc>
+    <lastmod>2017-10-22T14:39:20+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://piotr-rusin.github.io/about/</loc>
   </url>
   
@@ -27,6 +32,11 @@
   </url>
   
   <url>
+    <loc>https://piotr-rusin.github.io/projects/base16-theme-switcher/</loc>
+    <lastmod>2017-10-22T14:39:20+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://piotr-rusin.github.io/2017/09/the-first-working-version-of-yule/</loc>
     <lastmod>2017-09-04T20:00:36+00:00</lastmod>
   </url>
@@ -42,12 +52,22 @@
   </url>
   
   <url>
+    <loc>https://piotr-rusin.github.io/projects/yule/</loc>
+    <lastmod>2017-05-16T10:59:50+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://piotr-rusin.github.io/2016/12/url-shortener-a-demo-and-more-refactoring/</loc>
     <lastmod>2016-12-31T16:13:22+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://piotr-rusin.github.io/2016/12/a-php-symfony-blog-engine/</loc>
+    <lastmod>2016-12-06T13:33:10+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/projects/blog-engine/</loc>
     <lastmod>2016-12-06T13:33:10+00:00</lastmod>
   </url>
   
@@ -67,8 +87,18 @@
   </url>
   
   <url>
+    <loc>https://piotr-rusin.github.io/projects/url-shortener/</loc>
+    <lastmod>2016-08-05T13:18:43+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://piotr-rusin.github.io/2016/07/progress-in-development-of-spam-lists/</loc>
     <lastmod>2016-07-09T19:19:49+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://piotr-rusin.github.io/projects/spam-lists/</loc>
+    <lastmod>2016-06-16T15:59:43+00:00</lastmod>
   </url>
   
   <url>
@@ -89,12 +119,6 @@
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/projects/base16-theme-switcher/</loc>
-    <lastmod>2017-11-02T09:22:29+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://piotr-rusin.github.io/tags/bash/</loc>
     <lastmod>2017-11-02T09:22:29+00:00</lastmod>
     <priority>0</priority>
@@ -108,12 +132,6 @@
   
   <url>
     <loc>https://piotr-rusin.github.io/tags/blog-engine/</loc>
-    <lastmod>2017-05-16T10:59:50+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://piotr-rusin.github.io/projects/blog-engine/</loc>
     <lastmod>2017-05-16T10:59:50+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -275,12 +293,6 @@
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/projects/</loc>
-    <lastmod>2017-11-02T09:22:29+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://piotr-rusin.github.io/tags/python-2/</loc>
     <lastmod>2016-11-30T10:44:41+00:00</lastmod>
     <priority>0</priority>
@@ -313,12 +325,6 @@
   <url>
     <loc>https://piotr-rusin.github.io/tags/single-responsibility-principle/</loc>
     <lastmod>2016-12-31T16:13:22+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://piotr-rusin.github.io/projects/spam-lists/</loc>
-    <lastmod>2016-12-04T16:09:24+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -365,20 +371,8 @@
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/projects/url-shortener/</loc>
-    <lastmod>2016-12-31T16:13:22+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://piotr-rusin.github.io/tags/wtforms/</loc>
     <lastmod>2016-12-04T16:09:24+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://piotr-rusin.github.io/projects/yule/</loc>
-    <lastmod>2017-12-04T14:38:10+01:00</lastmod>
     <priority>0</priority>
   </url>
   

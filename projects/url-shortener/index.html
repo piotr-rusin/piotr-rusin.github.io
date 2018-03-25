@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Url Shortener</title>
+<title>URL Shortener</title>
 
 <meta name="generator" content="Hugo 0.37" />
 
@@ -38,6 +38,7 @@ ga('send', 'pageview');
 <nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 	<ul class="menu__list">
 		<li class="menu__item"><a class="menu__link" href="/">POSTS</a></li>
+		<li class="menu__item"><a class="menu__link" href="/projects/">PROJECTS</a></li>
 		<li class="menu__item"><a class="menu__link" href="/about/">ABOUT</a></li>
 	</ul>
 </nav>
@@ -47,8 +48,14 @@ ga('send', 'pageview');
 
 	<main class="main-content list content" role="main">
 		<header class="page-header">
-			<h1 class="page-header__title">Url Shortener</h1>
-		</header><article class="list__item post clearfix">
+			<h1 class="page-header__title">URL Shortener</h1>
+		</header>
+		<div class="page-content">
+			<p>An application for providing shorter aliases for given URLs. It uses my spam-lists library to prevent shortening of URLs recognized as spam or to warn users that an already existing shortened URL has been recognized as spam. The application also handles homoglyphs &#8211; characters and sequences of characters similar to each other &#8211; by internally treating them as identical, saving its users from inconvenience resulting from mistyping or misremembering shortened URLs with potentially confusing characters.</p>
+
+<p>Written in Python 3.4.&#42; and based on Flask 0.11.1 and SQLAlchemy 1.1.3.</p>
+
+		</div><article class="list__item post clearfix">
 	<div class="list__content clearfix">
 		<header class="list__header">
 			<h3 class="list__title post__title ">
