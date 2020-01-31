@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Implementing service layer for Yule</title>
+	
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/css/uikit.min.css" />
+	<link rel="stylesheet" href="/css/style.css">
+	
+</head>
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit-icons.min.js"></script>
+	<header class="main-header">
+		<div class="uk-background-primary">
+	<nav class="uk-container uk-container-small" uk-navbar>
+		<div class="uk-navbar-left">
+			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
+			<ul class="uk-navbar-nav uk-visible@m">	
+				
+					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
+				
+			</ul>
+		</div>
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav uk-visible@m">
+				
+					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+				
+					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
+				
+			</ul>
+			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
+		</div>
+	</nav>
+</div>
+<div id="off-canvas-menu" uk-offcanvas="flip: true">
+	<div class="uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" uk-close></button>
+		<ul class="uk-nav uk-nav-default">
+			
+				<li><a href="/tags/java">Java</a></li>
+			
+				<li><a href="/tags/python">Python</a></li>
+			
+				<li><a href="/tags/spring">Spring</a></li>
+			
+				<li><a href="/tags/">More...</a></li>
+			
+			
+				<li><a href="/about/">About</a></li>
+			
+				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+			
+				<li><a href="https://github.com/piotr-rusin">Github</a></li>
+			
+		</ul>
+	</div>
+</div>
+
+		
+		
+	</header>
+	<div class="uk-container uk-container-xsmall">
+	<main>
+		<article class="uk-article">
+			<header class="main-article-header">
+				<h1><a href="https://piotr-rusin.github.io/posts/2017-06-05-implementing-service-layer-for-yule/" class="uk-link-heading">Implementing service layer for Yule</a></h1>
+				<p class="uk-article-meta">
+    <time>Jun 05, 2017</time> /
+    
+    <a class="tag" href="/tags/dependency-injection">dependency-injection</a>
+    , <a class="tag" href="/tags/integration-testing">integration-testing</a>
+    , <a class="tag" href="/tags/java">java</a>
+    , <a class="tag" href="/tags/jpa">jpa</a>
+    , <a class="tag" href="/tags/maven">maven</a>
+    , <a class="tag" href="/tags/spring">spring</a>
+    , <a class="tag" href="/tags/testing">testing</a>
+    , <a class="tag" href="/tags/unit-testing">unit-testing</a>
+</p>
+			</header>
+			<div>
+				<p>Since my <a href="/posts/2017-05-16-a-new-blog-engine-project/">introductory post on Yule</a>, I’ve been doing some work on the project. I’ve implemented an automatic article publication feature as a part of service layer and I added some methods used by it to the repository layer of my project.</p>
+<p>This post covers these changes and some problems I encountered during testing.</p>
+<h2 id="repository-layer">Repository layer</h2>
+<p>Although in the previous post I promised the next one would be about the service layer, and <a href="https://stackoverflow.com/questions/22963352/difference-between-repository-and-service-layer">repositories constitute their own layer</a>, I decided to cover it here as I didn’t do it before. Plus, the repository layer is used by the service layer, and will also be used by the controllers, so it needs to be touched upon.</p>
+<p>In my project, this layer consists of only one interface (at least for now): <a href="https://github.com/piotr-rusin/yule/blob/1284de5285a8fb6d30531d5fc26d20231a851679/src/main/java/com/github/piotr_rusin/yule/repository/ArticleRepository.java"><code>ArticleRepository</code></a>. It declares methods responsible for database queries and commands. It’s not accompanied by my own implementation of it because Spring Data is able to <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods">generate beans implementing repository interfaces</a>, and because I didn’t need to implement any custom behaviour that would have to be provided by a custom implementation of the interface.</p>
+<p>There are three ways of providing a repository interface with data necessary to generate its implementation:</p>
+<ul>
+<li><a href="http://docs.spring.io/spring-data/jpa/docs/1.3.0.RELEASE/reference/html/jpa.repositories.html#d0e1045">properly naming its methods</a></li>
+<li><a href="http://docs.spring.io/spring-data/jpa/docs/1.3.0.RELEASE/reference/html/jpa.repositories.html#jpa.query-methods.named-queries">using JPA NamedQueries</a></li>
+<li><a href="http://docs.spring.io/spring-data/jpa/docs/1.3.0.RELEASE/reference/html/jpa.repositories.html#jpa.query-methods.at-query">using Spring Data <code>@Query</code> annotation</a></li>
+</ul>
+<p>For most methods I chose the third option, mainly because the queries are complex enough that if they were to be generated from method names, the names would be very long and not very readable. Another reason for the choice is that I don’t like adding a method by annotating an interface or providing an XML configuration for it, as required by JPA NamedQueries. I think providing a Java method declaration and then annotating it with the <code>@Query</code> annotation looks better.</p>
+<p>The only method whose implementation is based on its name is <a href="https://github.com/piotr-rusin/yule/blob/1284de5285a8fb6d30531d5fc26d20231a851679/src/main/java/com/github/piotr_rusin/yule/repository/ArticleRepository.java#L57"><code>findOneBySlug(String)</code></a>.</p>
+<h2 id="automatic-article-publication">Automatic article publication</h2>
+<p>This feature is provided by the following classes:</p>
+<ul>
+<li><a href="https://github.com/piotr-rusin/yule/blob/1284de5285a8fb6d30531d5fc26d20231a851679/src/main/java/com/github/piotr_rusin/yule/service/AutoPublicationTask.java"><code>AutoPublicationTask</code></a> – representing the task responsible for publishing all articles due for auto-publication at its execution time</li>
+<li><a href="https://github.com/piotr-rusin/yule/blob/1284de5285a8fb6d30531d5fc26d20231a851679/src/main/java/com/github/piotr_rusin/yule/service/AutoPublicationTrigger.java"><code>AutoPublicationTrigger</code></a> – responsible for providing execution times when re-scheduling the auto-publication task</li>
+<li><a href="https://github.com/piotr-rusin/yule/blob/1284de5285a8fb6d30531d5fc26d20231a851679/src/main/java/com/github/piotr_rusin/yule/service/AutoPublicationTaskFactory.java"><code>AutoPublicationTaskFactory</code></a> – a simple factory object providing new instances of <code>AutoPublicationTask</code></li>
+<li><a href="https://github.com/piotr-rusin/yule/blob/1284de5285a8fb6d30531d5fc26d20231a851679/src/main/java/com/github/piotr_rusin/yule/service/AutoPublicationScheduler.java"><code>AutoPublicationScheduler</code></a> – creating new auto-publication tasks, scheduling them using <code>AutoPublicationTrigger</code> and cancelling an old task when scheduling a new one, so that at most just one task is active at any given time</li>
+<li><a href="https://github.com/piotr-rusin/yule/blob/1284de5285a8fb6d30531d5fc26d20231a851679/src/main/java/com/github/piotr_rusin/yule/config/SchedulingConfig.java"><code>SchedulingConfig</code></a> – not part of the service layer, but necessary to enable scheduling and to add <code>TaskScheduler</code> bean to be used by the <code>AutoPublicationScheduler</code></li>
+</ul>
+<h2 id="problems-when-testing-autopublicationtask">Problems when testing AutoPublicationTask</h2>
+<p>The <code>AutoPublicationTask</code> class performs a few calls to a logger. Logging a message is the way it handles some occurences worth noting. For this reason, I decided to cover the calls in my unit tests for the class.</p>
+<p>I’ve looked up ways of testing that a message was logged, and although creating one’s own logging appender seemed to be the most frequent suggestion, I decided to go with using a dedicated library. I found two such libraries: <a href="http://projects.lidalia.org.uk/slf4j-test/">SLF4J Test</a> and <a href="https://github.com/portingle/slf4jtesting">SLF4JTesting</a>, and I initially decided to use the first one.</p>
+<p>As mentioned on its website, the library provides an <a href="https://www.slf4j.org/">SLF4J</a> implementation and should be the only such implementation on the classpath. I decided to take care of this by excluding the default logger during testing by including <a href="http://maven.apache.org/surefire/maven-surefire-plugin/">Maven Surefire Plugin</a> in the pom.xml and configuring it properly.</p>
+<p>Unfortunately, it didn’t work, at least not when I was executing tests with Eclipse by using <em>Run As &gt; JUnit</em> Test run configuration. The following warning appeared:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in
+[jar:file:(&amp;#8230;)/ch/qos/logback/logback-classic/1.1.11/logback-classic-1.1.11.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in
+[jar:file:(&amp;#8230;)/uk/org/lidalia/slf4j-test/1.2.0/slf4j-test-1.2.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings
+for an explanation.
+SLF4J: Actual binding is of type
+[ch.qos.logback.classic.util.ContextSelectorStaticBinder]
+</code></pre></div><p>Not only more than one logger was found on the classpath, but also Logback (provided by spring-boot-starter dependency) was chosen as the default implementation. As a result, the tests didn’t pass. I managed to fix that by moving declaration of SLF4J Test dependency above that of the starter providing Logback, so that it would be analyzed as the first SLF4J implementation and this way used as an actual implementation during tests. Now the unit tests for <code>AutoPublicationTask</code> passed, but I still had to deal with both logger implementations being detected.</p>
+<p>Moreover, when I executed all tests, a more serious problem was revealed. Due to the presence of multiple loggers on the classpath during testing, the application context couldn’t be loaded. As a result, integration tests couldn’t be executed. They failed with the following error:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">java.lang.IllegalStateException: Failed to load ApplicationContext
+(&amp;#8230;)
+Caused by: java.lang.IllegalArgumentException:
+LoggerFactory is not a Logback LoggerContext but Logback
+is on the classpath. Either remove Logback or the competing
+implementation (class uk.org.lidalia.slf4jtest.TestLoggerFactory
+loaded from file:(&amp;#8230;)/uk/org/lidalia/slf4j-test/1.2.0/slf4j-test-1.2.0.jar).
+If you are using WebLogic you will need to add &#39;org.slf4j&#39; to
+prefer-application-packages in WEB-INF/weblogic.xml:
+uk.org.lidalia.slf4jtest.TestLoggerFactory
+</code></pre></div><p>Since it seemed Eclipse was simply ignoring the exclusion rule specified for Surefire plugin, I started googling for others having this problem and for a possible solution. It didn’t take long until I found <a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206253879-IDEA-not-honoring-maven-surefire-properties">a post</a> in which someone reported having a similar problem, but with IntelliJ IDEA. The poster mentioned dependency exclusions being ignored by his IDE, but working properly when they ran tests by executing <code>mvn test</code> command.</p>
+<p>I have previously installed Maven globally, but I never used it until now, simply because running tests and my application through Eclipse was more convenient for me. When I executed it now in my project directory, the exclusion wasn’t ignored anymore and the warning message didn’t appear.</p>
+<p>I also tried another run configuration provided by Eclipse: <em>Run As &gt; Maven test</em>. When using it, the plugin configuration was recognized, too, but the test results weren’t displayed on JUnit view.</p>
+<p>Although using alternative run configuration or directly calling <code>mvn test</code> fixed the dependency exclusion being ignored, the integration tests were still failing, now with the following error:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">java.lang.NoClassDefFoundError:
+ch/qos/logback/classic/joran/JoranConfigurator
+(&amp;#8230;)
+Caused by: java.lang.ClassNotFoundException:
+ch.qos.logback.classic.joran.JoranConfigurator
+</code></pre></div><p>Instead of trying to make SLF4J Test work for me, I decided to drop it and try the SLF4JTesting library instead. It doesn’t require any special configuration and doesn’t interfere with a production logger on the classpath. I chose to use it in combination with <a href="http://site.mockito.org/">Mockito</a>, which I was already using for some unit tests for <code>AutoPublicationTask</code>.</p>
+<p>The documentation of the library <a href="https://github.com/portingle/slf4jtesting#basic-example">has pointed my attention</a> to another, more fundamental problem with my implementation of the class under test: the logger was assigned to a static private field during its declaration, instead of being an injected dependency or being created by one. This is the pattern of initialization of loggers I’ve seen frequently in projects and examples of code I’ve seen on the internet, so I thought it was a standard way of doing this and I simply copied it before I even thought I would end up testing logged messages. However, now I improved my code by:</p>
+<ul>
+<li>storing the logger per instance of <code>AutoPublicationTask</code></li>
+<li>creating the logger with a factory passed as a parameter to the constructor of the class</li>
+</ul>
+<p>After reimplementing the unit tests with SLF4JTesting, everything worked as it should.</p>
+<h2 id="other-components">Other components</h2>
+<p>For a time I’ve been considering adding an “article manager” service class that would integrate the article repository object and the AutoPublicationScheduler. It would perform CRUD operations and re-schedule the auto-publication task when necessary, namely when saving an article that just switched to or from <a href="https://github.com/piotr-rusin/yule/blob/1284de5285a8fb6d30531d5fc26d20231a851679/src/main/java/com/github/piotr_rusin/yule/domain/ArticleStatus.java#L41"><code>ArticleStatus.SCHEDULED_FOR_PUBLICATION</code></a> status or when deleting a scheduled article.</p>
+<p>I decided to abandon this idea and implement the operations in a controller, for the following reasons:</p>
+<ul>
+<li>I realised it’s better to use <a href="http://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/SessionAttributes.html"><code>@SessionAttributes</code></a> in a controller class to store an intial state of an article, to test if and how it changed its status during a CRUD operation, instead of implementing my own solution in the <a href="https://github.com/piotr-rusin/yule/blob/1284de5285a8fb6d30531d5fc26d20231a851679/src/main/java/com/github/piotr_rusin/yule/domain/Article.java"><code>Article</code></a> class and using this solution in the article manager</li>
+<li>I decided the article manager class did too little to warrant its existence</li>
+</ul>
+<p>As for other operations that will be parts of the business logic of my application: I also decided to implement them first in controllers. This way, I will separate two tasks: implementing features and refactoring their code into separate service layer components, and I will be able to complete them in separate steps.</p>
+			</div>
+			<div>
+				<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "piotr-rusin-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+			</div>
+		</article>
+	</main>
+</div>
+	<div class="uk-background-primary">
+	<nav class="uk-container uk-container-small" uk-navbar>
+		<div class="uk-navbar-left">
+			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
+			<ul class="uk-navbar-nav uk-visible@m">	
+				
+					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
+				
+			</ul>
+		</div>
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav uk-visible@m">
+				
+					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+				
+					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
+				
+			</ul>
+			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
+		</div>
+	</nav>
+</div>
+<div id="off-canvas-menu" uk-offcanvas="flip: true">
+	<div class="uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" uk-close></button>
+		<ul class="uk-nav uk-nav-default">
+			
+				<li><a href="/tags/java">Java</a></li>
+			
+				<li><a href="/tags/python">Python</a></li>
+			
+				<li><a href="/tags/spring">Spring</a></li>
+			
+				<li><a href="/tags/">More...</a></li>
+			
+			
+				<li><a href="/about/">About</a></li>
+			
+				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+			
+				<li><a href="https://github.com/piotr-rusin">Github</a></li>
+			
+		</ul>
+	</div>
+</div>
+
+</body>
+</html>

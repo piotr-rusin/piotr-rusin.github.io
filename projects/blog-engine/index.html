@@ -1,225 +1,192 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog Engine</title>
-
-<meta name="generator" content="Hugo 0.37" />
-
-<link rel="dns-prefetch" href="//fonts.googleapis.com" />
-<link rel="dns-prefetch" href="//fonts.gstatic.com" />
-<link rel="alternate" type="application/rss+xml" title="Reusing the wheel Feed" href="https://piotr-rusin.github.io/projects/blog-engine/index.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
-<link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
-<script type="text/javascript" src="/js/scripts.js"></script>
-<link rel="shortcut icon" href="/favicon.ico">
-
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-109495807-1', 'auto');
-ga('send', 'pageview');
-</script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
-
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Blog Engine</title>
+	
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/css/uikit.min.css" />
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="alternate" type="application/rss+xml" href="/projects/blog-engine/index.xml" title="Reusing the wheel">
 </head>
-<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
-	<div class="container container-outer">
-		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
-			<div class="container container-inner clearfix">
-				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
-					<a class="logo__link" href="/" title="Reusing the wheel" rel="home">
-						<h1 class="logo__title">Reusing the wheel</h1>
-						
-					</a>
-				</div>
-			</div>
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit-icons.min.js"></script>
+	<header class="main-header">
+		<div class="uk-background-primary">
+	<nav class="uk-container uk-container-small" uk-navbar>
+		<div class="uk-navbar-left">
+			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
+			<ul class="uk-navbar-nav uk-visible@m">	
+				
+					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
+				
+			</ul>
+		</div>
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav uk-visible@m">
+				
+					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+				
+					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
+				
+			</ul>
+			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
+		</div>
+	</nav>
+</div>
+<div id="off-canvas-menu" uk-offcanvas="flip: true">
+	<div class="uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" uk-close></button>
+		<ul class="uk-nav uk-nav-default">
 			
-<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
-	<ul class="menu__list">
-		<li class="menu__item"><a class="menu__link" href="/">POSTS</a></li>
-		<li class="menu__item"><a class="menu__link" href="/projects/">PROJECTS</a></li>
-		<li class="menu__item"><a class="menu__link" href="/about/">ABOUT</a></li>
-	</ul>
-</nav>
-
-		</header>
-		<div class="wrapper clearfix">
-
-	<main class="main-content list content" role="main">
-		<header class="page-header">
-			<h1 class="page-header__title">Blog Engine</h1>
-		</header>
-		<div class="page-content">
-			<p>A blog engine application written in PHP 5.3.&#42; and based on Symfony 2.8.&#42;.</p>
-
-		</div><article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/2017/05/a-new-blog-engine-project/" rel="bookmark">A new blog engine project</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2017-05-16T10:59:50">May 16, 2017</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			<p>In <a href="/2016/12/a-php-symfony-blog-engine/">one of my previous posts</a> I described a blog engine I was developing. At the time, I had returned to it after a hiatus and I was convinced I would continue working on it. However, at the same time I was still more interested in developing my python-based <a href="/categories/url-shortener/">url-shortener project</a> and I also already planned moving on to other projects and technologies. As a result, I got bored of blog-engine again.</p>
-
-<p>Since then, I&#8217;ve been focusing on Java and <a href="https://projects.spring.io/spring-framework/">Spring Framework</a>. This resulted in a new project: another blog engine, but this time based on Spring and designed with different features.</p>
-
-<p></p>
-		</div>
-		<div class="list__footer">
-			<a class="list__footer-readmore btn" href="/2017/05/a-new-blog-engine-project/">Read more…</a>
-		</div>
+				<li><a href="/tags/java">Java</a></li>
+			
+				<li><a href="/tags/python">Python</a></li>
+			
+				<li><a href="/tags/spring">Spring</a></li>
+			
+				<li><a href="/tags/">More...</a></li>
+			
+			
+				<li><a href="/about/">About</a></li>
+			
+				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+			
+				<li><a href="https://github.com/piotr-rusin">Github</a></li>
+			
+		</ul>
 	</div>
-</article>
-<article class="list__item post clearfix">
-	<div class="list__content clearfix">
-		<header class="list__header">
-			<h3 class="list__title post__title ">
-				<a href="/2016/12/a-php-symfony-blog-engine/" rel="bookmark">A PHP/Symfony blog engine</a>
-			</h3>
-			<div class="list__meta meta">
-				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
-				<time class="list__meta-date" datetime="2016-12-06T13:33:10">December 06, 2016</time>
-			</div>
-		</header>
-		<div class="list__excerpt">
-			<p>A few months ago I started a blog engine project based on <a href="https://symfony.com/">Symfony framework</a>. I&#8217;ve been adding things and making changes to it from time to time. Since August, I took a longer break in its development because I wanted to focus on other things, but now I&#8217;m returning to the project.</p>
-
-<p></p>
-		</div>
-		<div class="list__footer">
-			<a class="list__footer-readmore btn" href="/2016/12/a-php-symfony-blog-engine/">Read more…</a>
-		</div>
-	</div>
-</article>
-
+</div>
 
 		
+	<h1 class="uk-container uk-container-xsmall">
+    <a href="https://piotr-rusin.github.io/projects/blog-engine/" class="uk-link-heading">
+        
+            Blog Engine
+        
+    </a>
+</h1>
+
+	</header>
+	<div class="uk-container uk-container-xsmall">
+	<main>
+		<div><p>A blog engine application written in PHP 5.3.* and based on Symfony 2.8.*.</p>
+</div>
+		
+			<article class="uk-article">
+	<header>
+		<h2><a href="https://piotr-rusin.github.io/posts/2017-05-16-a-new-blog-engine-project/" class="uk-link-heading">A new blog engine project</a></h2>
+		<p class="uk-article-meta">
+    <time>May 16, 2017</time> /
+    
+    <a class="tag" href="/tags/blog-engine">blog-engine</a>
+    , <a class="tag" href="/tags/hibernate">hibernate</a>
+    , <a class="tag" href="/tags/java">java</a>
+    , <a class="tag" href="/tags/java-bean-validation">java-bean-validation</a>
+    , <a class="tag" href="/tags/jpa">jpa</a>
+    , <a class="tag" href="/tags/spring">spring</a>
+</p>
+	</header>
+	<div>
+		<p>In <a href="/posts/2016-12-06-a-php-symfony-blog-engine/">one of my previous posts</a> I described a blog engine I was developing. At the time, I had returned to it after a hiatus and I was convinced I would continue working on it. However, at the same time I was still more interested in developing my python-based <a href="/projects/url-shortener/">url-shortener project</a> and I also already planned moving on to other projects and technologies. As a result, I got bored of blog-engine again.</p>
+<p>Since then, I’ve been focusing on Java and <a href="https://projects.spring.io/spring-framework/">Spring Framework</a>. This resulted in a new project: another blog engine, but this time based on Spring and designed with different features.</p>
+		
+			<a href="https://piotr-rusin.github.io/posts/2017-05-16-a-new-blog-engine-project/">Read more...</a>
+		
+	</div>
+</article>
+
+		
+			<article class="uk-article">
+	<header>
+		<h2><a href="https://piotr-rusin.github.io/posts/2016-12-06-a-php-symfony-blog-engine/" class="uk-link-heading">A PHP/Symfony blog engine</a></h2>
+		<p class="uk-article-meta">
+    <time>Dec 06, 2016</time> /
+    
+    <a class="tag" href="/tags/php">php</a>
+    , <a class="tag" href="/tags/symfony">symfony</a>
+</p>
+	</header>
+	<div>
+		<p>A few months ago I started a blog engine project based on <a href="https://symfony.com/">Symfony framework</a>. I’ve been adding things and making changes to it from time to time. Since August, I took a longer break in its development because I wanted to focus on other things, but now I’m returning to the project.</p>
+		
+			<a href="https://piotr-rusin.github.io/posts/2016-12-06-a-php-symfony-blog-engine/">Read more...</a>
+		
+	</div>
+</article>
+
+		
+		<div class="pagination">
+	
+	1 / 1
+	
+</div>
 	</main>
-
-<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
-		
-		
-<div class="widget-recent widget">
-	<h4 class="widget__title">Recent Posts</h4>
-	<div class="widget__content">
-		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/2017/12/revisiting-my-blog-engine-project/">Revisiting my blog engine project</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2017/11/migrating-to-hugo-and-github-pages/">Migrating to Hugo and GitHub Pages</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2017/11/designing-a-plugin-system-for-base16-theme-switcher/">Designing a plugin system for base16-theme-switcher</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2017/10/a-new-project-base16-theme-switcher/">A new project: base16-theme-switcher</a></li>
-			<li class="widget__item"><a class="widget__link" href="/2017/09/the-first-working-version-of-yule/">The first working version of Yule</a></li>
-		</ul>
-	</div>
 </div>
-
-		
-<div class="widget-categories widget">
-	<h4 class="widget__title">Categories</h4>
-	<div class="widget__content">
-		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/categories/blog">Blog</a></li>
-			<li class="widget__item"><a class="widget__link" href="/categories/development">Development</a></li>
-		</ul>
-	</div>
-</div>
-		
-<div class="widget-categories widget">
-	<h4 class="widget__title">Projects</h4>
-	<div class="widget__content">
-		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/projects/base16-theme-switcher">Base16-Theme-Switcher</a></li>
-			<li class="widget__item"><a class="widget__link" href="/projects/blog-engine">Blog-Engine</a></li>
-			<li class="widget__item"><a class="widget__link" href="/projects/spam-lists">Spam-Lists</a></li>
-			<li class="widget__item"><a class="widget__link" href="/projects/url-shortener">Url-Shortener</a></li>
-			<li class="widget__item"><a class="widget__link" href="/projects/yule">Yule</a></li>
-		</ul>
-	</div>
-</div>
-
-		
-<div class="widget-social widget">
-	<h4 class="widget-social__title widget__title">Social</h4>
-	<div class="widget-social__content widget__content">
-		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="GitHub" rel="noopener noreferrer" href="https://github.com/piotr-rusin" target="_blank">
-				<svg class="widget-social__link-icon icon-github" viewBox="0 0 384 374" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="m192 0c-106.1 0-192 85.8-192 191.7 0 84.7 55 156.6 131.3 181.9 9.6 1.8 13.1-4.2 13.1-9.2 0-4.6-.2-16.6-.3-32.6-53.4 11.6-64.7-25.7-64.7-25.7-8.7-22.1-21.3-28-21.3-28-17.4-11.9 1.3-11.6 1.3-11.6 19.3 1.4 29.4 19.8 29.4 19.8 17.1 29.3 44.9 20.8 55.9 15.9 1.7-12.4 6.7-20.8 12.2-25.6-42.6-4.8-87.5-21.3-87.5-94.8 0-20.9 7.5-38 19.8-51.4-2-4.9-8.6-24.3 1.9-50.7 0 0 16.1-5.2 52.8 19.7 15.3-4.2 31.7-6.4 48.1-6.5 16.3.1 32.7 2.2 48.1 6.5 36.7-24.8 52.8-19.7 52.8-19.7 10.5 26.4 3.9 45.9 1.9 50.7 12.3 13.4 19.7 30.5 19.7 51.4 0 73.7-44.9 89.9-87.7 94.6 6.9 5.9 13 17.6 13 35.5 0 25.6-.2 46.3-.2 52.6 0 5.1 3.5 11.1 13.2 9.2 76.2-25.5 131.2-97.3 131.2-182 0-105.9-86-191.7-192-191.7z"/></svg>
-				<span>GitHub</span>
-			</a>
+	<div class="uk-background-primary">
+	<nav class="uk-container uk-container-small" uk-navbar>
+		<div class="uk-navbar-left">
+			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
+			<ul class="uk-navbar-nav uk-visible@m">	
+				
+					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
+				
+			</ul>
 		</div>
-		<div class="widget-social__item widget__item">
-			<a class="widget-social__link widget__link btn" title="Email" href="mailto:piotr.rusin88@gmail.com">
-				<svg class="widget-social__link-icon icon-mail" viewBox="0 0 416 288" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="#fff"><path d="m0 16v256 16h16 384 16v-16-256-16h-16-384-16zm347 16-139 92.5-139-92.5zm-148 125.5 9 5.5 9-5.5 167-111.5v210h-352v-210z"/></svg>
-				<span>piotr.rusin88@gmail.com</span>
-			</a>
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav uk-visible@m">
+				
+					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+				
+					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
+				
+			</ul>
+			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
 		</div>
+	</nav>
+</div>
+<div id="off-canvas-menu" uk-offcanvas="flip: true">
+	<div class="uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" uk-close></button>
+		<ul class="uk-nav uk-nav-default">
+			
+				<li><a href="/tags/java">Java</a></li>
+			
+				<li><a href="/tags/python">Python</a></li>
+			
+				<li><a href="/tags/spring">Spring</a></li>
+			
+				<li><a href="/tags/">More...</a></li>
+			
+			
+				<li><a href="/about/">About</a></li>
+			
+				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+			
+				<li><a href="https://github.com/piotr-rusin">Github</a></li>
+			
+		</ul>
 	</div>
 </div>
 
-		
-<div class="widget-taglist widget">
-	<h4 class="widget__title">Tags</h4>
-	<div class="widget__content">
-		<a class="widget__link widget__link--taglist" href="/tags/api" title="api">api</a>
-		<a class="widget__link widget__link--taglist" href="/tags/back-end" title="back-end">back-end</a>
-		<a class="widget__link widget__link--taglist" href="/tags/bash" title="bash">bash</a>
-		<a class="widget__link widget__link--taglist" href="/tags/blog-engine" title="blog-engine">blog-engine</a>
-		<a class="widget__link widget__link--taglist" href="/tags/bootstrap" title="bootstrap">bootstrap</a>
-		<a class="widget__link widget__link--taglist" href="/tags/configuration" title="configuration">configuration</a>
-		<a class="widget__link widget__link--taglist" href="/tags/css" title="css">css</a>
-		<a class="widget__link widget__link--taglist" href="/tags/database-migration" title="database-migration">database-migration</a>
-		<a class="widget__link widget__link--taglist" href="/tags/dependency-injection" title="dependency-injection">dependency-injection</a>
-		<a class="widget__link widget__link--taglist" href="/tags/disqus" title="disqus">disqus</a>
-		<a class="widget__link widget__link--taglist" href="/tags/flask" title="flask">flask</a>
-		<a class="widget__link widget__link--taglist" href="/tags/front-end" title="front-end">front-end</a>
-		<a class="widget__link widget__link--taglist" href="/tags/hibernate" title="hibernate">hibernate</a>
-		<a class="widget__link widget__link--taglist" href="/tags/hugo" title="hugo">hugo</a>
-		<a class="widget__link widget__link--taglist" href="/tags/injector" title="injector">injector</a>
-		<a class="widget__link widget__link--taglist" href="/tags/integration-testing" title="integration-testing">integration-testing</a>
-		<a class="widget__link widget__link--taglist" href="/tags/java" title="java">java</a>
-		<a class="widget__link widget__link--taglist" href="/tags/java-bean-validation" title="java-bean-validation">java-bean-validation</a>
-		<a class="widget__link widget__link--taglist" href="/tags/javascript" title="javascript">javascript</a>
-		<a class="widget__link widget__link--taglist" href="/tags/jekyll" title="jekyll">jekyll</a>
-		<a class="widget__link widget__link--taglist" href="/tags/jpa" title="jpa">jpa</a>
-		<a class="widget__link widget__link--taglist" href="/tags/linux" title="linux">linux</a>
-		<a class="widget__link widget__link--taglist" href="/tags/maven" title="maven">maven</a>
-		<a class="widget__link widget__link--taglist" href="/tags/pelican" title="pelican">pelican</a>
-		<a class="widget__link widget__link--taglist" href="/tags/php" title="php">php</a>
-		<a class="widget__link widget__link--taglist" href="/tags/plugin-system" title="plugin-system">plugin-system</a>
-		<a class="widget__link widget__link--taglist" href="/tags/plugins" title="plugins">plugins</a>
-		<a class="widget__link widget__link--taglist" href="/tags/python-2" title="python-2">python-2</a>
-		<a class="widget__link widget__link--taglist" href="/tags/python-3" title="python-3">python-3</a>
-		<a class="widget__link widget__link--taglist" href="/tags/refactoring" title="refactoring">refactoring</a>
-		<a class="widget__link widget__link--taglist" href="/tags/responsive-web-design" title="responsive-web-design">responsive-web-design</a>
-		<a class="widget__link widget__link--taglist" href="/tags/single-responsibility-principle" title="single-responsibility-principle">single-responsibility-principle</a>
-		<a class="widget__link widget__link--taglist" href="/tags/spring" title="spring">spring</a>
-		<a class="widget__link widget__link--taglist" href="/tags/sqlalchemy" title="sqlalchemy">sqlalchemy</a>
-		<a class="widget__link widget__link--taglist" href="/tags/static-website-generator" title="static-website-generator">static-website-generator</a>
-		<a class="widget__link widget__link--taglist" href="/tags/symfony" title="symfony">symfony</a>
-		<a class="widget__link widget__link--taglist" href="/tags/testing" title="testing">testing</a>
-		<a class="widget__link widget__link--taglist" href="/tags/unit-testing" title="unit-testing">unit-testing</a>
-		<a class="widget__link widget__link--taglist" href="/tags/wtforms" title="wtforms">wtforms</a>
-	</div>
-</div>
-</aside>
-
-	</div>
-		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
-			<div class="container container-inner">
-				<p class="footer__copyright">&copy; 2018 Reusing the wheel. <span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad theme</a>.</span></p>
-			</div>
-		</footer>
-	</div>
-
-<script>
-	var navigation = responsiveNav(".menu", {
-		navClass: "menu--collapse",
-	});
-</script>
 </body>
 </html>

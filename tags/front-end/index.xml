@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Front End on Reusing the wheel</title>
+    <title>front end on Reusing the wheel</title>
     <link>https://piotr-rusin.github.io/tags/front-end/</link>
-    <description>Recent content in Front End on Reusing the wheel</description>
+    <description>Recent content in front end on Reusing the wheel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 04 Dec 2017 14:38:10 +0100</lastBuildDate>
@@ -13,28 +13,22 @@
     
     <item>
       <title>Revisiting my blog engine project</title>
-      <link>https://piotr-rusin.github.io/2017/12/revisiting-my-blog-engine-project/</link>
+      <link>https://piotr-rusin.github.io/posts/2017-12-04-revisiting-my-blog-engine-project/</link>
       <pubDate>Mon, 04 Dec 2017 14:38:10 +0100</pubDate>
       
-      <guid>https://piotr-rusin.github.io/2017/12/revisiting-my-blog-engine-project/</guid>
-      <description>&lt;p&gt;I recently went back to developing &lt;a href=&#34;https://piotr-rusin.github.io/categories/yule/&#34;&gt;Yule&lt;/a&gt; - my blog engine project based, among others, on &lt;a href=&#34;https://projects.spring.io/spring-boot/&#34;&gt;the Spring Boot framework&lt;/a&gt;. I made some progress in both its front end and back end, and I would like to sum it up in this note&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://piotr-rusin.github.io/posts/2017-12-04-revisiting-my-blog-engine-project/</guid>
+      <description>&lt;p&gt;I recently went back to developing &lt;a href=&#34;https://piotr-rusin.github.io/projects/yule/&#34;&gt;Yule&lt;/a&gt; - my blog engine project based, among others, on &lt;a href=&#34;https://projects.spring.io/spring-boot/&#34;&gt;the Spring Boot framework&lt;/a&gt;. I made some progress in both its front end and back end, and I would like to sum it up in this note&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Changes in url-shortener</title>
-      <link>https://piotr-rusin.github.io/2016/12/changes-in-url-shortener/</link>
+      <link>https://piotr-rusin.github.io/posts/2016-12-04-changes-in-url-shortener/</link>
       <pubDate>Sun, 04 Dec 2016 16:09:24 +0000</pubDate>
       
-      <guid>https://piotr-rusin.github.io/2016/12/changes-in-url-shortener/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://piotr-rusin.github.io/2016/08/introducing-my-url-shortener/&#34;&gt;When I introduced my URL shortener project&lt;/a&gt;, I already had a working version and I thought I only needed to improve its front-end to be able to release the first stable version of the application. I also had some ideas for new features to be added to it.&lt;/p&gt;
-
+      <guid>https://piotr-rusin.github.io/posts/2016-12-04-changes-in-url-shortener/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://piotr-rusin.github.io/posts/2016-08-05-introducing-my-url-shortener/&#34;&gt;When I introduced my URL shortener project&lt;/a&gt;, I already had a working version and I thought I only needed to improve its front-end to be able to release the first stable version of the application. I also had some ideas for new features to be added to it.&lt;/p&gt;
 &lt;p&gt;However, the longer I looked at my code, the more room for improvements I saw. Although I ended up adding some new features, most of the changes I made since then were refactorizations, changes in design and architecture of the application and code style improvements.&lt;/p&gt;
-
-&lt;p&gt;In this post, I&amp;#8217;m going to describe some of them.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;In this post, I’m going to describe some of them.&lt;/p&gt;</description>
     </item>
     
   </channel>

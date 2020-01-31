@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>A new blog engine project</title>
+	
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/css/uikit.min.css" />
+	<link rel="stylesheet" href="/css/style.css">
+	
+</head>
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit-icons.min.js"></script>
+	<header class="main-header">
+		<div class="uk-background-primary">
+	<nav class="uk-container uk-container-small" uk-navbar>
+		<div class="uk-navbar-left">
+			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
+			<ul class="uk-navbar-nav uk-visible@m">	
+				
+					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
+				
+			</ul>
+		</div>
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav uk-visible@m">
+				
+					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+				
+					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
+				
+			</ul>
+			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
+		</div>
+	</nav>
+</div>
+<div id="off-canvas-menu" uk-offcanvas="flip: true">
+	<div class="uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" uk-close></button>
+		<ul class="uk-nav uk-nav-default">
+			
+				<li><a href="/tags/java">Java</a></li>
+			
+				<li><a href="/tags/python">Python</a></li>
+			
+				<li><a href="/tags/spring">Spring</a></li>
+			
+				<li><a href="/tags/">More...</a></li>
+			
+			
+				<li><a href="/about/">About</a></li>
+			
+				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+			
+				<li><a href="https://github.com/piotr-rusin">Github</a></li>
+			
+		</ul>
+	</div>
+</div>
+
+		
+		
+	</header>
+	<div class="uk-container uk-container-xsmall">
+	<main>
+		<article class="uk-article">
+			<header class="main-article-header">
+				<h1><a href="https://piotr-rusin.github.io/posts/2017-05-16-a-new-blog-engine-project/" class="uk-link-heading">A new blog engine project</a></h1>
+				<p class="uk-article-meta">
+    <time>May 16, 2017</time> /
+    
+    <a class="tag" href="/tags/blog-engine">blog-engine</a>
+    , <a class="tag" href="/tags/hibernate">hibernate</a>
+    , <a class="tag" href="/tags/java">java</a>
+    , <a class="tag" href="/tags/java-bean-validation">java-bean-validation</a>
+    , <a class="tag" href="/tags/jpa">jpa</a>
+    , <a class="tag" href="/tags/spring">spring</a>
+</p>
+			</header>
+			<div>
+				<p>In <a href="/posts/2016-12-06-a-php-symfony-blog-engine/">one of my previous posts</a> I described a blog engine I was developing. At the time, I had returned to it after a hiatus and I was convinced I would continue working on it. However, at the same time I was still more interested in developing my python-based <a href="/projects/url-shortener/">url-shortener project</a> and I also already planned moving on to other projects and technologies. As a result, I got bored of blog-engine again.</p>
+<p>Since then, I’ve been focusing on Java and <a href="https://projects.spring.io/spring-framework/">Spring Framework</a>. This resulted in a new project: another blog engine, but this time based on Spring and designed with different features.</p>
+<h2 id="ideas-and-features">Ideas and features</h2>
+<p>I decided this blog engine will be simpler than the previous one (at least initially) and will have the following features:</p>
+<ul>
+<li>a support for a single administrator and blog author</li>
+<li>configuration based on editing files rather than using a graphical user interface</li>
+<li>dynamically generated menus used for main navigation element, blogroll widget, etc.</li>
+<li>autopublication of articles on selected dates</li>
+</ul>
+<p>I chose <a href="http://projects.spring.io/spring-boot/">Spring Boot</a> for the base of my project because I wanted to rely on its starters and simplified configuration and also because that was the advice I’ve read in a number of posts (for example, <a href="http://stackoverflow.com/a/35996408">here</a>).</p>
+<p>I named my previous blog engine project simply “blog-engine”. Not very imaginative, but still unique when compounded with my GitHub username. Choosing the same name for another project is not very practical (not to mention: impossible on GitHub), so I had to pick something else. Since I started the project shortly before Christmas, I decided to name it Yule, after <a href="https://en.wikipedia.org/wiki/Yule">a historical pagan germanic festival</a> observed near the same time of the year.</p>
+<h2 id="article-entity-class">Article entity class</h2>
+<p>For storing and transfering article data, I initally wanted to implement two classes:</p>
+<ul>
+<li>a database entity class. Since <a href="http://hibernate.org/orm/">Hibernate ORM</a>, a JPA implementation I’m using, can use reflection to access fields of entity objects and only requires a no-argument constructor of any visibility, I could write this class so that it would be properly encapsulated, that is: in a way ensuring all constructor and method calls would result in a valid article object, or in an exception being thrown.</li>
+<li>a form-backing class. <a href="http://www.thymeleaf.org/">Thymeleaf</a>, a template engine I decided to use, <a href="http://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.html#creating-a-form">requires such classes to have getter and setter method</a> for each field included in a form. This class would be allowed to contain data that would be invalid for an article.</li>
+</ul>
+<p>However, after some time, I decided to combine the two roles in <a href="https://github.com/piotr-rusin/yule/blob/8482b99fedf89311bb9a59f4503be260d67eeac7/src/main/java/com/github/piotr_rusin/yule/domain/Article.java">the database entity class</a>. After all, this is a simpler solution and instances of such a class may still be validated, no matter the source of their potentially invalid state.</p>
+<h2 id="standard-and-custom-validation-constraints">Standard and custom validation constraints</h2>
+<p>For validation, I’m using <a href="http://beanvalidation.org/">Java Bean Validation</a>, with <a href="http://hibernate.org/validator/">Hibernate Validator</a> as its implementation.</p>
+<p>Some validation constraints are applied to specific fields of each article object, regardless of its current state. For example, <a href="https://github.com/piotr-rusin/yule/blob/8482b99fedf89311bb9a59f4503be260d67eeac7/src/main/java/com/github/piotr_rusin/yule/domain/Article.java#L66">each article requires a non-empty title</a>. For such constraints, annotations and validators built into JBV (like <a href="http://docs.oracle.com/javaee/7/api/javax/validation/constraints/NotNull.html"><code>NotNull</code></a>) or Hibernate Validator (like <a href="https://docs.jboss.org/hibernate/validator/5.4/api/org/hibernate/validator/constraints/NotBlank.html"><code>NotBlank</code></a>) are enough.</p>
+<p>Other constraints are applied to articles only with specific statuses: objects representing life cycle stages of individual articles, implemented as instances of <a href="https://github.com/piotr-rusin/yule/blob/8482b99fedf89311bb9a59f4503be260d67eeac7/src/main/java/com/github/piotr_rusin/yule/domain/ArticleStatus.java"><code>ArticleStatus</code> enum</a>. For example, published articles accept only a non-future publication date, the ones scheduled for auto-publication require a future one, while drafts accept any publication date, including none at all. Both published and scheduled articles require a content that is not blank, while drafts have no such requirement.</p>
+<p>Because of this dependance of constraints of some fields on value of another field, I had to define a custom, cross-field, class-level constraint and implement a validator for it.</p>
+<p>Since these constraints are dependent on a particular value of <code>ArticleStatus</code> and occur in different combinations, I decided to implement them as optional dependencies of <code>ArticleStatus</code> objects. They are instances of classes extending a common abstract superclass: <a href="https://github.com/piotr-rusin/yule/blob/8482b99fedf89311bb9a59f4503be260d67eeac7/src/main/java/com/github/piotr_rusin/yule/validation/ExistingArticleConstraint.java"><code>ExistingArticleConstraint</code></a>, and providing a <a href="https://github.com/piotr-rusin/yule/blob/8482b99fedf89311bb9a59f4503be260d67eeac7/src/main/java/com/github/piotr_rusin/yule/validation/ExistingArticleConstraint.java#L80">constraint-testing method</a>, an <a href="https://github.com/piotr-rusin/yule/blob/8482b99fedf89311bb9a59f4503be260d67eeac7/src/main/java/com/github/piotr_rusin/yule/validation/ExistingArticleConstraint.java#L68">error message template</a> and a <a href="https://github.com/piotr-rusin/yule/blob/8482b99fedf89311bb9a59f4503be260d67eeac7/src/main/java/com/github/piotr_rusin/yule/validation/ExistingArticleConstraint.java#L58">name of a field</a> to which the message applies.</p>
+<p>The <code>Article</code> class has a <a href="https://github.com/piotr-rusin/yule/blob/8482b99fedf89311bb9a59f4503be260d67eeac7/src/main/java/com/github/piotr_rusin/yule/domain/Article.java#L278"><code>getViolatedStatusConstraints()</code></a> method validating constraints provided by the current status of an article and returning those constraints that aren’t fulfilled by it. This method <a href="https://github.com/piotr-rusin/yule/blob/8482b99fedf89311bb9a59f4503be260d67eeac7/src/main/java/com/github/piotr_rusin/yule/validation/StatusConstraintValidator.java#L52">is called</a> by my custom constraint validator class. Objects representing violated status constraints are returned by the method and then are used by the validator to <a href="https://github.com/piotr-rusin/yule/blob/8482b99fedf89311bb9a59f4503be260d67eeac7/src/main/java/com/github/piotr_rusin/yule/validation/StatusConstraintValidator.java#L56">build constraint violations</a>, assigning proper error messages to fields for which the constraints were violated.</p>
+<p>The validator class is used by my custom constraint annotation: <a href="https://github.com/piotr-rusin/yule/blob/8482b99fedf89311bb9a59f4503be260d67eeac7/src/main/java/com/github/piotr_rusin/yule/validation/StatusConstraintsFulfilled.java#L48"><code>StatusConstraintsFulfilled</code></a>, which is <a href="https://github.com/piotr-rusin/yule/blob/8482b99fedf89311bb9a59f4503be260d67eeac7/src/main/java/com/github/piotr_rusin/yule/domain/Article.java#L59">applied</a> to the <code>Article</code> class.</p>
+<p>I think that’s enough for this post. In the next one, I will describe the service layer of the project.</p>
+			</div>
+			<div>
+				<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "piotr-rusin-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+			</div>
+		</article>
+	</main>
+</div>
+	<div class="uk-background-primary">
+	<nav class="uk-container uk-container-small" uk-navbar>
+		<div class="uk-navbar-left">
+			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
+			<ul class="uk-navbar-nav uk-visible@m">	
+				
+					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
+				
+			</ul>
+		</div>
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav uk-visible@m">
+				
+					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+				
+					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
+				
+			</ul>
+			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
+		</div>
+	</nav>
+</div>
+<div id="off-canvas-menu" uk-offcanvas="flip: true">
+	<div class="uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" uk-close></button>
+		<ul class="uk-nav uk-nav-default">
+			
+				<li><a href="/tags/java">Java</a></li>
+			
+				<li><a href="/tags/python">Python</a></li>
+			
+				<li><a href="/tags/spring">Spring</a></li>
+			
+				<li><a href="/tags/">More...</a></li>
+			
+			
+				<li><a href="/about/">About</a></li>
+			
+				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+			
+				<li><a href="https://github.com/piotr-rusin">Github</a></li>
+			
+		</ul>
+	</div>
+</div>
+
+</body>
+</html>

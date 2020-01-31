@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Url-shortener: a demo and more refactoring</title>
+	
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/css/uikit.min.css" />
+	<link rel="stylesheet" href="/css/style.css">
+	
+</head>
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit-icons.min.js"></script>
+	<header class="main-header">
+		<div class="uk-background-primary">
+	<nav class="uk-container uk-container-small" uk-navbar>
+		<div class="uk-navbar-left">
+			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
+			<ul class="uk-navbar-nav uk-visible@m">	
+				
+					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
+				
+			</ul>
+		</div>
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav uk-visible@m">
+				
+					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+				
+					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
+				
+			</ul>
+			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
+		</div>
+	</nav>
+</div>
+<div id="off-canvas-menu" uk-offcanvas="flip: true">
+	<div class="uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" uk-close></button>
+		<ul class="uk-nav uk-nav-default">
+			
+				<li><a href="/tags/java">Java</a></li>
+			
+				<li><a href="/tags/python">Python</a></li>
+			
+				<li><a href="/tags/spring">Spring</a></li>
+			
+				<li><a href="/tags/">More...</a></li>
+			
+			
+				<li><a href="/about/">About</a></li>
+			
+				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+			
+				<li><a href="https://github.com/piotr-rusin">Github</a></li>
+			
+		</ul>
+	</div>
+</div>
+
+		
+		
+	</header>
+	<div class="uk-container uk-container-xsmall">
+	<main>
+		<article class="uk-article">
+			<header class="main-article-header">
+				<h1><a href="https://piotr-rusin.github.io/posts/2016-12-31-url-shortener-a-demo-and-more-refactoring/" class="uk-link-heading">Url-shortener: a demo and more refactoring</a></h1>
+				<p class="uk-article-meta">
+    <time>Dec 31, 2016</time> /
+    
+    <a class="tag" href="/tags/python">python</a>
+    , <a class="tag" href="/tags/refactoring">refactoring</a>
+    , <a class="tag" href="/tags/single-responsibility-principle">single-responsibility-principle</a>
+</p>
+			</header>
+			<div>
+				<p>A demo instance of my url-shortener project is now available here:</p>
+<p><a href="https://url-shortener.reusingthewheel.tk/">https://url-shortener.reusingthewheel.tk</a></p>
+<p>Usually, URL shorteners are deployed under a short domain name (for example: <a href="https://goo.gl/">goo.gl</a>, <a href="https://bitly.com/">bit.ly</a>). It’s not the case here, but since it’s just a demo I didn’t think looking for a short domain for it was necessary, so I chose a longer domain that is also related to my blog.</p>
+<p>I have also made some changes to the application. Some of them were minor, like adjusting font sizes in the front end, renaming some local variables in the back end, etc., but there are also some bigger changes.</p>
+<h2 id="choice-of-replacements-for-homoglyphs">Choice of replacements for homoglyphs</h2>
+<p>Previously, the application replaced homoglyphs in alias values according to the following rules:</p>
+<ul>
+<li>for each group of single-character homoglyphs, the one that was alphabetically the smallest was used to replace the rest</li>
+<li>for each pair of a multi-character and a single-character homoglyphs, the longer one was always replaced by its shorter equivalent.</li>
+</ul>
+<p>These rules didn’t take into account that characters included in the replacement strings could be missing in the alias alphabet used by the application. It didn’t cause any error at the time because the alphabet was not designed to be configurable, and its hard-coded value used by the application included all the characters that were present in homoglyph replacements. Still, relying on the alphabet having some properly hard-coded characters was a rather poor and error-prone solution, so I fixed it. Members of each group of homoglyphs are now replaced by the shortest and smallest (in terms of alphabetic order) of their equivalents whose all characters are included in the alphabet used by the application.</p>
+<h2 id="unification-in-handling-of-homoglyphs">Unification in handling of homoglyphs</h2>
+<p>Previously, the application used different implementations of homoglyph replacement for single- and multi-letter homoglyphs. The relationships between pairs of single-letter homoglyphs were represented by a <a href="https://github.com/piotr-rusin/url-shortener/blob/ee506ab166d3a170ee8790d33f20cf1ee88205a5/url_shortener/domain_and_persistence.py#L51">translation object</a> created with <a href="https://docs.python.org/3/library/stdtypes.html#str.maketrans">str.maketrans</a> method. When <a href="https://github.com/piotr-rusin/url-shortener/blob/ee506ab166d3a170ee8790d33f20cf1ee88205a5/url_shortener/domain_and_persistence.py#L191">replacing single-letter homoglyphs</a> in an alias value, this translation object was passed to <a href="https://docs.python.org/3/library/stdtypes.html#str.translate">str.translate</a> method of a string object representing the alias.</p>
+<p>Relationships between pairs of multi-character homoglyphs and their equivalents were represented by <a href="https://github.com/piotr-rusin/url-shortener/blob/ee506ab166d3a170ee8790d33f20cf1ee88205a5/url_shortener/domain_and_persistence.py#L125">a dictionary object</a>, with multi-character homoglyphs being keys and their replacements being values. The <a href="https://github.com/piotr-rusin/url-shortener/blob/ee506ab166d3a170ee8790d33f20cf1ee88205a5/url_shortener/domain_and_persistence.py#L170">homoglyph replacement was performed</a> by simply looping over key-value pairs and replacing occurrences of a key in an alias string with its respective value.</p>
+<p>The first approach was used for its simplicity, but it was limited to mappings of a single character to another character, so it was necessary to use a different approach for multi-letter homoglyphs. However, this made the code unnecessarily more complex, so I decided to abandon the approach using translations and to use just the dictionary approach, regardless of length of homoglyphs.</p>
+<h2 id="refactoring-aliasalphabet-class">Refactoring AliasAlphabet class</h2>
+<p>In <a href="/posts/2016-12-04-changes-in-url-shortener/">my last post about the application</a>, I described <a href="https://github.com/piotr-rusin/url-shortener/blob/ee506ab166d3a170ee8790d33f20cf1ee88205a5/url_shortener/domain_and_persistence.py#L35">AliasAlphabet</a> – a class I introduced to the project when I was reorganizing its architecture to make it follow single responsibility principle more closely. At the moment of writing the post, I had doubts about adding it and I saw it as a candidate for further refactoring, but I also wanted to publish the article as soon as possible, so I left it as it was.</p>
+<p>The instances of the class represented alias alphabets used for generating alias values, but they also contained methods for creating aliases. They were added here because creating aliases closely depended on an alias alphabet. Still, I thought it wasn’t the cleanest design and I was considering some ideas for replacing it. I decided to replace the class with <a href="https://github.com/piotr-rusin/url-shortener/blob/0207eb20d118df9cf4139f55d9f0a9c8c0fa5b76/url_shortener/domain_and_persistence.py#L76">AliasFactory</a> class, a <a href="https://github.com/piotr-rusin/url-shortener/blob/0207eb20d118df9cf4139f55d9f0a9c8c0fa5b76/url_shortener/domain_and_persistence.py#L118">string object</a> representing alias alphabet and <a href="https://github.com/piotr-rusin/url-shortener/blob/0207eb20d118df9cf4139f55d9f0a9c8c0fa5b76/url_shortener/domain_and_persistence.py#L37">a function</a> creating a dictionary mapping homoglyphs to strings that should replace them.</p>
+			</div>
+			<div>
+				<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "piotr-rusin-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+			</div>
+		</article>
+	</main>
+</div>
+	<div class="uk-background-primary">
+	<nav class="uk-container uk-container-small" uk-navbar>
+		<div class="uk-navbar-left">
+			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
+			<ul class="uk-navbar-nav uk-visible@m">	
+				
+					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
+				
+			</ul>
+		</div>
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav uk-visible@m">
+				
+					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+				
+					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
+				
+			</ul>
+			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
+		</div>
+	</nav>
+</div>
+<div id="off-canvas-menu" uk-offcanvas="flip: true">
+	<div class="uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" uk-close></button>
+		<ul class="uk-nav uk-nav-default">
+			
+				<li><a href="/tags/java">Java</a></li>
+			
+				<li><a href="/tags/python">Python</a></li>
+			
+				<li><a href="/tags/spring">Spring</a></li>
+			
+				<li><a href="/tags/">More...</a></li>
+			
+			
+				<li><a href="/about/">About</a></li>
+			
+				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+			
+				<li><a href="https://github.com/piotr-rusin">Github</a></li>
+			
+		</ul>
+	</div>
+</div>
+
+</body>
+</html>

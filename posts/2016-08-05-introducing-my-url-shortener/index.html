@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Introducing my URL shortener</title>
+	
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/css/uikit.min.css" />
+	<link rel="stylesheet" href="/css/style.css">
+	
+</head>
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit-icons.min.js"></script>
+	<header class="main-header">
+		<div class="uk-background-primary">
+	<nav class="uk-container uk-container-small" uk-navbar>
+		<div class="uk-navbar-left">
+			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
+			<ul class="uk-navbar-nav uk-visible@m">	
+				
+					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
+				
+			</ul>
+		</div>
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav uk-visible@m">
+				
+					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+				
+					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
+				
+			</ul>
+			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
+		</div>
+	</nav>
+</div>
+<div id="off-canvas-menu" uk-offcanvas="flip: true">
+	<div class="uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" uk-close></button>
+		<ul class="uk-nav uk-nav-default">
+			
+				<li><a href="/tags/java">Java</a></li>
+			
+				<li><a href="/tags/python">Python</a></li>
+			
+				<li><a href="/tags/spring">Spring</a></li>
+			
+				<li><a href="/tags/">More...</a></li>
+			
+			
+				<li><a href="/about/">About</a></li>
+			
+				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+			
+				<li><a href="https://github.com/piotr-rusin">Github</a></li>
+			
+		</ul>
+	</div>
+</div>
+
+		
+		
+	</header>
+	<div class="uk-container uk-container-xsmall">
+	<main>
+		<article class="uk-article">
+			<header class="main-article-header">
+				<h1><a href="https://piotr-rusin.github.io/posts/2016-08-05-introducing-my-url-shortener/" class="uk-link-heading">Introducing my URL shortener</a></h1>
+				<p class="uk-article-meta">
+    <time>Aug 05, 2016</time> /
+    
+    <a class="tag" href="/tags/flask">flask</a>
+    , <a class="tag" href="/tags/python">python</a>
+    , <a class="tag" href="/tags/sqlalchemy">sqlalchemy</a>
+    , <a class="tag" href="/tags/wtforms">wtforms</a>
+</p>
+			</header>
+			<div>
+				<p>URL addresses can be quite long, mainly because they often consist of path and query components, both containing a number of characters forming names of path segments and values of parameters (not necessarily meaningful to a human reader), or performing other functions. For that reason, they may be hard to type and memorize, or simply aesthetically unpleasing.</p>
+<p>Because of that, URL shorteners were created. There are plenty of them already, so there is probably no reason to create yet another such application, perhaps with one exception: it seems like an interesting idea for a small programming project that could be later extended with other features. This is why I decided to create <a href="https://github.com/piotr-rusin/url-shortener">my own URL shortener</a>.</p>
+<h2 id="technologies">Technologies</h2>
+<p>I decided to write the project in Python 3.4 and to use the following libraries:</p>
+<ul>
+<li><a href="http://flask.pocoo.org/">Flask framework</a></li>
+<li><a href="https://wtforms.readthedocs.io/en/latest/">WTForms</a></li>
+<li><a href="https://flask-wtf.readthedocs.io/en/latest/">Flask-WTF</a></li>
+<li><a href="http://www.sqlalchemy.org/">SQLAlchemy</a></li>
+<li><a href="http://flask-sqlalchemy.pocoo.org/2.1/">Flask-SQLAlchemy</a></li>
+<li><a href="https://github.com/piotr-rusin/spam-lists">spam-lists</a></li>
+</ul>
+<h2 id="querying-for-target-url">Querying for target URL</h2>
+<p>The role of a URL shortener is to provide a shorter alias URL for an address requested by a user. The target URL is associated with an alias URL and stored in a database, at least for some time.</p>
+<p>In case of my application, the redirection service can be accessed by sending a HTTP request with the address <code>host.com/&lt;alias&gt;</code>, where:</p>
+<ul>
+<li><code>host.com</code> is a hostname pointing to an instance of my URL shortener hosted on a web server</li>
+<li><code>&lt;alias&gt;</code> is the alias string for a URL registered in my application.</li>
+</ul>
+<h2 id="previewing-alias-url-and-its-target-url">Previewing alias URL and its target URL</h2>
+<p>Each registered alias URL can be previewed by sending a HTTP request to <code>host.com/preview/&lt;alias&gt;</code> URL. The response is an HTML document displaying alias URL and a target URL to which it redirects.</p>
+<h2 id="creating-and-registering-a-short-alias">Creating and registering a short alias</h2>
+<p>The alias value is generated randomly and stored in the database together with its target URL. In the database, the alias value is represented by an integer primary key. When used in URL addresses handled by my application, it is displayed as a string. This relies on the string form being treated simply as a numeral expressed in an alternative, non-decimal numeral system, with a set of characters used as its digits. This way, the operation of converting the alias value between its forms is an instance of base conversion.</p>
+<p>Representing the alias value is the responsibility of <a href="https://github.com/piotr-rusin/url-shortener/blob/2bbcb9bcc97f8226e7d90d201c57933421ee050e/url_shortener/models.py#L97">url_shortener.models.Alias</a> class. It uses an instance of <a href="https://github.com/piotr-rusin/url-shortener/blob/2bbcb9bcc97f8226e7d90d201c57933421ee050e/url_shortener/models.py#L31">url_shortener.models.NumeralSystem</a> as a base for converting between the integer and string representations of its instance.</p>
+<p>The process of conversion of an Alias value to and from an integer stored in a database is handled by my custom SQLAlchemy column type: <a href="https://github.com/piotr-rusin/url-shortener/blob/2bbcb9bcc97f8226e7d90d201c57933421ee050e/url_shortener/models.py#L210">url_shortener.models.IntegerAlias</a>.</p>
+<p>The Alias class provides a method returning a factory of its instances, with its values generated randomly for given minimum and maximum number of characters in an alias. This factory is instantiated in <a href="https://github.com/piotr-rusin/url-shortener/blob/2bbcb9bcc97f8226e7d90d201c57933421ee050e/url_shortener/event_handlers.py">url_shortener.event_handlers</a> module, where it is used by <code>assign_alias_before_insert(mapper, connection, target)</code> – a handler of a <code>before_insert</code> event, responsible for generating a random alias value and assigning it to an object representing a shortened URL about to be inserted into the database.</p>
+<p>The process of registering a URL is implemented in <a href="https://github.com/piotr-rusin/url-shortener/blob/2bbcb9bcc97f8226e7d90d201c57933421ee050e/url_shortener/models.py#L288">url_shortener.models.register</a> function. In case a randomly generated alias value already exists, an instance of <code>sqlalchemy.exc.IntegrityError</code> is raised. It is handled by rolling back all changes, logging its occurence and retrying the operation until it is successful or a pre-configured limit of alias URL registration attempts is exceeded.</p>
+<h2 id="configuration-options">Configuration options</h2>
+<p>The application provides a set of configuration options that are loaded from <a href="https://github.com/piotr-rusin/url-shortener/blob/2bbcb9bcc97f8226e7d90d201c57933421ee050e/url_shortener/default_config.py">url_shortener.default_config</a> module. These options can (and some of them must) be overridden by providing a custom configuration file whose path must be set to <code>URL_SHORTENER_CONFIGURATION</code> environment variable.</p>
+<h2 id="spam-protection">Spam protection</h2>
+<p>URL shorteners can be abused by spammers, so it is necessary to implement countermeasures. My application provides three layers of protection:</p>
+<ul>
+<li>a reCAPTCHA form field, provided by Flask-WTF</li>
+<li>validation against a host blacklist, provided by my spam-lists project</li>
+<li>third party service clients for recognizing spam urls, also provided by my spam-lists project.</li>
+</ul>
+<p>The clients and classes provided by spam-lists library are used to implement form validators for URL field. The form class looks <a href="https://github.com/piotr-rusin/url-shortener/blob/2bbcb9bcc97f8226e7d90d201c57933421ee050e/url_shortener/forms.py#L9">like this</a>.</p>
+<p>When someone attempts to request an alias for a spam or blacklisted URL, or reCAPTCHA verification fails, the request is handled by displaying proper error information above the form.</p>
+<p>In case a URL address was blacklisted locally or by a third party service after it was registered by my application, each request to its alias URL is handled by using the preview feature. In such a case, the preview page displays additional information about the URL being locally blacklisted or otherwise recognized as spam.</p>
+<h2 id="the-future-of-the-project">The future of the project</h2>
+<p>The main features of the project seem to be complete, so I think I will be ready to release its first stable, non-development version after I improve its frontend by making some modifications to its layout and adding CSS styles. However, this does not mean the development of the project will be over. I will revisit it, add other features and release subsequent stable versions once they are complete.</p>
+<p>Some of my current ideas for future additions are:</p>
+<ul>
+<li>administration panel for viewing and manually removing registered URL aliases and managing local blacklist</li>
+<li>configurable choice of third party service clients provided by spam-lists to be used during validation</li>
+<li>a possibility for requesting custom alias strings, with their minimum and maximum length restrictions separate from ones set for randomly generated alias strings.</li>
+</ul>
+			</div>
+			<div>
+				<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "piotr-rusin-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+			</div>
+		</article>
+	</main>
+</div>
+	<div class="uk-background-primary">
+	<nav class="uk-container uk-container-small" uk-navbar>
+		<div class="uk-navbar-left">
+			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
+			<ul class="uk-navbar-nav uk-visible@m">	
+				
+					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
+				
+			</ul>
+		</div>
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav uk-visible@m">
+				
+					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+				
+					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
+				
+			</ul>
+			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
+		</div>
+	</nav>
+</div>
+<div id="off-canvas-menu" uk-offcanvas="flip: true">
+	<div class="uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" uk-close></button>
+		<ul class="uk-nav uk-nav-default">
+			
+				<li><a href="/tags/java">Java</a></li>
+			
+				<li><a href="/tags/python">Python</a></li>
+			
+				<li><a href="/tags/spring">Spring</a></li>
+			
+				<li><a href="/tags/">More...</a></li>
+			
+			
+				<li><a href="/about/">About</a></li>
+			
+				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+			
+				<li><a href="https://github.com/piotr-rusin">Github</a></li>
+			
+		</ul>
+	</div>
+</div>
+
+</body>
+</html>

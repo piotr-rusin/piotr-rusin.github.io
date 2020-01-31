@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Reusing the wheel</title>
+    <link>https://piotr-rusin.github.io/tags/python/</link>
+    <description>Recent content in Python on Reusing the wheel</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 02 Nov 2017 09:22:29 +0000</lastBuildDate>
+    
+	<atom:link href="https://piotr-rusin.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Designing a plugin system for base16-theme-switcher</title>
+      <link>https://piotr-rusin.github.io/posts/2017-11-02-designing-a-plugin-system-for-base16-theme-switcher/</link>
+      <pubDate>Thu, 02 Nov 2017 09:22:29 +0000</pubDate>
+      
+      <guid>https://piotr-rusin.github.io/posts/2017-11-02-designing-a-plugin-system-for-base16-theme-switcher/</guid>
+      <description>&lt;p&gt;I’ve been working on a plugin system for my &lt;a href=&#34;https://github.com/piotr-rusin/base16-theme-switcher&#34;&gt;theme switcher project&lt;/a&gt;, and I think now it’s the time to introduce it here and describe my rationale behind its design.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>A new project: base16-theme-switcher</title>
+      <link>https://piotr-rusin.github.io/posts/2017-10-22-a-new-project-base16-theme-switcher/</link>
+      <pubDate>Sun, 22 Oct 2017 14:39:20 +0000</pubDate>
+      
+      <guid>https://piotr-rusin.github.io/posts/2017-10-22-a-new-project-base16-theme-switcher/</guid>
+      <description>&lt;p&gt;Configurability and availability of multiple desktop environments and window managers are some of the things I like about using Linux-based operating systems. In recent months I gradually migrated from using full-fledged desktop environments like &lt;a href=&#34;https://en.wikipedia.org/wiki/Cinnamon_(software)&#34;&gt;Cinnamon&lt;/a&gt; and &lt;a href=&#34;https://xfce.org/&#34;&gt;Xfce&lt;/a&gt; to using &lt;a href=&#34;https://i3wm.org/&#34;&gt;i3wm&lt;/a&gt; in combination with &lt;a href=&#34;https://wiki.archlinux.org/index.php/rxvt-unicode&#34;&gt;urxvt&lt;/a&gt;, &lt;a href=&#34;https://dunst-project.org/&#34;&gt;dunst&lt;/a&gt; and other applications commonly used with light window managers. While experimenting with their configuration, I discovered &lt;a href=&#34;https://chriskempson.github.io/base16/&#34;&gt;base16&lt;/a&gt; and its derivative: &lt;a href=&#34;https://github.com/chriskempson/base16-xresources&#34;&gt;base16-xresources&lt;/a&gt; – projects providing color schemes for syntax highlighting and application theming, each based on 16 colors.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Url-shortener: a demo and more refactoring</title>
+      <link>https://piotr-rusin.github.io/posts/2016-12-31-url-shortener-a-demo-and-more-refactoring/</link>
+      <pubDate>Sat, 31 Dec 2016 16:13:22 +0000</pubDate>
+      
+      <guid>https://piotr-rusin.github.io/posts/2016-12-31-url-shortener-a-demo-and-more-refactoring/</guid>
+      <description>&lt;p&gt;A demo instance of my url-shortener project is now available here:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://url-shortener.reusingthewheel.tk/&#34;&gt;https://url-shortener.reusingthewheel.tk&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Usually, URL shorteners are deployed under a short domain name (for example: &lt;a href=&#34;https://goo.gl/&#34;&gt;goo.gl&lt;/a&gt;, &lt;a href=&#34;https://bitly.com/&#34;&gt;bit.ly&lt;/a&gt;). It’s not the case here, but since it’s just a demo I didn’t think looking for a short domain for it was necessary, so I chose a longer domain that is also related to my blog.&lt;/p&gt;
+&lt;p&gt;I have also made some changes to the application. Some of them were minor, like adjusting font sizes in the front end, renaming some local variables in the back end, etc., but there are also some bigger changes.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Changes in url-shortener</title>
+      <link>https://piotr-rusin.github.io/posts/2016-12-04-changes-in-url-shortener/</link>
+      <pubDate>Sun, 04 Dec 2016 16:09:24 +0000</pubDate>
+      
+      <guid>https://piotr-rusin.github.io/posts/2016-12-04-changes-in-url-shortener/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://piotr-rusin.github.io/posts/2016-08-05-introducing-my-url-shortener/&#34;&gt;When I introduced my URL shortener project&lt;/a&gt;, I already had a working version and I thought I only needed to improve its front-end to be able to release the first stable version of the application. I also had some ideas for new features to be added to it.&lt;/p&gt;
+&lt;p&gt;However, the longer I looked at my code, the more room for improvements I saw. Although I ended up adding some new features, most of the changes I made since then were refactorizations, changes in design and architecture of the application and code style improvements.&lt;/p&gt;
+&lt;p&gt;In this post, I’m going to describe some of them.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>The first stable release of spam-lists</title>
+      <link>https://piotr-rusin.github.io/posts/2016-11-30-the-first-stable-release-of-spam-lists/</link>
+      <pubDate>Wed, 30 Nov 2016 10:44:41 +0000</pubDate>
+      
+      <guid>https://piotr-rusin.github.io/posts/2016-11-30-the-first-stable-release-of-spam-lists/</guid>
+      <description>I released the first stable version of spam-lists. It can be downloaded from github or PyPI.
+In comparison to the version described in this post, the stable version contains some changes, mostly spelling error corrections and reformatting of docstrings. I have also changed the license of the project from Apache License 2.0 to MIT.</description>
+    </item>
+    
+    <item>
+      <title>Introducing my URL shortener</title>
+      <link>https://piotr-rusin.github.io/posts/2016-08-05-introducing-my-url-shortener/</link>
+      <pubDate>Fri, 05 Aug 2016 13:18:43 +0000</pubDate>
+      
+      <guid>https://piotr-rusin.github.io/posts/2016-08-05-introducing-my-url-shortener/</guid>
+      <description>&lt;p&gt;URL addresses can be quite long, mainly because they often consist of path and query components, both containing a number of characters forming names of path segments and values of parameters (not necessarily meaningful to a human reader), or performing other functions. For that reason, they may be hard to type and memorize, or simply aesthetically unpleasing.&lt;/p&gt;
+&lt;p&gt;Because of that, URL shorteners were created. There are plenty of them already, so there is probably no reason to create yet another such application, perhaps with one exception: it seems like an interesting idea for a small programming project that could be later extended with other features. This is why I decided to create &lt;a href=&#34;https://github.com/piotr-rusin/url-shortener&#34;&gt;my own URL shortener&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Progress in development of spam-lists</title>
+      <link>https://piotr-rusin.github.io/posts/2016-07-09-progress-in-development-of-spam-lists/</link>
+      <pubDate>Sat, 09 Jul 2016 19:19:49 +0000</pubDate>
+      
+      <guid>https://piotr-rusin.github.io/posts/2016-07-09-progress-in-development-of-spam-lists/</guid>
+      <description>&lt;p&gt;Since the introduction of my spam-lists library on this blog, I made some progress in its development.&lt;/p&gt;
+&lt;p&gt;I reorganized the library a bit, changed the inheritance hierarchy of exception classes, fixed some errors and published the package on PyPI. In this post, I’m going to describe the changes and explain my reasoning behind them.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Spam-lists – a host blacklist/whitelist library</title>
+      <link>https://piotr-rusin.github.io/posts/2016-06-16-spam-lists-a-host-blacklistwhitelist-library/</link>
+      <pubDate>Thu, 16 Jun 2016 15:59:43 +0000</pubDate>
+      
+      <guid>https://piotr-rusin.github.io/posts/2016-06-16-spam-lists-a-host-blacklistwhitelist-library/</guid>
+      <description>&lt;p&gt;The first project I would like to present on this blog is spam-lists (&lt;a href=&#34;https://github.com/piotr-rusin/spam-lists&#34;&gt;GitHub&lt;/a&gt;): a library for querying custom and third party web address blacklists and whitelists.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

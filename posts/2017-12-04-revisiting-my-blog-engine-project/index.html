@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Revisiting my blog engine project</title>
+	
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/css/uikit.min.css" />
+	<link rel="stylesheet" href="/css/style.css">
+	
+</head>
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit-icons.min.js"></script>
+	<header class="main-header">
+		<div class="uk-background-primary">
+	<nav class="uk-container uk-container-small" uk-navbar>
+		<div class="uk-navbar-left">
+			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
+			<ul class="uk-navbar-nav uk-visible@m">	
+				
+					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
+				
+			</ul>
+		</div>
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav uk-visible@m">
+				
+					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+				
+					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
+				
+			</ul>
+			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
+		</div>
+	</nav>
+</div>
+<div id="off-canvas-menu" uk-offcanvas="flip: true">
+	<div class="uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" uk-close></button>
+		<ul class="uk-nav uk-nav-default">
+			
+				<li><a href="/tags/java">Java</a></li>
+			
+				<li><a href="/tags/python">Python</a></li>
+			
+				<li><a href="/tags/spring">Spring</a></li>
+			
+				<li><a href="/tags/">More...</a></li>
+			
+			
+				<li><a href="/about/">About</a></li>
+			
+				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+			
+				<li><a href="https://github.com/piotr-rusin">Github</a></li>
+			
+		</ul>
+	</div>
+</div>
+
+		
+		
+	</header>
+	<div class="uk-container uk-container-xsmall">
+	<main>
+		<article class="uk-article">
+			<header class="main-article-header">
+				<h1><a href="https://piotr-rusin.github.io/posts/2017-12-04-revisiting-my-blog-engine-project/" class="uk-link-heading">Revisiting my blog engine project</a></h1>
+				<p class="uk-article-meta">
+    <time>Dec 04, 2017</time> /
+    
+    <a class="tag" href="/tags/java">java</a>
+    , <a class="tag" href="/tags/testing">testing</a>
+    , <a class="tag" href="/tags/spring">spring</a>
+    , <a class="tag" href="/tags/front-end">front-end</a>
+    , <a class="tag" href="/tags/back-end">back-end</a>
+    , <a class="tag" href="/tags/javascript">javascript</a>
+    , <a class="tag" href="/tags/css">css</a>
+    , <a class="tag" href="/tags/bootstrap">bootstrap</a>
+</p>
+			</header>
+			<div>
+				<p>I recently went back to developing <a href="/projects/yule/">Yule</a> - my blog engine project based, among others, on <a href="https://projects.spring.io/spring-boot/">the Spring Boot framework</a>. I made some progress in both its front end and back end, and I would like to sum it up in this note</p>
+<h2 id="changelog">Changelog</h2>
+<p>I felt like front end was more lacking and required more attention than the back end, so I decided to focus on it first, modifying the latter only when the former required it. Nevertheless, I still made some back-end-only improvements.</p>
+<p>For now, I made the following changes:</p>
+<ul>
+<li>general improvements in styling and layout, achieved with a combination of custom styles and those provided by <a href="https://getbootstrap.com/">the Bootstrap framework</a></li>
+<li>generalization of dialog windows and JavaScript/jQuery code responsible for handling interactions with them, so that they can now be reused for tasks other than deleting articles. For now, I reused them for implementing an operation allowing a user to cancel editing an article and return to the previous page of admin article table</li>
+<li>updates in pagination on the index page: now it consists of “Previous” and “Next” buttons and of a field containing current page number and a total number of pages</li>
+<li>updates in pagination of the admin article table, and adding a column sorting feature, both achieved with <a href="https://github.com/jpenren/thymeleaf-spring-data-dialect">Thymeleaf Spring Data Dialect</a>.</li>
+<li>adding support for rendering Markdown with <a href="https://github.com/vsch/flexmark-java">flexmark-java</a></li>
+<li>introducing new elements of service layer: <a href="https://github.com/piotr-rusin/yule/blob/1b2794d5488173de93ea6bdbd500eeeabff675a3/src/main/java/com/github/piotr_rusin/yule/service/ArticleRepositoryUpdater.java">ArticleRepositoryUpdater</a> and <a href="https://github.com/piotr-rusin/yule/blob/1b2794d5488173de93ea6bdbd500eeeabff675a3/src/main/java/com/github/piotr_rusin/yule/service/ArticleProvider.java">ArticleProvider</a> classes, and using them to reduce code complexity and repetition in controllers</li>
+<li>some other changes to controllers, like introducing new model attributes and refactoring article table redirection code into a separate method. These changes were related to the ones visible in the front end: adding validation status related styles to forms and adding previously mentioned cancelling feature.</li>
+</ul>
+<p>Here are <a href="https://imgur.com/a/ShDyk">some screenshots</a> of the current version.</p>
+<h2 id="whats-next">What’s next?</h2>
+<p>The current version is far from being final, so I’m going to improve its front end and back end and to add new features. For now I’d like to add a tag or taxonomy system and a capability to register users.</p>
+<p>Before that, though, I’m going to refactor unit tests and improve their code coverage. Before the new services were added and calls to their methods replaced much of the code in controllers, the tests covered 45.5% of the code (according to reports generated with <a href="http://www.eclemma.org/">EclEmma</a>). Now they cover 69.3%, so although it’s better, there is still some room for improvements. For example, there are no tests for controllers and there are some execution paths in tested methods not covered by tests.</p>
+			</div>
+			<div>
+				<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "piotr-rusin-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+			</div>
+		</article>
+	</main>
+</div>
+	<div class="uk-background-primary">
+	<nav class="uk-container uk-container-small" uk-navbar>
+		<div class="uk-navbar-left">
+			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
+			<ul class="uk-navbar-nav uk-visible@m">	
+				
+					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
+				
+			</ul>
+		</div>
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav uk-visible@m">
+				
+					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+				
+					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
+				
+			</ul>
+			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
+		</div>
+	</nav>
+</div>
+<div id="off-canvas-menu" uk-offcanvas="flip: true">
+	<div class="uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" uk-close></button>
+		<ul class="uk-nav uk-nav-default">
+			
+				<li><a href="/tags/java">Java</a></li>
+			
+				<li><a href="/tags/python">Python</a></li>
+			
+				<li><a href="/tags/spring">Spring</a></li>
+			
+				<li><a href="/tags/">More...</a></li>
+			
+			
+				<li><a href="/about/">About</a></li>
+			
+				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+			
+				<li><a href="https://github.com/piotr-rusin">Github</a></li>
+			
+		</ul>
+	</div>
+</div>
+
+</body>
+</html>

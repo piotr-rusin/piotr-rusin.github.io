@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Spam-lists – a host blacklist/whitelist library</title>
+	
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/css/uikit.min.css" />
+	<link rel="stylesheet" href="/css/style.css">
+	
+</head>
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit-icons.min.js"></script>
+	<header class="main-header">
+		<div class="uk-background-primary">
+	<nav class="uk-container uk-container-small" uk-navbar>
+		<div class="uk-navbar-left">
+			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
+			<ul class="uk-navbar-nav uk-visible@m">	
+				
+					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
+				
+			</ul>
+		</div>
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav uk-visible@m">
+				
+					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+				
+					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
+				
+			</ul>
+			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
+		</div>
+	</nav>
+</div>
+<div id="off-canvas-menu" uk-offcanvas="flip: true">
+	<div class="uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" uk-close></button>
+		<ul class="uk-nav uk-nav-default">
+			
+				<li><a href="/tags/java">Java</a></li>
+			
+				<li><a href="/tags/python">Python</a></li>
+			
+				<li><a href="/tags/spring">Spring</a></li>
+			
+				<li><a href="/tags/">More...</a></li>
+			
+			
+				<li><a href="/about/">About</a></li>
+			
+				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+			
+				<li><a href="https://github.com/piotr-rusin">Github</a></li>
+			
+		</ul>
+	</div>
+</div>
+
+		
+		
+	</header>
+	<div class="uk-container uk-container-xsmall">
+	<main>
+		<article class="uk-article">
+			<header class="main-article-header">
+				<h1><a href="https://piotr-rusin.github.io/posts/2016-06-16-spam-lists-a-host-blacklistwhitelist-library/" class="uk-link-heading">Spam-lists – a host blacklist/whitelist library</a></h1>
+				<p class="uk-article-meta">
+    <time>Jun 16, 2016</time> /
+    
+    <a class="tag" href="/tags/python">python</a>
+</p>
+			</header>
+			<div>
+				<p>The first project I would like to present on this blog is spam-lists (<a href="https://github.com/piotr-rusin/spam-lists">GitHub</a>): a library for querying custom and third party web address blacklists and whitelists.</p>
+<p>The first service supported by the project is <a href="http://www.surbl.org/">SURBL</a> – a DNSBL service listing spam hostnames and IP addresses. DNSBLs are queried by performing DNS queries for a domain consisting of the queried value (or a value derived from it, in case of IP addresses) and a proper suffix associated with the service.</p>
+<p>An item is resolved as non-spam if the result of query is NXDOMAIN. If the query returns an IP address, the item is listed – and the IP address can contain additional information, like classification of the item. In case of SURBL, this information is encoded in the last octet of ip address, as a sum of numbers associated with classifications.</p>
+<p>Two other DNSBL services supported by my project are <a href="https://www.spamhaus.org/zen/">Spamhaus ZEN</a> – a list combining a few other lists from Spamhaus, listing different types of malicious IP addresses, and <a href="https://www.spamhaus.org/dbl/">Spamhaus DBL</a> – a blacklist containing hostnames. Queries to these lists also return classification information, but not in the same way as SURBL – here, each possible final octet of returned IP address is associated with a classification value, and always represents membership in a single sublist.</p>
+<p><a href="https://developers.google.com/safe-browsing/v3/lookup-guide">Google Safe Browsing Lookup API</a> is another service supported by the project. The service lists malicious URL addresses and supports querying for multiple values using a POST request.</p>
+<p>The last remote service I decided to support in my project is <a href="http://www.hosts-file.net/">HpHosts</a>. This service lists both hostnames and IPv4 addresses, and has a HTTP query API: values can be queried by sending a GET request with proper URL.</p>
+<p>Additionally, the library supports using and managing custom host lists, both ordered (using binary search algorithm when searching for existing items or for insertion points for new ones) and unordered.</p>
+<p>The project supports querying for non-whitelisted values (for example: a custom host list could be used as a whitelist) and combining multiple clients in one composite URL tester. Redirect resolution is also supported – the resolved addresses can be included in testing.</p>
+<p>I decided to code the project in Python, because I have not used this language for a while and I wanted to refresh my knowledge of it.</p>
+<p>Writing the library took much more time and effort than I thought it would, partially because I was making frequent changes to its design, although at first I was convinced my intial project was good enough. For example, the classes responsible for querying host blacklists were not going to contain methods for testing URLs, but instead their instances would be used as dependencies of an instance of a class implementing these methods. However, I decided eventually that it would be better to provide each class of a host-list client with URL-testing methods, and create separate classes (<code>spam_lists.utils.UrlTesterChain</code>, and also <code>spam_lists.utils.GeneralizedUrlTester</code>) with a responsibility of combining multiple clients.</p>
+<p>The library also contains a package with unit and integration tests. Its inclusion was one of the reasons for the development taking more time and effort, because it was the first time I added automated tests to a project. Before that, the closest I got to unit testing was just reading about the topic and writing some unit tests using PHPUnit, just to learn something about it and see how it works. It probably should not be surprising I could not write my tests right at first, even if they passed. I put a lot of effort into refactoring them, for example: by making them parameterized with the help of <a href="https://pypi.python.org/pypi/nose-parameterized/">nose-parameterized library</a>. I am sure I could still improve the quality of code and organization of <code>spam_lists.test</code> package, but I also know I learned a lot. Automatic testing proved extremely helpful during development of the library, and I am already using it for my other new projects.</p>
+<p>I am going to continue developing this project by improving quality of its code, adding and improving features and fixing errors. Eventually, I would like to publish it on <a href="https://pypi.python.org/pypi">PyPI</a>.</p>
+			</div>
+			<div>
+				<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "piotr-rusin-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+			</div>
+		</article>
+	</main>
+</div>
+	<div class="uk-background-primary">
+	<nav class="uk-container uk-container-small" uk-navbar>
+		<div class="uk-navbar-left">
+			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
+			<ul class="uk-navbar-nav uk-visible@m">	
+				
+					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
+				
+			</ul>
+		</div>
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav uk-visible@m">
+				
+					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+				
+					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
+				
+			</ul>
+			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
+		</div>
+	</nav>
+</div>
+<div id="off-canvas-menu" uk-offcanvas="flip: true">
+	<div class="uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" uk-close></button>
+		<ul class="uk-nav uk-nav-default">
+			
+				<li><a href="/tags/java">Java</a></li>
+			
+				<li><a href="/tags/python">Python</a></li>
+			
+				<li><a href="/tags/spring">Spring</a></li>
+			
+				<li><a href="/tags/">More...</a></li>
+			
+			
+				<li><a href="/about/">About</a></li>
+			
+				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+			
+				<li><a href="https://github.com/piotr-rusin">Github</a></li>
+			
+		</ul>
+	</div>
+</div>
+
+</body>
+</html>

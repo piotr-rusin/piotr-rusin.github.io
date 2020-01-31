@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Development on Reusing the wheel</title>
@@ -13,162 +13,131 @@
     
     <item>
       <title>Revisiting my blog engine project</title>
-      <link>https://piotr-rusin.github.io/2017/12/revisiting-my-blog-engine-project/</link>
+      <link>https://piotr-rusin.github.io/posts/2017-12-04-revisiting-my-blog-engine-project/</link>
       <pubDate>Mon, 04 Dec 2017 14:38:10 +0100</pubDate>
       
-      <guid>https://piotr-rusin.github.io/2017/12/revisiting-my-blog-engine-project/</guid>
-      <description>&lt;p&gt;I recently went back to developing &lt;a href=&#34;https://piotr-rusin.github.io/categories/yule/&#34;&gt;Yule&lt;/a&gt; - my blog engine project based, among others, on &lt;a href=&#34;https://projects.spring.io/spring-boot/&#34;&gt;the Spring Boot framework&lt;/a&gt;. I made some progress in both its front end and back end, and I would like to sum it up in this note&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://piotr-rusin.github.io/posts/2017-12-04-revisiting-my-blog-engine-project/</guid>
+      <description>&lt;p&gt;I recently went back to developing &lt;a href=&#34;https://piotr-rusin.github.io/projects/yule/&#34;&gt;Yule&lt;/a&gt; - my blog engine project based, among others, on &lt;a href=&#34;https://projects.spring.io/spring-boot/&#34;&gt;the Spring Boot framework&lt;/a&gt;. I made some progress in both its front end and back end, and I would like to sum it up in this note&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Designing a plugin system for base16-theme-switcher</title>
-      <link>https://piotr-rusin.github.io/2017/11/designing-a-plugin-system-for-base16-theme-switcher/</link>
+      <link>https://piotr-rusin.github.io/posts/2017-11-02-designing-a-plugin-system-for-base16-theme-switcher/</link>
       <pubDate>Thu, 02 Nov 2017 09:22:29 +0000</pubDate>
       
-      <guid>https://piotr-rusin.github.io/2017/11/designing-a-plugin-system-for-base16-theme-switcher/</guid>
-      <description>&lt;p&gt;I&amp;#8217;ve been working on a plugin system for my &lt;a href=&#34;https://github.com/piotr-rusin/base16-theme-switcher&#34;&gt;theme switcher project&lt;/a&gt;, and I think now it&amp;#8217;s the time to introduce it here and describe my rationale behind its design.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://piotr-rusin.github.io/posts/2017-11-02-designing-a-plugin-system-for-base16-theme-switcher/</guid>
+      <description>&lt;p&gt;I’ve been working on a plugin system for my &lt;a href=&#34;https://github.com/piotr-rusin/base16-theme-switcher&#34;&gt;theme switcher project&lt;/a&gt;, and I think now it’s the time to introduce it here and describe my rationale behind its design.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>A new project: base16-theme-switcher</title>
-      <link>https://piotr-rusin.github.io/2017/10/a-new-project-base16-theme-switcher/</link>
+      <link>https://piotr-rusin.github.io/posts/2017-10-22-a-new-project-base16-theme-switcher/</link>
       <pubDate>Sun, 22 Oct 2017 14:39:20 +0000</pubDate>
       
-      <guid>https://piotr-rusin.github.io/2017/10/a-new-project-base16-theme-switcher/</guid>
-      <description>&lt;p&gt;Configurability and availability of multiple desktop environments and window managers are some of the things I like about using Linux-based operating systems. In recent months I gradually migrated from using full-fledged desktop environments like &lt;a href=&#34;https://en.wikipedia.org/wiki/Cinnamon_(software)&#34;&gt;Cinnamon&lt;/a&gt; and &lt;a href=&#34;https://xfce.org/&#34;&gt;Xfce&lt;/a&gt; to using &lt;a href=&#34;https://i3wm.org/&#34;&gt;i3wm&lt;/a&gt; in combination with &lt;a href=&#34;https://wiki.archlinux.org/index.php/rxvt-unicode&#34;&gt;urxvt&lt;/a&gt;, &lt;a href=&#34;https://dunst-project.org/&#34;&gt;dunst&lt;/a&gt; and other applications commonly used with light window managers. While experimenting with their configuration, I discovered &lt;a href=&#34;https://chriskempson.github.io/base16/&#34;&gt;base16&lt;/a&gt; and its derivative: &lt;a href=&#34;https://github.com/chriskempson/base16-xresources&#34;&gt;base16-xresources&lt;/a&gt; &amp;#8211; projects providing color schemes for syntax highlighting and application theming, each based on 16 colors.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://piotr-rusin.github.io/posts/2017-10-22-a-new-project-base16-theme-switcher/</guid>
+      <description>&lt;p&gt;Configurability and availability of multiple desktop environments and window managers are some of the things I like about using Linux-based operating systems. In recent months I gradually migrated from using full-fledged desktop environments like &lt;a href=&#34;https://en.wikipedia.org/wiki/Cinnamon_(software)&#34;&gt;Cinnamon&lt;/a&gt; and &lt;a href=&#34;https://xfce.org/&#34;&gt;Xfce&lt;/a&gt; to using &lt;a href=&#34;https://i3wm.org/&#34;&gt;i3wm&lt;/a&gt; in combination with &lt;a href=&#34;https://wiki.archlinux.org/index.php/rxvt-unicode&#34;&gt;urxvt&lt;/a&gt;, &lt;a href=&#34;https://dunst-project.org/&#34;&gt;dunst&lt;/a&gt; and other applications commonly used with light window managers. While experimenting with their configuration, I discovered &lt;a href=&#34;https://chriskempson.github.io/base16/&#34;&gt;base16&lt;/a&gt; and its derivative: &lt;a href=&#34;https://github.com/chriskempson/base16-xresources&#34;&gt;base16-xresources&lt;/a&gt; – projects providing color schemes for syntax highlighting and application theming, each based on 16 colors.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>The first working version of Yule</title>
-      <link>https://piotr-rusin.github.io/2017/09/the-first-working-version-of-yule/</link>
+      <link>https://piotr-rusin.github.io/posts/2017-09-04-the-first-working-version-of-yule/</link>
       <pubDate>Mon, 04 Sep 2017 20:00:36 +0000</pubDate>
       
-      <guid>https://piotr-rusin.github.io/2017/09/the-first-working-version-of-yule/</guid>
-      <description>I recently made some progress on Yule &amp;#8211; my Spring Boot-based blog engine project &amp;#8211; and now I have its first working version. The current features, installation, configuration and how to run the engine are all described in the README file in the repository of the project, so I won&amp;#8217;t be covering them here.
+      <guid>https://piotr-rusin.github.io/posts/2017-09-04-the-first-working-version-of-yule/</guid>
+      <description>I recently made some progress on Yule – my Spring Boot-based blog engine project – and now I have its first working version. The current features, installation, configuration and how to run the engine are all described in the README file in the repository of the project, so I won’t be covering them here.
 My next steps in developing the engine will include:
  improving the front end refactoring the code by restructuring the configuration and moving repetitive code from controllers into common dependencies (including moving some data-manipulation code to some new service-layer classes).</description>
     </item>
     
     <item>
       <title>Implementing service layer for Yule</title>
-      <link>https://piotr-rusin.github.io/2017/06/implementing-service-layer-for-yule/</link>
+      <link>https://piotr-rusin.github.io/posts/2017-06-05-implementing-service-layer-for-yule/</link>
       <pubDate>Mon, 05 Jun 2017 09:17:41 +0000</pubDate>
       
-      <guid>https://piotr-rusin.github.io/2017/06/implementing-service-layer-for-yule/</guid>
-      <description>&lt;p&gt;Since my &lt;a href=&#34;https://piotr-rusin.github.io/2017/05/a-new-blog-engine-project/&#34;&gt;introductory post on Yule&lt;/a&gt;, I&amp;#8217;ve been doing some work on the project. I&amp;#8217;ve implemented an automatic article publication feature as a part of service layer and I added some methods used by it to the repository layer of my project.&lt;/p&gt;
-
-&lt;p&gt;This post covers these changes and some problems I encountered during testing.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://piotr-rusin.github.io/posts/2017-06-05-implementing-service-layer-for-yule/</guid>
+      <description>&lt;p&gt;Since my &lt;a href=&#34;https://piotr-rusin.github.io/posts/2017-05-16-a-new-blog-engine-project/&#34;&gt;introductory post on Yule&lt;/a&gt;, I’ve been doing some work on the project. I’ve implemented an automatic article publication feature as a part of service layer and I added some methods used by it to the repository layer of my project.&lt;/p&gt;
+&lt;p&gt;This post covers these changes and some problems I encountered during testing.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>A new blog engine project</title>
-      <link>https://piotr-rusin.github.io/2017/05/a-new-blog-engine-project/</link>
+      <link>https://piotr-rusin.github.io/posts/2017-05-16-a-new-blog-engine-project/</link>
       <pubDate>Tue, 16 May 2017 10:59:50 +0000</pubDate>
       
-      <guid>https://piotr-rusin.github.io/2017/05/a-new-blog-engine-project/</guid>
-      <description>&lt;p&gt;In &lt;a href=&#34;https://piotr-rusin.github.io/2016/12/a-php-symfony-blog-engine/&#34;&gt;one of my previous posts&lt;/a&gt; I described a blog engine I was developing. At the time, I had returned to it after a hiatus and I was convinced I would continue working on it. However, at the same time I was still more interested in developing my python-based &lt;a href=&#34;https://piotr-rusin.github.io/categories/url-shortener/&#34;&gt;url-shortener project&lt;/a&gt; and I also already planned moving on to other projects and technologies. As a result, I got bored of blog-engine again.&lt;/p&gt;
-
-&lt;p&gt;Since then, I&amp;#8217;ve been focusing on Java and &lt;a href=&#34;https://projects.spring.io/spring-framework/&#34;&gt;Spring Framework&lt;/a&gt;. This resulted in a new project: another blog engine, but this time based on Spring and designed with different features.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://piotr-rusin.github.io/posts/2017-05-16-a-new-blog-engine-project/</guid>
+      <description>&lt;p&gt;In &lt;a href=&#34;https://piotr-rusin.github.io/posts/2016-12-06-a-php-symfony-blog-engine/&#34;&gt;one of my previous posts&lt;/a&gt; I described a blog engine I was developing. At the time, I had returned to it after a hiatus and I was convinced I would continue working on it. However, at the same time I was still more interested in developing my python-based &lt;a href=&#34;https://piotr-rusin.github.io/projects/url-shortener/&#34;&gt;url-shortener project&lt;/a&gt; and I also already planned moving on to other projects and technologies. As a result, I got bored of blog-engine again.&lt;/p&gt;
+&lt;p&gt;Since then, I’ve been focusing on Java and &lt;a href=&#34;https://projects.spring.io/spring-framework/&#34;&gt;Spring Framework&lt;/a&gt;. This resulted in a new project: another blog engine, but this time based on Spring and designed with different features.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Url-shortener: a demo and more refactoring</title>
-      <link>https://piotr-rusin.github.io/2016/12/url-shortener-a-demo-and-more-refactoring/</link>
+      <link>https://piotr-rusin.github.io/posts/2016-12-31-url-shortener-a-demo-and-more-refactoring/</link>
       <pubDate>Sat, 31 Dec 2016 16:13:22 +0000</pubDate>
       
-      <guid>https://piotr-rusin.github.io/2016/12/url-shortener-a-demo-and-more-refactoring/</guid>
+      <guid>https://piotr-rusin.github.io/posts/2016-12-31-url-shortener-a-demo-and-more-refactoring/</guid>
       <description>&lt;p&gt;A demo instance of my url-shortener project is now available here:&lt;/p&gt;
-
 &lt;p&gt;&lt;a href=&#34;https://url-shortener.reusingthewheel.tk/&#34;&gt;https://url-shortener.reusingthewheel.tk&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Usually, URL shorteners are deployed under a short domain name (for example: &lt;a href=&#34;https://goo.gl/&#34;&gt;goo.gl&lt;/a&gt;, &lt;a href=&#34;https://bitly.com/&#34;&gt;bit.ly&lt;/a&gt;). It&amp;#8217;s not the case here, but since it&amp;#8217;s just a demo I didn&amp;#8217;t think looking for a short domain for it was necessary, so I chose a longer domain that is also related to my blog.&lt;/p&gt;
-
-&lt;p&gt;I have also made some changes to the application. Some of them were minor, like adjusting font sizes in the front end, renaming some local variables in the back end, etc., but there are also some bigger changes.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;Usually, URL shorteners are deployed under a short domain name (for example: &lt;a href=&#34;https://goo.gl/&#34;&gt;goo.gl&lt;/a&gt;, &lt;a href=&#34;https://bitly.com/&#34;&gt;bit.ly&lt;/a&gt;). It’s not the case here, but since it’s just a demo I didn’t think looking for a short domain for it was necessary, so I chose a longer domain that is also related to my blog.&lt;/p&gt;
+&lt;p&gt;I have also made some changes to the application. Some of them were minor, like adjusting font sizes in the front end, renaming some local variables in the back end, etc., but there are also some bigger changes.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>A PHP/Symfony blog engine</title>
-      <link>https://piotr-rusin.github.io/2016/12/a-php-symfony-blog-engine/</link>
+      <link>https://piotr-rusin.github.io/posts/2016-12-06-a-php-symfony-blog-engine/</link>
       <pubDate>Tue, 06 Dec 2016 13:33:10 +0000</pubDate>
       
-      <guid>https://piotr-rusin.github.io/2016/12/a-php-symfony-blog-engine/</guid>
-      <description>&lt;p&gt;A few months ago I started a blog engine project based on &lt;a href=&#34;https://symfony.com/&#34;&gt;Symfony framework&lt;/a&gt;. I&amp;#8217;ve been adding things and making changes to it from time to time. Since August, I took a longer break in its development because I wanted to focus on other things, but now I&amp;#8217;m returning to the project.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://piotr-rusin.github.io/posts/2016-12-06-a-php-symfony-blog-engine/</guid>
+      <description>&lt;p&gt;A few months ago I started a blog engine project based on &lt;a href=&#34;https://symfony.com/&#34;&gt;Symfony framework&lt;/a&gt;. I’ve been adding things and making changes to it from time to time. Since August, I took a longer break in its development because I wanted to focus on other things, but now I’m returning to the project.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Changes in url-shortener</title>
-      <link>https://piotr-rusin.github.io/2016/12/changes-in-url-shortener/</link>
+      <link>https://piotr-rusin.github.io/posts/2016-12-04-changes-in-url-shortener/</link>
       <pubDate>Sun, 04 Dec 2016 16:09:24 +0000</pubDate>
       
-      <guid>https://piotr-rusin.github.io/2016/12/changes-in-url-shortener/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://piotr-rusin.github.io/2016/08/introducing-my-url-shortener/&#34;&gt;When I introduced my URL shortener project&lt;/a&gt;, I already had a working version and I thought I only needed to improve its front-end to be able to release the first stable version of the application. I also had some ideas for new features to be added to it.&lt;/p&gt;
-
+      <guid>https://piotr-rusin.github.io/posts/2016-12-04-changes-in-url-shortener/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://piotr-rusin.github.io/posts/2016-08-05-introducing-my-url-shortener/&#34;&gt;When I introduced my URL shortener project&lt;/a&gt;, I already had a working version and I thought I only needed to improve its front-end to be able to release the first stable version of the application. I also had some ideas for new features to be added to it.&lt;/p&gt;
 &lt;p&gt;However, the longer I looked at my code, the more room for improvements I saw. Although I ended up adding some new features, most of the changes I made since then were refactorizations, changes in design and architecture of the application and code style improvements.&lt;/p&gt;
-
-&lt;p&gt;In this post, I&amp;#8217;m going to describe some of them.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;In this post, I’m going to describe some of them.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>The first stable release of spam-lists</title>
-      <link>https://piotr-rusin.github.io/2016/11/the-first-stable-release-of-spam-lists/</link>
+      <link>https://piotr-rusin.github.io/posts/2016-11-30-the-first-stable-release-of-spam-lists/</link>
       <pubDate>Wed, 30 Nov 2016 10:44:41 +0000</pubDate>
       
-      <guid>https://piotr-rusin.github.io/2016/11/the-first-stable-release-of-spam-lists/</guid>
+      <guid>https://piotr-rusin.github.io/posts/2016-11-30-the-first-stable-release-of-spam-lists/</guid>
       <description>I released the first stable version of spam-lists. It can be downloaded from github or PyPI.
 In comparison to the version described in this post, the stable version contains some changes, mostly spelling error corrections and reformatting of docstrings. I have also changed the license of the project from Apache License 2.0 to MIT.</description>
     </item>
     
     <item>
       <title>Introducing my URL shortener</title>
-      <link>https://piotr-rusin.github.io/2016/08/introducing-my-url-shortener/</link>
+      <link>https://piotr-rusin.github.io/posts/2016-08-05-introducing-my-url-shortener/</link>
       <pubDate>Fri, 05 Aug 2016 13:18:43 +0000</pubDate>
       
-      <guid>https://piotr-rusin.github.io/2016/08/introducing-my-url-shortener/</guid>
+      <guid>https://piotr-rusin.github.io/posts/2016-08-05-introducing-my-url-shortener/</guid>
       <description>&lt;p&gt;URL addresses can be quite long, mainly because they often consist of path and query components, both containing a number of characters forming names of path segments and values of parameters (not necessarily meaningful to a human reader), or performing other functions. For that reason, they may be hard to type and memorize, or simply aesthetically unpleasing.&lt;/p&gt;
-
-&lt;p&gt;Because of that, URL shorteners were created. There are plenty of them already, so there is probably no reason to create yet another such application, perhaps with one exception: it seems like an interesting idea for a small programming project that could be later extended with other features. This is why I decided to create &lt;a href=&#34;https://github.com/piotr-rusin/url-shortener&#34;&gt;my own URL shortener&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;Because of that, URL shorteners were created. There are plenty of them already, so there is probably no reason to create yet another such application, perhaps with one exception: it seems like an interesting idea for a small programming project that could be later extended with other features. This is why I decided to create &lt;a href=&#34;https://github.com/piotr-rusin/url-shortener&#34;&gt;my own URL shortener&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Progress in development of spam-lists</title>
-      <link>https://piotr-rusin.github.io/2016/07/progress-in-development-of-spam-lists/</link>
+      <link>https://piotr-rusin.github.io/posts/2016-07-09-progress-in-development-of-spam-lists/</link>
       <pubDate>Sat, 09 Jul 2016 19:19:49 +0000</pubDate>
       
-      <guid>https://piotr-rusin.github.io/2016/07/progress-in-development-of-spam-lists/</guid>
+      <guid>https://piotr-rusin.github.io/posts/2016-07-09-progress-in-development-of-spam-lists/</guid>
       <description>&lt;p&gt;Since the introduction of my spam-lists library on this blog, I made some progress in its development.&lt;/p&gt;
-
-&lt;p&gt;I reorganized the library a bit, changed the inheritance hierarchy of exception classes, fixed some errors and published the package on PyPI. In this post, I&amp;#8217;m going to describe the changes and explain my reasoning behind them.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;I reorganized the library a bit, changed the inheritance hierarchy of exception classes, fixed some errors and published the package on PyPI. In this post, I’m going to describe the changes and explain my reasoning behind them.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Spam-lists – a host blacklist/whitelist library</title>
-      <link>https://piotr-rusin.github.io/2016/06/spam-lists--a-host-blacklist/whitelist-library/</link>
+      <link>https://piotr-rusin.github.io/posts/2016-06-16-spam-lists-a-host-blacklistwhitelist-library/</link>
       <pubDate>Thu, 16 Jun 2016 15:59:43 +0000</pubDate>
       
-      <guid>https://piotr-rusin.github.io/2016/06/spam-lists--a-host-blacklist/whitelist-library/</guid>
-      <description>&lt;p&gt;The first project I would like to present on this blog is spam-lists (&lt;a href=&#34;https://github.com/piotr-rusin/spam-lists&#34;&gt;GitHub&lt;/a&gt;): a library for querying custom and third party web address blacklists and whitelists.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://piotr-rusin.github.io/posts/2016-06-16-spam-lists-a-host-blacklistwhitelist-library/</guid>
+      <description>&lt;p&gt;The first project I would like to present on this blog is spam-lists (&lt;a href=&#34;https://github.com/piotr-rusin/spam-lists&#34;&gt;GitHub&lt;/a&gt;): a library for querying custom and third party web address blacklists and whitelists.&lt;/p&gt;</description>
     </item>
     
   </channel>

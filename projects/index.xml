@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on Reusing the wheel</title>
@@ -6,54 +6,54 @@
     <description>Recent content in Projects on Reusing the wheel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Oct 2017 14:39:20 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 04 Dec 2017 14:38:10 +0100</lastBuildDate>
     
 	<atom:link href="https://piotr-rusin.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Base16 Theme Switcher</title>
-      <link>https://piotr-rusin.github.io/projects/base16-theme-switcher/</link>
-      <pubDate>Sun, 22 Oct 2017 14:39:20 +0000</pubDate>
+      <title>Yule</title>
+      <link>https://piotr-rusin.github.io/projects/yule/</link>
+      <pubDate>Mon, 04 Dec 2017 14:38:10 +0100</pubDate>
       
-      <guid>https://piotr-rusin.github.io/projects/base16-theme-switcher/</guid>
-      <description>A tool for setting base16 color themes for various applications, using themes from base16-xresources project. Supports applications configurable through .Xresources configuration file and provides a plugin API for adding theme-selection menu and extending support to applications that don&amp;rsquo;t use .Xresources.</description>
+      <guid>https://piotr-rusin.github.io/projects/yule/</guid>
+      <description>a Spring-based blog engine with schedulable auto-publishing mechanism</description>
     </item>
     
     <item>
-      <title>Yule</title>
-      <link>https://piotr-rusin.github.io/projects/yule/</link>
-      <pubDate>Tue, 16 May 2017 10:59:50 +0000</pubDate>
+      <title>base16-theme-switcher</title>
+      <link>https://piotr-rusin.github.io/projects/base16-theme-switcher/</link>
+      <pubDate>Thu, 02 Nov 2017 09:22:29 +0000</pubDate>
       
-      <guid>https://piotr-rusin.github.io/projects/yule/</guid>
-      <description>A blog engine with a support for external configuration (with a configuration file), schedulable auto-publication of posts and pages and rendering content written in Markdown. Written in Java 8, JavaScript (ECMAScript 5.1) and based on Spring Boot 1.5.&amp;#42;.</description>
+      <guid>https://piotr-rusin.github.io/projects/base16-theme-switcher/</guid>
+      <description>A tool for setting base16 color themes for various applications, using themes from base16-xresources project. Supports applications configurable through .Xresources configuration file and provides a plugin API for adding theme-selection menu and extending support to applications that don&#39;t use .Xresources.</description>
     </item>
     
     <item>
       <title>Blog Engine</title>
       <link>https://piotr-rusin.github.io/projects/blog-engine/</link>
-      <pubDate>Tue, 06 Dec 2016 13:33:10 +0000</pubDate>
+      <pubDate>Tue, 16 May 2017 10:59:50 +0000</pubDate>
       
       <guid>https://piotr-rusin.github.io/projects/blog-engine/</guid>
-      <description>A blog engine application written in PHP 5.3.&amp;#42; and based on Symfony 2.8.&amp;#42;.</description>
+      <description>A blog engine application written in PHP 5.3.* and based on Symfony 2.8.*.</description>
     </item>
     
     <item>
-      <title>URL Shortener</title>
+      <title>url-shortener</title>
       <link>https://piotr-rusin.github.io/projects/url-shortener/</link>
-      <pubDate>Fri, 05 Aug 2016 13:18:43 +0000</pubDate>
+      <pubDate>Sat, 31 Dec 2016 16:13:22 +0000</pubDate>
       
       <guid>https://piotr-rusin.github.io/projects/url-shortener/</guid>
-      <description>An application for providing shorter aliases for given URLs. It uses my spam-lists library to prevent shortening of URLs recognized as spam or to warn users that an already existing shortened URL has been recognized as spam. The application also handles homoglyphs &amp;#8211; characters and sequences of characters similar to each other &amp;#8211; by internally treating them as identical, saving its users from inconvenience resulting from mistyping or misremembering shortened URLs with potentially confusing characters.</description>
+      <description>a URL shortener with spam-protection mechanisms</description>
     </item>
     
     <item>
-      <title>Spam Lists</title>
+      <title>spam-lists</title>
       <link>https://piotr-rusin.github.io/projects/spam-lists/</link>
-      <pubDate>Thu, 16 Jun 2016 15:59:43 +0000</pubDate>
+      <pubDate>Sun, 04 Dec 2016 16:09:24 +0000</pubDate>
       
       <guid>https://piotr-rusin.github.io/projects/spam-lists/</guid>
-      <description>A library providing clients for services recognizing web addresses of spam sources (SURBL, Google Safe Browsing API, etc.) and classes of objects representing custom host lists. Supports Python 2.7.&amp;#42; and 3.4.&amp;#42;.</description>
+      <description>a set of tools for filtering spam URLs</description>
     </item>
     
   </channel>

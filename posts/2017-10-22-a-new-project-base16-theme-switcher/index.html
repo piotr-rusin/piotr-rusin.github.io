@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>A new project: base16-theme-switcher</title>
+	
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/css/uikit.min.css" />
+	<link rel="stylesheet" href="/css/style.css">
+	
+</head>
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit-icons.min.js"></script>
+	<header class="main-header">
+		<div class="uk-background-primary">
+	<nav class="uk-container uk-container-small" uk-navbar>
+		<div class="uk-navbar-left">
+			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
+			<ul class="uk-navbar-nav uk-visible@m">	
+				
+					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
+				
+			</ul>
+		</div>
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav uk-visible@m">
+				
+					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+				
+					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
+				
+			</ul>
+			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
+		</div>
+	</nav>
+</div>
+<div id="off-canvas-menu" uk-offcanvas="flip: true">
+	<div class="uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" uk-close></button>
+		<ul class="uk-nav uk-nav-default">
+			
+				<li><a href="/tags/java">Java</a></li>
+			
+				<li><a href="/tags/python">Python</a></li>
+			
+				<li><a href="/tags/spring">Spring</a></li>
+			
+				<li><a href="/tags/">More...</a></li>
+			
+			
+				<li><a href="/about/">About</a></li>
+			
+				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+			
+				<li><a href="https://github.com/piotr-rusin">Github</a></li>
+			
+		</ul>
+	</div>
+</div>
+
+		
+		
+	</header>
+	<div class="uk-container uk-container-xsmall">
+	<main>
+		<article class="uk-article">
+			<header class="main-article-header">
+				<h1><a href="https://piotr-rusin.github.io/posts/2017-10-22-a-new-project-base16-theme-switcher/" class="uk-link-heading">A new project: base16-theme-switcher</a></h1>
+				<p class="uk-article-meta">
+    <time>Oct 22, 2017</time> /
+    
+    <a class="tag" href="/tags/bash">bash</a>
+    , <a class="tag" href="/tags/configuration">configuration</a>
+    , <a class="tag" href="/tags/linux">linux</a>
+    , <a class="tag" href="/tags/python">python</a>
+</p>
+			</header>
+			<div>
+				<p>Configurability and availability of multiple desktop environments and window managers are some of the things I like about using Linux-based operating systems. In recent months I gradually migrated from using full-fledged desktop environments like <a href="https://en.wikipedia.org/wiki/Cinnamon_(software)">Cinnamon</a> and <a href="https://xfce.org/">Xfce</a> to using <a href="https://i3wm.org/">i3wm</a> in combination with <a href="https://wiki.archlinux.org/index.php/rxvt-unicode">urxvt</a>, <a href="https://dunst-project.org/">dunst</a> and other applications commonly used with light window managers. While experimenting with their configuration, I discovered <a href="https://chriskempson.github.io/base16/">base16</a> and its derivative: <a href="https://github.com/chriskempson/base16-xresources">base16-xresources</a> – projects providing color schemes for syntax highlighting and application theming, each based on 16 colors.</p>
+<h2 id="theme-switching-commands">Theme-switching commands</h2>
+<p>To easily test its constituent color themes, I implemented <a href="https://github.com/piotr-rusin/dotfiles/blob/5beebb4ab2371aec4e34ff3043cd6c3573e8ae42/.zshrc#L103">a few bash functions</a> in my <a href="https://github.com/piotr-rusin/dotfiles">dotfiles</a> project. Their task was to allow me to switch color schemes for a few applications I’ve been using by simply running a console command.</p>
+<p>The script finds all files with .Xresources extension under a specific directory for storing the color themes and generates a command performing a set of actions for each theme. The actions are:</p>
+<ul>
+<li><a href="https://github.com/piotr-rusin/dotfiles/blob/0a8690406b52553729b347c9f3d63b72e70bb231/.zshrc#L146">symlinking the file of a selected theme in my home directory</a>. The symlink <a href="https://github.com/piotr-rusin/dotfiles/blob/0a8690406b52553729b347c9f3d63b72e70bb231/.Xresources#L33">is sourced by .Xresources</a> file which additionally configures colors for <a href="https://github.com/DaveDavenport/rofi">rofi</a>, based on definitions provided in the theme file.</li>
+<li><a href="https://github.com/piotr-rusin/dotfiles/blob/0a8690406b52553729b347c9f3d63b72e70bb231/.zshrc#L147">loading .Xresources file</a> in my home directory with <a href="https://linux.die.net/man/1/xrdb">xrdb (X resource database manager)</a> command. That way, the colors provided by the selected theme can be used by applications using colors provided for them in the database. In my case, the applications affected by this are rofi and urxvt. I3wm is also affected, but the mechanism of configuration is slightly different – in i3wm config, the colors are loaded from X resource database and then set for various elements of i3wm graphical user interface.</li>
+<li><a href="https://github.com/piotr-rusin/dotfiles/blob/0a8690406b52553729b347c9f3d63b72e70bb231/.zshrc#L115">setting a corresponding theme for neovim</a> – as console applications, vim and neovim use colors configured in X resources database when run in a terminal emulator relying on these colors, but the results don’t always look good. For this reason, when a theme from base16-xresources project is set, a corresponding theme from <a href="https://github.com/chriskempson/base16-vim">base16-vim</a> project is set for neovim.</li>
+<li><a href="https://github.com/piotr-rusin/dotfiles/blob/0a8690406b52553729b347c9f3d63b72e70bb231/.zshrc#L127">setting colors from a theme for dunst</a>. Dunst doesn’t use colors from X resources database, but relies on color values set in its own configuration file. To apply colors from a base16 theme, the script reads contents of the theme file, replaces <a href="https://github.com/piotr-rusin/dotfiles/blob/0a8690406b52553729b347c9f3d63b72e70bb231/.config/dunst/dunstrc">dunstrc</a> configuration file with <a href="https://github.com/piotr-rusin/dotfiles/blob/0a8690406b52553729b347c9f3d63b72e70bb231/.config/dunst/dunstrc-template">dunstrc-template</a> and edits resulting dunstrc, setting window background, foreground and border colors. There is a <a href="https://github.com/khamer/base16-dunst">base16-dunst</a> project, but I decided not to use it, mainly because of the differences between the way the project configures dunst color themes and the way I wanted to do it. The project sets different background colors for different message urgency levels, while I wanted to use the same background color for all of them, and it doesn’t set the border color. Considering this, I thought it would be simpler to just read the colors from a base16-xresources theme file instead of relying on another project.</li>
+<li><a href="https://github.com/piotr-rusin/dotfiles/blob/0a8690406b52553729b347c9f3d63b72e70bb231/.zshrc#L150">performing additional application-specific operations</a>, like restarting i3wm and desktop notification daemon for the color changes to take effect.</li>
+</ul>
+<h2 id="replacing-commands-with-something-better">Replacing commands with something better</h2>
+<p>I decided to extend my theme switcher with proper error handling and support for choosing themes from a menu. I also decided to handle its increasing complexity by switching to object oriented programming and moving the code to a <a href="https://github.com/piotr-rusin/base16-theme-switcher">separate project</a>. At first I wanted to continue with bash, partly because I could keep using existing code and partly because I felt like OOP in bash was an interesting challenge, but soon I changed my mind – I decided I prefer the convenience of a language with a large, general purpose standard library and a built-in support of OOP, so I switched to Python.</p>
+<p>The application is all about configuring color themes for other applications, and it maintains its own configuration, too, so naturally its most basic parts are the functions and classes related to handling configs. They are all implemented and documented in <a href="https://github.com/piotr-rusin/base16-theme-switcher/blob/4071e28e8afb4cc92736fc9db7ba0f10f3bc163c/base16_theme_switcher/config_structures.py"><code>config_structures</code> module</a>, so I’m not going to describe them here.</p>
+<p>In future posts, I’d like to describe the plugin system I designed for the application and how it will handle themes and theme changes.</p>
+			</div>
+			<div>
+				<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "piotr-rusin-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+			</div>
+		</article>
+	</main>
+</div>
+	<div class="uk-background-primary">
+	<nav class="uk-container uk-container-small" uk-navbar>
+		<div class="uk-navbar-left">
+			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
+			<ul class="uk-navbar-nav uk-visible@m">	
+				
+					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
+				
+			</ul>
+		</div>
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav uk-visible@m">
+				
+					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+				
+					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
+				
+			</ul>
+			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
+		</div>
+	</nav>
+</div>
+<div id="off-canvas-menu" uk-offcanvas="flip: true">
+	<div class="uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" uk-close></button>
+		<ul class="uk-nav uk-nav-default">
+			
+				<li><a href="/tags/java">Java</a></li>
+			
+				<li><a href="/tags/python">Python</a></li>
+			
+				<li><a href="/tags/spring">Spring</a></li>
+			
+				<li><a href="/tags/">More...</a></li>
+			
+			
+				<li><a href="/about/">About</a></li>
+			
+				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+			
+				<li><a href="https://github.com/piotr-rusin">Github</a></li>
+			
+		</ul>
+	</div>
+</div>
+
+</body>
+</html>

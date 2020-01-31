@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Spring on Reusing the wheel</title>
@@ -13,50 +13,42 @@
     
     <item>
       <title>Revisiting my blog engine project</title>
-      <link>https://piotr-rusin.github.io/2017/12/revisiting-my-blog-engine-project/</link>
+      <link>https://piotr-rusin.github.io/posts/2017-12-04-revisiting-my-blog-engine-project/</link>
       <pubDate>Mon, 04 Dec 2017 14:38:10 +0100</pubDate>
       
-      <guid>https://piotr-rusin.github.io/2017/12/revisiting-my-blog-engine-project/</guid>
-      <description>&lt;p&gt;I recently went back to developing &lt;a href=&#34;https://piotr-rusin.github.io/categories/yule/&#34;&gt;Yule&lt;/a&gt; - my blog engine project based, among others, on &lt;a href=&#34;https://projects.spring.io/spring-boot/&#34;&gt;the Spring Boot framework&lt;/a&gt;. I made some progress in both its front end and back end, and I would like to sum it up in this note&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://piotr-rusin.github.io/posts/2017-12-04-revisiting-my-blog-engine-project/</guid>
+      <description>&lt;p&gt;I recently went back to developing &lt;a href=&#34;https://piotr-rusin.github.io/projects/yule/&#34;&gt;Yule&lt;/a&gt; - my blog engine project based, among others, on &lt;a href=&#34;https://projects.spring.io/spring-boot/&#34;&gt;the Spring Boot framework&lt;/a&gt;. I made some progress in both its front end and back end, and I would like to sum it up in this note&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>The first working version of Yule</title>
-      <link>https://piotr-rusin.github.io/2017/09/the-first-working-version-of-yule/</link>
+      <link>https://piotr-rusin.github.io/posts/2017-09-04-the-first-working-version-of-yule/</link>
       <pubDate>Mon, 04 Sep 2017 20:00:36 +0000</pubDate>
       
-      <guid>https://piotr-rusin.github.io/2017/09/the-first-working-version-of-yule/</guid>
-      <description>I recently made some progress on Yule &amp;#8211; my Spring Boot-based blog engine project &amp;#8211; and now I have its first working version. The current features, installation, configuration and how to run the engine are all described in the README file in the repository of the project, so I won&amp;#8217;t be covering them here.
+      <guid>https://piotr-rusin.github.io/posts/2017-09-04-the-first-working-version-of-yule/</guid>
+      <description>I recently made some progress on Yule – my Spring Boot-based blog engine project – and now I have its first working version. The current features, installation, configuration and how to run the engine are all described in the README file in the repository of the project, so I won’t be covering them here.
 My next steps in developing the engine will include:
  improving the front end refactoring the code by restructuring the configuration and moving repetitive code from controllers into common dependencies (including moving some data-manipulation code to some new service-layer classes).</description>
     </item>
     
     <item>
       <title>Implementing service layer for Yule</title>
-      <link>https://piotr-rusin.github.io/2017/06/implementing-service-layer-for-yule/</link>
+      <link>https://piotr-rusin.github.io/posts/2017-06-05-implementing-service-layer-for-yule/</link>
       <pubDate>Mon, 05 Jun 2017 09:17:41 +0000</pubDate>
       
-      <guid>https://piotr-rusin.github.io/2017/06/implementing-service-layer-for-yule/</guid>
-      <description>&lt;p&gt;Since my &lt;a href=&#34;https://piotr-rusin.github.io/2017/05/a-new-blog-engine-project/&#34;&gt;introductory post on Yule&lt;/a&gt;, I&amp;#8217;ve been doing some work on the project. I&amp;#8217;ve implemented an automatic article publication feature as a part of service layer and I added some methods used by it to the repository layer of my project.&lt;/p&gt;
-
-&lt;p&gt;This post covers these changes and some problems I encountered during testing.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://piotr-rusin.github.io/posts/2017-06-05-implementing-service-layer-for-yule/</guid>
+      <description>&lt;p&gt;Since my &lt;a href=&#34;https://piotr-rusin.github.io/posts/2017-05-16-a-new-blog-engine-project/&#34;&gt;introductory post on Yule&lt;/a&gt;, I’ve been doing some work on the project. I’ve implemented an automatic article publication feature as a part of service layer and I added some methods used by it to the repository layer of my project.&lt;/p&gt;
+&lt;p&gt;This post covers these changes and some problems I encountered during testing.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>A new blog engine project</title>
-      <link>https://piotr-rusin.github.io/2017/05/a-new-blog-engine-project/</link>
+      <link>https://piotr-rusin.github.io/posts/2017-05-16-a-new-blog-engine-project/</link>
       <pubDate>Tue, 16 May 2017 10:59:50 +0000</pubDate>
       
-      <guid>https://piotr-rusin.github.io/2017/05/a-new-blog-engine-project/</guid>
-      <description>&lt;p&gt;In &lt;a href=&#34;https://piotr-rusin.github.io/2016/12/a-php-symfony-blog-engine/&#34;&gt;one of my previous posts&lt;/a&gt; I described a blog engine I was developing. At the time, I had returned to it after a hiatus and I was convinced I would continue working on it. However, at the same time I was still more interested in developing my python-based &lt;a href=&#34;https://piotr-rusin.github.io/categories/url-shortener/&#34;&gt;url-shortener project&lt;/a&gt; and I also already planned moving on to other projects and technologies. As a result, I got bored of blog-engine again.&lt;/p&gt;
-
-&lt;p&gt;Since then, I&amp;#8217;ve been focusing on Java and &lt;a href=&#34;https://projects.spring.io/spring-framework/&#34;&gt;Spring Framework&lt;/a&gt;. This resulted in a new project: another blog engine, but this time based on Spring and designed with different features.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://piotr-rusin.github.io/posts/2017-05-16-a-new-blog-engine-project/</guid>
+      <description>&lt;p&gt;In &lt;a href=&#34;https://piotr-rusin.github.io/posts/2016-12-06-a-php-symfony-blog-engine/&#34;&gt;one of my previous posts&lt;/a&gt; I described a blog engine I was developing. At the time, I had returned to it after a hiatus and I was convinced I would continue working on it. However, at the same time I was still more interested in developing my python-based &lt;a href=&#34;https://piotr-rusin.github.io/projects/url-shortener/&#34;&gt;url-shortener project&lt;/a&gt; and I also already planned moving on to other projects and technologies. As a result, I got bored of blog-engine again.&lt;/p&gt;
+&lt;p&gt;Since then, I’ve been focusing on Java and &lt;a href=&#34;https://projects.spring.io/spring-framework/&#34;&gt;Spring Framework&lt;/a&gt;. This resulted in a new project: another blog engine, but this time based on Spring and designed with different features.&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Designing a plugin system for base16-theme-switcher</title>
+	
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/css/uikit.min.css" />
+	<link rel="stylesheet" href="/css/style.css">
+	
+</head>
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit-icons.min.js"></script>
+	<header class="main-header">
+		<div class="uk-background-primary">
+	<nav class="uk-container uk-container-small" uk-navbar>
+		<div class="uk-navbar-left">
+			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
+			<ul class="uk-navbar-nav uk-visible@m">	
+				
+					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
+				
+			</ul>
+		</div>
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav uk-visible@m">
+				
+					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+				
+					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
+				
+			</ul>
+			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
+		</div>
+	</nav>
+</div>
+<div id="off-canvas-menu" uk-offcanvas="flip: true">
+	<div class="uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" uk-close></button>
+		<ul class="uk-nav uk-nav-default">
+			
+				<li><a href="/tags/java">Java</a></li>
+			
+				<li><a href="/tags/python">Python</a></li>
+			
+				<li><a href="/tags/spring">Spring</a></li>
+			
+				<li><a href="/tags/">More...</a></li>
+			
+			
+				<li><a href="/about/">About</a></li>
+			
+				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+			
+				<li><a href="https://github.com/piotr-rusin">Github</a></li>
+			
+		</ul>
+	</div>
+</div>
+
+		
+		
+	</header>
+	<div class="uk-container uk-container-xsmall">
+	<main>
+		<article class="uk-article">
+			<header class="main-article-header">
+				<h1><a href="https://piotr-rusin.github.io/posts/2017-11-02-designing-a-plugin-system-for-base16-theme-switcher/" class="uk-link-heading">Designing a plugin system for base16-theme-switcher</a></h1>
+				<p class="uk-article-meta">
+    <time>Nov 02, 2017</time> /
+    
+    <a class="tag" href="/tags/api">api</a>
+    , <a class="tag" href="/tags/bash">bash</a>
+    , <a class="tag" href="/tags/configuration">configuration</a>
+    , <a class="tag" href="/tags/linux">linux</a>
+    , <a class="tag" href="/tags/plugin-system">plugin-system</a>
+    , <a class="tag" href="/tags/plugins">plugins</a>
+    , <a class="tag" href="/tags/python">python</a>
+</p>
+			</header>
+			<div>
+				<p>I’ve been working on a plugin system for my <a href="https://github.com/piotr-rusin/base16-theme-switcher">theme switcher project</a>, and I think now it’s the time to introduce it here and describe my rationale behind its design.</p>
+<h2 id="architecture-of-a-theme-switcher-class">Architecture of a theme switcher class</h2>
+<p>I described the actions performed by the previous, bash-based theme switcher in <a href="/posts/2017-10-22-a-new-project-base16-theme-switcher/">the previous post</a>.</p>
+<p>The application will contain a <code>ThemeSwitcher</code> class responsible for reloading an already set theme or switching to a new one. It will have the following dependencies:</p>
+<ul>
+<li>an instance of <a href="/posts/2017-10-22-a-new-project-base16-theme-switcher/"><code>RootConfigMapping</code></a></li>
+<li>a collection of objects representing themes</li>
+<li>a callable prompt for choosing a theme to be set</li>
+<li>a collection of theme appliers – components for performing application-specific operations necessary for setting a theme, like changing colors for dunst, setting a theme for vim, restarting i3wm, etc.</li>
+</ul>
+<p>Saving color changes to X resources database will be performed by the theme switcher object itself. It will also differ from its original, Bash implementation in that it will not rely on reading .Xresources and having it source a symlink to the currently set theme – instead, the theme file will be directly merged with the current settings by executing <code>xrdb -merge</code> command, with a path to a newly selected theme as its argument.</p>
+<h2 id="coming-up-with-a-plugin-system">Coming up with a plugin system</h2>
+<p>Other than applications I’m using myself, there are many other projects for which color schemes could be configured. For example, instead of using rofi and i3wm, one could use dmenu and bspwm, or any other window manager. I could also imagine extending my project with a support for GTK themes and theming other applications that don’t read their colors from the database or that need additional operations to be performed when applying a theme change. Since I was already planning to make application-specific theme appliers as components of the theme switcher object, providing such dependencies by using a plugin system seemed like a natural choice.</p>
+<p>I considered using <a href="http://yapsy.sourceforge.net/index.html">Yapsy</a>, <a href="http://pluginbase.pocoo.org/">PluginBase</a> or a <a href="https://packaging.python.org/guides/creating-and-discovering-plugins/#using-naming-convention">custom solution based on plugin modules with an application-specific prefix</a>, and I chose the latter. It seems to be the simplest and, since it’s based on searching through top-level installed modules, it works well with package installation without any additional configuration. Yapsy and PluginBase rely on plugins being placed in specific directories, and the Yapsy plugin system requires plugins to provide things I didn’t think I needed for my use case.</p>
+<h2 id="initial-design-of-my-plugin-api">Initial design of my plugin API</h2>
+<p>My initial plans for the plugin system consisted of having it perform the following actions for each loaded plugin:</p>
+<ul>
+<li>unpack a mapping containing configuration options for the plugin</li>
+<li>call a function (let’s call it <code>initialize</code>) on a module representing the plugin, passing the options as its keyword arguments</li>
+<li>get a theme applier component object returned by the function</li>
+<li>add the component to the collection of theme appliers used by the theme switcher</li>
+</ul>
+<p>I also considered making the application more extensible by making it possible for plugins to provide other kinds of components to it, but since I had only the theme applier components on my mind, I didn’t feel very compelled to design it that way… until I realized I could make my application use a pluggable prompt for choosing a theme. I wanted to use a rofi-based theme menu myself, but I could imagine others preferring to use a command line prompt or dmenu for this. As a result, a more general plugin system became a requirement.</p>
+<p>Having this on my mind, I realized my current design for plugin interface might not be a very good idea. Now I knew my plugin system would need a way to recognize where a plugin-provided component belongs, and it would increase complexity of both the plugin system and the interface of a plugin module, and extending the system with more types of components would likely make the matters worse. Plus, I already knew it would be useful to provide some kind of debugging of plugin configuration. Since config options would be passed as keyword arguments of <code>initialize</code>, passing unexpected options or missing some required ones would result in a <code>TypeError</code> that should be handled in a way that would point a user to a possible error in his config file.</p>
+<h2 id="designing-a-better-api">Designing a better API</h2>
+<p>For these reasons, I decided to modify my design so that a theme switcher object would be passed to a plugin module function and modified by it. This way, I wouldn’t have to expect any return values from the function, and since the theme switcher object would also depend on the configuration, I wouldn’t need to provide the options as separate arguments of the function, so I wouldn’t need to implement a mechanism responsible for calling plugin module functions with different signatures. The configuration errors for a plugin would either be handled by the config object itself or by the function (now renamed to <code>apply_to</code>, as it would be responsible for applying changes brought by the plugin to the theme switcher object). Not only this solution would be simpler, but it would also be more flexible.</p>
+<p>There were still some problems with it, though:</p>
+<ul>
+<li>the flexibility is problematic, too. After all, by passing a whole theme switcher object to a plugin, I would expose every attribute of this object to the <code>apply_to</code> function, including ones I didn’t intend to be used by it, like methods responsible for switching a theme or any properties that shouldn’t be accessible to the function.</li>
+<li>the theme-switcher object would be in an invalid state until all its required pluggable dependencies were provided by plugins.</li>
+</ul>
+<p>I could solve the second problem by having the core application provide the theme switcher object with some defaults for required dependencies, but first: once I became convinced I’d like to implement a more general plugin system, I wanted all the pluggable dependencies to be provided as plugins, and second: the first problem would still persist.</p>
+<p>I decided to modify the solution: instead of passing a theme switcher object to a plugin module function, I decided to introduce a builder object that would expose properties for setting pluggable dependencies. After all configured plugins have been activated by running their <code>apply_to</code> function with the builder object as its argument, the <code>build</code> method of the object would be called and it would return an instance of theme switcher to be used by the application.</p>
+<p>This way I avoid giving plugins too much access to things they shouldn’t alter, having the theme switcher object in an invalid state and having core application provide defaults for pluggable dependencies.</p>
+<p>Of course, Python is a dynamic language and the limits imposed by an interface of an object aren’t as rigid as those imposed by classes and formal interface types in statically typed languages with access modifiers. For example, a developer of a plugin could easily access an attribute of the builder that is conventionally marked as “protected” and modify or replace it, or they could replace the <code>build</code> method with an alternative one. Python is flexible in that regard, but it doesn’t mean having an object provide a set of well documented methods designed for intended use cases isn’t important.</p>
+			</div>
+			<div>
+				<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "piotr-rusin-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+			</div>
+		</article>
+	</main>
+</div>
+	<div class="uk-background-primary">
+	<nav class="uk-container uk-container-small" uk-navbar>
+		<div class="uk-navbar-left">
+			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
+			<ul class="uk-navbar-nav uk-visible@m">	
+				
+					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
+				
+			</ul>
+		</div>
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav uk-visible@m">
+				
+					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+				
+					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
+				
+			</ul>
+			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
+		</div>
+	</nav>
+</div>
+<div id="off-canvas-menu" uk-offcanvas="flip: true">
+	<div class="uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" uk-close></button>
+		<ul class="uk-nav uk-nav-default">
+			
+				<li><a href="/tags/java">Java</a></li>
+			
+				<li><a href="/tags/python">Python</a></li>
+			
+				<li><a href="/tags/spring">Spring</a></li>
+			
+				<li><a href="/tags/">More...</a></li>
+			
+			
+				<li><a href="/about/">About</a></li>
+			
+				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+			
+				<li><a href="https://github.com/piotr-rusin">Github</a></li>
+			
+		</ul>
+	</div>
+</div>
+
+</body>
+</html>

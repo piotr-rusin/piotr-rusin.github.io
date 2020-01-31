@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>A PHP/Symfony blog engine</title>
+	
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/css/uikit.min.css" />
+	<link rel="stylesheet" href="/css/style.css">
+	
+</head>
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit-icons.min.js"></script>
+	<header class="main-header">
+		<div class="uk-background-primary">
+	<nav class="uk-container uk-container-small" uk-navbar>
+		<div class="uk-navbar-left">
+			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
+			<ul class="uk-navbar-nav uk-visible@m">	
+				
+					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
+				
+			</ul>
+		</div>
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav uk-visible@m">
+				
+					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+				
+					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
+				
+			</ul>
+			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
+		</div>
+	</nav>
+</div>
+<div id="off-canvas-menu" uk-offcanvas="flip: true">
+	<div class="uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" uk-close></button>
+		<ul class="uk-nav uk-nav-default">
+			
+				<li><a href="/tags/java">Java</a></li>
+			
+				<li><a href="/tags/python">Python</a></li>
+			
+				<li><a href="/tags/spring">Spring</a></li>
+			
+				<li><a href="/tags/">More...</a></li>
+			
+			
+				<li><a href="/about/">About</a></li>
+			
+				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+			
+				<li><a href="https://github.com/piotr-rusin">Github</a></li>
+			
+		</ul>
+	</div>
+</div>
+
+		
+		
+	</header>
+	<div class="uk-container uk-container-xsmall">
+	<main>
+		<article class="uk-article">
+			<header class="main-article-header">
+				<h1><a href="https://piotr-rusin.github.io/posts/2016-12-06-a-php-symfony-blog-engine/" class="uk-link-heading">A PHP/Symfony blog engine</a></h1>
+				<p class="uk-article-meta">
+    <time>Dec 06, 2016</time> /
+    
+    <a class="tag" href="/tags/php">php</a>
+    , <a class="tag" href="/tags/symfony">symfony</a>
+</p>
+			</header>
+			<div>
+				<p>A few months ago I started a blog engine project based on <a href="https://symfony.com/">Symfony framework</a>. I’ve been adding things and making changes to it from time to time. Since August, I took a longer break in its development because I wanted to focus on other things, but now I’m returning to the project.</p>
+<h2 id="articles">Articles</h2>
+<p>The core feature of each blogging software is the ability to manage and publish articles or blog posts. Each of them should obviously have a title and content.</p>
+<p>It is also useful for an article to have a slug that represents it in URL addresses. It will generally be based on the title of an article, but it’s good to be able to replace a generated slug with a custom value so that it would be shorter or work better with search engines.</p>
+<p>The following data will also be stored and managed for each article:</p>
+<ul>
+<li>author</li>
+<li>comments</li>
+<li>tags</li>
+<li>date of publication</li>
+<li>publication status marking the article as published or not published</li>
+</ul>
+<h2 id="users">Users</h2>
+<p>The blog engine will support user registration and the following user roles, each with their own privileges:</p>
+<ul>
+<li>contributor – creating and editing their own articles, but not publishing them</li>
+<li>author – creating their own articles, editing and publishing them</li>
+<li>editor – creating, publishing and editing their own articles, publishing and editing articles authored by other users</li>
+<li>admin – access to all administration features for an installation of the engine</li>
+<li>moderator – hiding comments made by other users, or publishing them if new comment moderation is turned on</li>
+</ul>
+<p>There is also a super admin role provided by an external library, but I probably won’t use it.</p>
+<p>The roles are organized in a <a href="https://github.com/piotr-rusin/blog-engine/blob/master/app/config/security.yml#L12">hierarchy</a>. Its design relies on comment moderation and content creation/blog administration privileges being separate so that, for example, a user could be either an editor or a moderator, or both. The admin role is an exception: each admin is also a moderator.</p>
+<p>Other than user roles, the application will store and manage the following data for each user:</p>
+<ul>
+<li>comments written by them</li>
+<li>articles authored by them</li>
+<li>username</li>
+<li>email address</li>
+<li>encrypted password</li>
+</ul>
+<h2 id="comments">Comments</h2>
+<p>Most blog engines allow users to publish comments under articles, either by handling all comment-related data storage and management themselves or by using third party commenting services and plugins, like Disqus. For this project, I will implement this feature myself.</p>
+<p>The following data will be stored and managed for each comment:</p>
+<ul>
+<li>publication date</li>
+<li>publication status – specifying if the comment is currently published (visible) or not</li>
+<li>article under which the comment was posted</li>
+<li>data of the author of the comment</li>
+</ul>
+<p>Like WordPress and Blogger, my blog engine will allow commenting for both authenticated and non-authenticated users – a user who just wants to post a comment on an article will be able to do so without having to register, log in and remember or store somewhere their password. Still, such a user will have to provide a username and email address to be able to comment.</p>
+<h2 id="storage-and-representation-of-entities">Storage and representation of entities</h2>
+<p>For database storage and object mapping I decided to use Doctrine ORM and PostgreSQL database.</p>
+<p>Blog articles, tags, users and comments are represented by <a href="https://github.com/piotr-rusin/blog-engine/tree/master/src/AppBundle/Entity">entity classes</a> that are mapped to rows of their respective tables. Doctrine provides the following options for specifying mapping information:</p>
+<ul>
+<li>YAML files</li>
+<li>XML files</li>
+<li>DocBlock annotations</li>
+</ul>
+<p>I chose to use the annotations because I prefer defining metadata as close to entity classes and their mapped properties as possible.</p>
+<p>I decided to use <a href="https://github.com/FriendsOfSymfony/FOSUserBundle">FOSUSerBundle</a> as a library providing features related to user registration and authentication, instead of implementing them myself. My own user entity class extends one provided by the library and adds project-specific features: <code>comments</code> and <code>articles</code> properties containing posts authored by a user.</p>
+<h2 id="the-future-of-the-project">The future of the project</h2>
+<p>The next steps include:</p>
+<ul>
+<li>creating form classes for articles, tags and user roles</li>
+<li>creating voters for authorization based on task type, user role and other criteria</li>
+<li>adding controller classes and implementing methods for handling HTTP requests</li>
+</ul>
+<p>However, there are some decisions I made soon after starting the project which I’m now reconsidering – particularly ones related to the user role hierarchy. I will explain everything in the next article about the project, once I decide on possible changes.</p>
+			</div>
+			<div>
+				<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "piotr-rusin-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+			</div>
+		</article>
+	</main>
+</div>
+	<div class="uk-background-primary">
+	<nav class="uk-container uk-container-small" uk-navbar>
+		<div class="uk-navbar-left">
+			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
+			<ul class="uk-navbar-nav uk-visible@m">	
+				
+					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
+				
+			</ul>
+		</div>
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav uk-visible@m">
+				
+					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+				
+					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
+				
+			</ul>
+			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
+		</div>
+	</nav>
+</div>
+<div id="off-canvas-menu" uk-offcanvas="flip: true">
+	<div class="uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" uk-close></button>
+		<ul class="uk-nav uk-nav-default">
+			
+				<li><a href="/tags/java">Java</a></li>
+			
+				<li><a href="/tags/python">Python</a></li>
+			
+				<li><a href="/tags/spring">Spring</a></li>
+			
+				<li><a href="/tags/">More...</a></li>
+			
+			
+				<li><a href="/about/">About</a></li>
+			
+				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+			
+				<li><a href="https://github.com/piotr-rusin">Github</a></li>
+			
+		</ul>
+	</div>
+</div>
+
+</body>
+</html>

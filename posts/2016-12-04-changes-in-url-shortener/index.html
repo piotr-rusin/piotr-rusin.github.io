@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Changes in url-shortener</title>
+	
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/css/uikit.min.css" />
+	<link rel="stylesheet" href="/css/style.css">
+	
+</head>
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit-icons.min.js"></script>
+	<header class="main-header">
+		<div class="uk-background-primary">
+	<nav class="uk-container uk-container-small" uk-navbar>
+		<div class="uk-navbar-left">
+			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
+			<ul class="uk-navbar-nav uk-visible@m">	
+				
+					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
+				
+			</ul>
+		</div>
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav uk-visible@m">
+				
+					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+				
+					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
+				
+			</ul>
+			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
+		</div>
+	</nav>
+</div>
+<div id="off-canvas-menu" uk-offcanvas="flip: true">
+	<div class="uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" uk-close></button>
+		<ul class="uk-nav uk-nav-default">
+			
+				<li><a href="/tags/java">Java</a></li>
+			
+				<li><a href="/tags/python">Python</a></li>
+			
+				<li><a href="/tags/spring">Spring</a></li>
+			
+				<li><a href="/tags/">More...</a></li>
+			
+			
+				<li><a href="/about/">About</a></li>
+			
+				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+			
+				<li><a href="https://github.com/piotr-rusin">Github</a></li>
+			
+		</ul>
+	</div>
+</div>
+
+		
+		
+	</header>
+	<div class="uk-container uk-container-xsmall">
+	<main>
+		<article class="uk-article">
+			<header class="main-article-header">
+				<h1><a href="https://piotr-rusin.github.io/posts/2016-12-04-changes-in-url-shortener/" class="uk-link-heading">Changes in url-shortener</a></h1>
+				<p class="uk-article-meta">
+    <time>Dec 04, 2016</time> /
+    
+    <a class="tag" href="/tags/database-migration">database-migration</a>
+    , <a class="tag" href="/tags/dependency-injection">dependency-injection</a>
+    , <a class="tag" href="/tags/front-end">front-end</a>
+    , <a class="tag" href="/tags/injector">injector</a>
+    , <a class="tag" href="/tags/python">python</a>
+    , <a class="tag" href="/tags/refactoring">refactoring</a>
+    , <a class="tag" href="/tags/responsive-web-design">responsive-web-design</a>
+    , <a class="tag" href="/tags/single-responsibility-principle">single-responsibility-principle</a>
+    , <a class="tag" href="/tags/sqlalchemy">sqlalchemy</a>
+    , <a class="tag" href="/tags/wtforms">wtforms</a>
+</p>
+			</header>
+			<div>
+				<p><a href="/posts/2016-08-05-introducing-my-url-shortener/">When I introduced my URL shortener project</a>, I already had a working version and I thought I only needed to improve its front-end to be able to release the first stable version of the application. I also had some ideas for new features to be added to it.</p>
+<p>However, the longer I looked at my code, the more room for improvements I saw. Although I ended up adding some new features, most of the changes I made since then were refactorizations, changes in design and architecture of the application and code style improvements.</p>
+<p>In this post, I’m going to describe some of them.</p>
+<h2 id="front-end">Front-end</h2>
+<p>I designed the front-end according to rules of responsive web design. Initial CSS styles ensure it looks good on mobile screens, while the styles specified in media queries override the initial styles to adjust the front-end to larger displays.</p>
+<p>Here are examples of the current result: the main page <a href="http://i.imgur.com/RuRBETe.png">on a mobile</a> and <a href="http://i.imgur.com/P6xYoWF.png">on a desktop screen</a>. A full gallery is available <a href="http://imgur.com/a/mCU4E">here</a>.</p>
+<h2 id="new-classes-for-representing-creating-and-converting-aliases">New classes for representing, creating and converting aliases</h2>
+<p>Alias values are no longer represented by a dedicated class – they are just simple string objects.</p>
+<p><a href="https://github.com/piotr-rusin/url-shortener/blob/ee506ab166d3a170ee8790d33f20cf1ee88205a5/url_shortener/domain_and_persistence.py#L35">AliasAlphabet</a> partially replaces the old <a href="https://github.com/piotr-rusin/url-shortener/blob/2bbcb9bcc97f8226e7d90d201c57933421ee050e/url_shortener/models.py#L97">Alias</a> and <a href="https://github.com/piotr-rusin/url-shortener/blob/2bbcb9bcc97f8226e7d90d201c57933421ee050e/url_shortener/models.py#L31">NumeralSystem</a> classes. It represents an ordered set of characters that can appear in valid alias strings and contains methods for creating aliases.</p>
+<p><a href="https://github.com/piotr-rusin/url-shortener/blob/ee506ab166d3a170ee8790d33f20cf1ee88205a5/url_shortener/domain_and_persistence.py#L242">IntegerAlias</a> class is now the only one responsible for converting between alias strings and their integer representations, as it should have been from the beginning. It no longer just calls methods responsible for the conversion, but contains the code that actually performs it.</p>
+<p>Instances of the class depend on instances of <code>AliasAlphabet</code> and use them for the conversion. The constructor of <code>IntegerAlias</code> class makes sure all the alias strings generated by an instance of <code>AliasAlphabet</code> passed to it can be converted to an integer less or equal to the maximum 32 bit signed integer.</p>
+<p>The two responsibilities: that of creating an alias value and that of making sure each possible value has a valid integer representation, are now separated. This is good, because the second responsibility is related to storage, while the first is not, and the current design better adheres to the <a href="http://www.oodesign.com/single-responsibility-principle.html">single responsibility principle</a>. In addition, the current code responsible for generating an alias value is simpler, and each class in the system contains substantial code.</p>
+<p>There is only one downside to the current implementation: for some combinations of alias alphabet length and maximum new alias length, there are both aliases of maximum length whose integer values are smaller and larger than maximum value of int32. In current implementation, instances of <code>AliasAlphabet</code> configured with maximum new alias length of such values are treated as invalid.</p>
+<p>In the previous implementation, the responsibilities of creating a valid alias value and converting it to integer were assigned to <code>Alias</code> class. Alias values were first generated as integers, and if only some aliases of given maximum length were valid, that is: their respective integer values were smaller or equal to max int32, the factory simply chose max int32 as the upper limit for random number generator, instead of the maximum integer value of any alias of given length.</p>
+<p>The current implementation is not as flexible. I could have changed it, but I decided it wasn’t a big problem, so I didn’t do it.</p>
+<h2 id="new-way-of-shortening-a-url">New way of shortening a URL</h2>
+<p>Assigning a random alias to a target URL is no longer performed by <a href="https://github.com/piotr-rusin/url-shortener/blob/2bbcb9bcc97f8226e7d90d201c57933421ee050e/url_shortener/event_handlers.py#L18">an event handler</a>. Instead, the method responsible for creating a new, randomly generated alias – <a href="https://github.com/piotr-rusin/url-shortener/blob/ee506ab166d3a170ee8790d33f20cf1ee88205a5/url_shortener/domain_and_persistence.py#L149">AliasAlphabet.create_random</a> – <a href="https://github.com/piotr-rusin/url-shortener/blob/ee506ab166d3a170ee8790d33f20cf1ee88205a5/url_shortener/domain_and_persistence.py#L511">is passed as default_value parameter</a> of SQLAlchemy <code>Column</code> object representing the alias column in the database.</p>
+<p>Previously, both adding a URL object to database session and committing pending changes to the database were performed by the same function: <a href="https://github.com/piotr-rusin/url-shortener/blob/2bbcb9bcc97f8226e7d90d201c57933421ee050e/url_shortener/models.py#L288">url_shortener.models.register</a>. These operations have been split: adding a URL object to session and caching it to ensure it is always unique is now performed by <a href="https://github.com/piotr-rusin/url-shortener/blob/ee506ab166d3a170ee8790d33f20cf1ee88205a5/url_shortener/domain_and_persistence.py#L360">get_or_create class method</a> of the <a href="https://github.com/piotr-rusin/url-shortener/blob/ee506ab166d3a170ee8790d33f20cf1ee88205a5/url_shortener/domain_and_persistence.py#L324">BaseTargetURL class</a> (replacing previously used <a href="https://github.com/piotr-rusin/url-shortener/blob/2bbcb9bcc97f8226e7d90d201c57933421ee050e/url_shortener/models.py#L226">ShortenedURL class</a>). The code responsible for it is based on <a href="https://bitbucket.org/zzzeek/sqlalchemy/wiki/UsageRecipes/UniqueObject">this recipe</a>.</p>
+<p>With <code>BaseTargetURL</code> class and <a href="https://github.com/piotr-rusin/url-shortener/blob/ee506ab166d3a170ee8790d33f20cf1ee88205a5/url_shortener/domain_and_persistence.py#L400">commit function</a> (replacing the <code>register</code> function) as currently implemented, it is possible to create multiple target URL objects without performing any database insertions and then to commit all of them at once, in one transaction.</p>
+<p>In addition, the application never raises any exception when it generates an already existing random alias at least a certain number of times – instead, the generation is resumed without limit, until it is successful. The number of possible alias values is large enough for such an occurrence to be rare and for the integrity error to be quickly handled in case it finally occurs, so I don’t think it’s necessary to inform a user an error has occurred and to ask him to retry.</p>
+<h2 id="handling-homoglyphs">Handling homoglyphs</h2>
+<p><a href="https://en.wikipedia.org/wiki/Homoglyph">Homoglyphs</a> are characters and sequences of characters that are similar to each other. In my URL shortener, for each group of homoglyphs I could think of, all characters are treated as identical to each other and are internally represented by just one of them.</p>
+<p>This is the case both when generating an alias and receiving a request with an existing one. This prevents mistakes resulting from users mistyping or misremembering potentially confusing characters in aliases – when someone uses such a mistyped alias, the application treats it just like the actual alias value similar to it. Thanks to this, a short URL with a mistyped alias can still work just like if it was typed in correctly – otherwise, the application wouldn’t recognize it and would just display a 404 error page, and the user might not even realize he made a mistake, and even if he suspected it, he would still be forced to look for a correct URL, either by trial and error or by looking it up again.</p>
+<h2 id="refactoring-view-functions">Refactoring view functions</h2>
+<p>A few functions in the <code>url_shortener.views</code> module, namely:</p>
+<ul>
+<li><a href="https://github.com/piotr-rusin/url-shortener/blob/2bbcb9bcc97f8226e7d90d201c57933421ee050e/url_shortener/views.py#L50">render_preview</a></li>
+<li><a href="https://github.com/piotr-rusin/url-shortener/blob/2bbcb9bcc97f8226e7d90d201c57933421ee050e/url_shortener/views.py#L96">preview</a></li>
+<li><a href="https://github.com/piotr-rusin/url-shortener/blob/2bbcb9bcc97f8226e7d90d201c57933421ee050e/url_shortener/views.py#L58">get_response</a></li>
+<li><a href="https://github.com/piotr-rusin/url-shortener/blob/2bbcb9bcc97f8226e7d90d201c57933421ee050e/url_shortener/views.py#L83">redirect_for</a></li>
+</ul>
+<p>were replaced by a single view class: <a href="https://github.com/piotr-rusin/url-shortener/blob/ee506ab166d3a170ee8790d33f20cf1ee88205a5/url_shortener/views.py#L77">ShowURL</a>. I think it is a better solution than having four very small functions, with two of them consisting of just a call to another function.</p>
+<h2 id="adding-migrations">Adding migrations</h2>
+<p>I added support for automatic database migrations using <a href="https://github.com/miguelgrinberg/Flask-Migrate">Flask-Migrate</a> package. I thought it would be a useful addition, and it proved to be useful during the whole refactoring process because it included some changes made to the database model, namely: changing the name of the class representing a shortened URL and changing a name of one of its attributes.</p>
+<h2 id="application-factory-and-dependency-injection-container">Application factory and dependency injection container</h2>
+<p>One of the first decisions I made after publishing my last article on the project was refactoring it so that it would use <a href="http://flask.pocoo.org/docs/0.11/blueprints/">flask blueprints</a> and an <a href="http://flask.pocoo.org/docs/0.11/patterns/appfactories/">application factory function</a>. I thought it would improve the architecture of my project by making it more modular and testable, which would be an improvement of the code by itself and would make it easier to extend my application in the future.</p>
+<p>The role of application factory is to create instances of <code>Flask</code> class representing applications, each of them configured differently.</p>
+<p>To be able to have non-global application objects, I had to remove the reliance of my code on a global app instance and its <code>config</code> property. Values of configuration options had to be injected not only into instances of classes, but also into functions, including ones representing views.</p>
+<p>For a short time I was considering solving it by simply creating all the objects representing services in the factory function and by introducing functions responsible for initialization of views. However, I decided it was better for dependencies to be created and managed automatically by a dependency injection container. I chose to use <a href="https://github.com/alecthomas/injector">Injector</a> because its author already provided <a href="https://github.com/alecthomas/flask_injector">a package</a> integrating it with Flask and adding the possibility of injecting dependencies directly into flask view functions.</p>
+<p>There was one problem with my application: some configuration options or application-instance-specific objects were dependencies of class objects. Having classes defined globally, directly in python modules, means that dependencies of the class objects representing them would also have to be shared globally. It was the case with SQLAlchemy model class – depending on an instance of <code>AliasAlphabet</code> – and a form class depending on a spam/blacklist validator object.</p>
+<p>For the model class, the problem could be solved by making it independent of SQLAlchemy and Flask-SQLAlchemy, creating an SQLALchemy <code>Table</code> object dynamically for each instance of application and mapping the class to it (like <a href="http://stackoverflow.com/a/973567">here</a>). However, I didn’t like that it would require explicitly doing things that Flask-SQLAlchemy already did automatically, especially since I already implemented migrations using a package that depended on Flask-SQLAlchemy. Instead, I decided to split the model class into a common base class and an application-object-specific class extending it. The second class was to be created dynamically and injected into views as a dependency.</p>
+<p>As for the form class, it depends on the validator being added to validators of its URL field. It was impossible (or at least: difficult and requiring modification to internals of WTForms library) to instantiate the field in the constructor of the form class – it was <a href="http://stackoverflow.com/a/31175306">necessary to define it as a class attribute</a>. For this reason, the form class needed to be dynamically created per instance of application, too.</p>
+<p>Creation of both class objects is managed by separate injector modules, and they are injected into views like any other dependency.</p>
+<p>Because Flask-Migrate requires instances of both <code>Flask</code> and <code>flask_sqlalchemy.SQLAlchemy</code>, my application factory returns both of the objects, not just the instance of Flask application.</p>
+<h2 id="changing-storage-mechanism-of-blacklist-and-adding-a-whitelist">Changing storage mechanism of blacklist and adding a whitelist</h2>
+<p>I replaced blacklist file with a simpler approach to storage: a host blacklist specified directly in a python config file. My URL shortener uses my <a href="https://github.com/piotr-rusin/spam-lists">spam-lists library</a>, and reading hosts from a text file was a legacy idea I had for this library until I realised that providing support for any specific storage mechanism in the library should not be part of its scope.</p>
+<p>I added a whitelist for hosts known to be safe. URLs with such hosts won’t be tested against the custom and third-party blacklists.</p>
+			</div>
+			<div>
+				<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "piotr-rusin-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+			</div>
+		</article>
+	</main>
+</div>
+	<div class="uk-background-primary">
+	<nav class="uk-container uk-container-small" uk-navbar>
+		<div class="uk-navbar-left">
+			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
+			<ul class="uk-navbar-nav uk-visible@m">	
+				
+					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
+				
+			</ul>
+		</div>
+		<div class="uk-navbar-right">
+			<ul class="uk-navbar-nav uk-visible@m">
+				
+					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+				
+					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+				
+					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
+				
+			</ul>
+			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
+		</div>
+	</nav>
+</div>
+<div id="off-canvas-menu" uk-offcanvas="flip: true">
+	<div class="uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" uk-close></button>
+		<ul class="uk-nav uk-nav-default">
+			
+				<li><a href="/tags/java">Java</a></li>
+			
+				<li><a href="/tags/python">Python</a></li>
+			
+				<li><a href="/tags/spring">Spring</a></li>
+			
+				<li><a href="/tags/">More...</a></li>
+			
+			
+				<li><a href="/about/">About</a></li>
+			
+				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
+			
+				<li><a href="https://github.com/piotr-rusin">Github</a></li>
+			
+		</ul>
+	</div>
+</div>
+
+</body>
+</html>
