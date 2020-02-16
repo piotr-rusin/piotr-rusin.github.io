@@ -7,86 +7,44 @@
 	<title>Progress in development of spam-lists</title>
 	
 	
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/css/uikit.min.css" />
+	<link rel="stylesheet" href="/css/watercss.light.css">
 	<link rel="stylesheet" href="/css/style.css">
 	
 </head>
 <body>
-	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit-icons.min.js"></script>
-	<header class="main-header">
-		<div class="uk-background-primary">
-	<nav class="uk-container uk-container-small" uk-navbar>
-		<div class="uk-navbar-left">
-			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
-			<ul class="uk-navbar-nav uk-visible@m">	
-				
-					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
-				
-			</ul>
-		</div>
-		<div class="uk-navbar-right">
-			<ul class="uk-navbar-nav uk-visible@m">
-				
-					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
-				
-					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
-				
-			</ul>
-			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
-		</div>
-	</nav>
-</div>
-<div id="off-canvas-menu" uk-offcanvas="flip: true">
-	<div class="uk-offcanvas-bar">
-		<button class="uk-offcanvas-close" type="button" uk-close></button>
-		<ul class="uk-nav uk-nav-default">
-			
-				<li><a href="/tags/java">Java</a></li>
-			
-				<li><a href="/tags/python">Python</a></li>
-			
-				<li><a href="/tags/spring">Spring</a></li>
-			
-				<li><a href="/tags/">More...</a></li>
-			
-			
-				<li><a href="/about/">About</a></li>
-			
-				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
-			
-				<li><a href="https://github.com/piotr-rusin">Github</a></li>
-			
-		</ul>
-	</div>
-</div>
-
+	<header>
+		<nav class="nav">
+	
+	<a href="https://piotr-rusin.github.io">Reusing the wheel</a>
+	
+	<ul>
+		
+		<li><a class="uk-text-capitalize" href="/categories/">Categories</a></li>
+		
+		<li><a class="uk-text-capitalize" href="/tags/">Tags</a></li>
+		
+		<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+		
+	</ul>
+</nav>
 		
 		
 	</header>
-	<div class="uk-container uk-container-xsmall">
+	
 	<main>
-		<article class="uk-article">
-			<header class="main-article-header">
-				<h1><a href="https://piotr-rusin.github.io/posts/2016-07-09-progress-in-development-of-spam-lists/" class="uk-link-heading">Progress in development of spam-lists</a></h1>
-				<p class="uk-article-meta">
+		<article>
+			<header>
+				<h1><a href="https://piotr-rusin.github.io/posts/2016-07-09-progress-in-development-of-spam-lists/">Progress in development of spam-lists</a></h1>
+				<p>
     <time>Jul 09, 2016</time> /
     
-    <a class="tag" href="/tags/python">python</a>
+    <a href="/tags/python">python</a>
 </p>
 			</header>
 			<div>
 				<p>Since the introduction of my spam-lists library on this blog, I made some progress in its development.</p>
 <p>I reorganized the library a bit, changed the inheritance hierarchy of exception classes, fixed some errors and published the package on PyPI. In this post, I’m going to describe the changes and explain my reasoning behind them.</p>
-<h2 id="splitting-spam-listsservice-models-module">Splitting spam_lists.service_models module</h2>
+<h2 id="splitting-spam_listsservice_models-module">Splitting spam_lists.service_models module</h2>
 <p>The <code>spam_lists.service_models</code> module contained two groups of classes:</p>
 <ul>
 <li>client classes for various services</li>
@@ -100,7 +58,7 @@
 <li>move the client classes to <code>clients</code> module</li>
 </ul>
 <p>After these changes, the only class left in <code>service_models</code> was <code>HostList</code>: a base class for both the client and the host collection classes. I changed the name of the module to <code>host_list</code> as I thought it was better for its current purpose as a container for this class.</p>
-<h2 id="a-better-name-for-spam-listsutils">A better name for spam_lists.utils</h2>
+<h2 id="a-better-name-for-spam_listsutils">A better name for spam_lists.utils</h2>
 <p>The <code>spam_lists.utils</code> module was intended to contain various utilities that could be used by a user of my library to:</p>
 <ul>
 <li>create composite URL testers</li>
@@ -224,62 +182,57 @@
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 			</div>
+			
+
+
+<div>
+    <h2>Related articles</h2>
+    <ul>
+    
+      <li>
+        <a href="https://piotr-rusin.github.io/posts/2016-06-16-spam-lists-a-host-blacklistwhitelist-library/">Spam-lists – a host blacklist/whitelist library</a> - <time>Jun 16, 2016</time>
+      </li>
+    
+    </ul>
+</div>
+
 		</article>
 	</main>
+
+	
+	<div>
+    <h2>Latest articles</h2>
+    <ul>
+    
+    
+      <li>
+        <a href="https://piotr-rusin.github.io/posts/2017-12-04-revisiting-my-blog-engine-project/">Revisiting my blog engine project</a> - <time>Dec 04, 2017</time>
+      </li>
+    
+      <li>
+        <a href="https://piotr-rusin.github.io/posts/2017-11-12-migrating-to-hugo-and-github-pages/">Migrating to Hugo and GitHub Pages</a> - <time>Nov 12, 2017</time>
+      </li>
+    
+      <li>
+        <a href="https://piotr-rusin.github.io/posts/2017-11-02-designing-a-plugin-system-for-base16-theme-switcher/">Designing a plugin system for base16-theme-switcher</a> - <time>Nov 02, 2017</time>
+      </li>
+    
+      <li>
+        <a href="https://piotr-rusin.github.io/posts/2017-10-22-a-new-project-base16-theme-switcher/">A new project: base16-theme-switcher</a> - <time>Oct 22, 2017</time>
+      </li>
+    
+      <li>
+        <a href="https://piotr-rusin.github.io/posts/2017-09-04-the-first-working-version-of-yule/">The first working version of Yule</a> - <time>Sep 04, 2017</time>
+      </li>
+    
+    </ul>
 </div>
-	<div class="uk-background-primary">
-	<nav class="uk-container uk-container-small" uk-navbar>
-		<div class="uk-navbar-left">
-			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
-			<ul class="uk-navbar-nav uk-visible@m">	
-				
-					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
-				
-			</ul>
-		</div>
-		<div class="uk-navbar-right">
-			<ul class="uk-navbar-nav uk-visible@m">
-				
-					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
-				
-					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
-				
-			</ul>
-			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
-		</div>
-	</nav>
-</div>
-<div id="off-canvas-menu" uk-offcanvas="flip: true">
-	<div class="uk-offcanvas-bar">
-		<button class="uk-offcanvas-close" type="button" uk-close></button>
-		<ul class="uk-nav uk-nav-default">
-			
-				<li><a href="/tags/java">Java</a></li>
-			
-				<li><a href="/tags/python">Python</a></li>
-			
-				<li><a href="/tags/spring">Spring</a></li>
-			
-				<li><a href="/tags/">More...</a></li>
-			
-			
-				<li><a href="/about/">About</a></li>
-			
-				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
-			
-				<li><a href="https://github.com/piotr-rusin">Github</a></li>
-			
-		</ul>
-	</div>
-</div>
+
+	<footer><ul>
+    <li><span>&copy; 2016 - 2020 Piotr Rusin</li>
+    <li><a href="mailto:piotr.rusin88@gmail.com">Contact</a></li>
+    <li><a href="https://github.com/piotr-rusin">Github</a></li>
+</ul></footer>
 
 </body>
 </html>

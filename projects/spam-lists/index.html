@@ -7,71 +7,29 @@
 	<title>spam-lists</title>
 	
 	
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/css/uikit.min.css" />
+	<link rel="stylesheet" href="/css/watercss.light.css">
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="alternate" type="application/rss+xml" href="/projects/spam-lists/index.xml" title="Reusing the wheel">
 </head>
 <body>
-	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit-icons.min.js"></script>
-	<header class="main-header">
-		<div class="uk-background-primary">
-	<nav class="uk-container uk-container-small" uk-navbar>
-		<div class="uk-navbar-left">
-			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
-			<ul class="uk-navbar-nav uk-visible@m">	
-				
-					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
-				
-			</ul>
-		</div>
-		<div class="uk-navbar-right">
-			<ul class="uk-navbar-nav uk-visible@m">
-				
-					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
-				
-					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
-				
-			</ul>
-			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
-		</div>
-	</nav>
-</div>
-<div id="off-canvas-menu" uk-offcanvas="flip: true">
-	<div class="uk-offcanvas-bar">
-		<button class="uk-offcanvas-close" type="button" uk-close></button>
-		<ul class="uk-nav uk-nav-default">
-			
-				<li><a href="/tags/java">Java</a></li>
-			
-				<li><a href="/tags/python">Python</a></li>
-			
-				<li><a href="/tags/spring">Spring</a></li>
-			
-				<li><a href="/tags/">More...</a></li>
-			
-			
-				<li><a href="/about/">About</a></li>
-			
-				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
-			
-				<li><a href="https://github.com/piotr-rusin">Github</a></li>
-			
-		</ul>
-	</div>
-</div>
-
+	<header>
+		<nav class="nav">
+	
+	<a href="https://piotr-rusin.github.io">Reusing the wheel</a>
+	
+	<ul>
 		
-	<h1 class="uk-container uk-container-xsmall">
-    <a href="https://piotr-rusin.github.io/projects/spam-lists/" class="uk-link-heading">
+		<li><a class="uk-text-capitalize" href="/categories/">Categories</a></li>
+		
+		<li><a class="uk-text-capitalize" href="/tags/">Tags</a></li>
+		
+		<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+		
+	</ul>
+</nav>
+		
+	<h1>
+    <a href="https://piotr-rusin.github.io/projects/spam-lists/">
         
             spam-lists
         
@@ -79,176 +37,145 @@
 </h1>
 
 	</header>
-	<div class="uk-container uk-container-xsmall">
+	
 	<main>
 		<div><p>A library providing clients for services recognizing web addresses of spam sources (SURBL, Google Safe Browsing API, etc.) and classes of objects representing custom host lists. Supports Python 2.7.* and 3.4.*.</p>
 </div>
 		
-			<article class="uk-article">
+			<article>
 	<header>
-		<h2><a href="https://piotr-rusin.github.io/posts/2016-12-04-changes-in-url-shortener/" class="uk-link-heading">Changes in url-shortener</a></h2>
-		<p class="uk-article-meta">
+		<h2><a href="https://piotr-rusin.github.io/posts/2016-12-04-changes-in-url-shortener/">Changes in url-shortener</a></h2>
+		<p>
     <time>Dec 04, 2016</time> /
     
-    <a class="tag" href="/tags/database-migration">database-migration</a>
-    , <a class="tag" href="/tags/dependency-injection">dependency-injection</a>
-    , <a class="tag" href="/tags/front-end">front-end</a>
-    , <a class="tag" href="/tags/injector">injector</a>
-    , <a class="tag" href="/tags/python">python</a>
-    , <a class="tag" href="/tags/refactoring">refactoring</a>
-    , <a class="tag" href="/tags/responsive-web-design">responsive-web-design</a>
-    , <a class="tag" href="/tags/single-responsibility-principle">single-responsibility-principle</a>
-    , <a class="tag" href="/tags/sqlalchemy">sqlalchemy</a>
-    , <a class="tag" href="/tags/wtforms">wtforms</a>
+    <a href="/tags/database-migration">database-migration</a>
+    , <a href="/tags/dependency-injection">dependency-injection</a>
+    , <a href="/tags/front-end">front-end</a>
+    , <a href="/tags/injector">injector</a>
+    , <a href="/tags/python">python</a>
+    , <a href="/tags/refactoring">refactoring</a>
+    , <a href="/tags/responsive-web-design">responsive-web-design</a>
+    , <a href="/tags/single-responsibility-principle">single-responsibility-principle</a>
+    , <a href="/tags/sqlalchemy">sqlalchemy</a>
+    , <a href="/tags/wtforms">wtforms</a>
 </p>
 	</header>
-	<div>
-		<p><a href="/posts/2016-08-05-introducing-my-url-shortener/">When I introduced my URL shortener project</a>, I already had a working version and I thought I only needed to improve its front-end to be able to release the first stable version of the application. I also had some ideas for new features to be added to it.</p>
+	<p><a href="/posts/2016-08-05-introducing-my-url-shortener/">When I introduced my URL shortener project</a>, I already had a working version and I thought I only needed to improve its front-end to be able to release the first stable version of the application. I also had some ideas for new features to be added to it.</p>
 <p>However, the longer I looked at my code, the more room for improvements I saw. Although I ended up adding some new features, most of the changes I made since then were refactorizations, changes in design and architecture of the application and code style improvements.</p>
 <p>In this post, I’m going to describe some of them.</p>
-		
-			<a href="https://piotr-rusin.github.io/posts/2016-12-04-changes-in-url-shortener/">Read more...</a>
-		
-	</div>
+	
+		<a href="https://piotr-rusin.github.io/posts/2016-12-04-changes-in-url-shortener/">Read more...</a>
+	
 </article>
 
 		
-			<article class="uk-article">
+			<article>
 	<header>
-		<h2><a href="https://piotr-rusin.github.io/posts/2016-11-30-the-first-stable-release-of-spam-lists/" class="uk-link-heading">The first stable release of spam-lists</a></h2>
-		<p class="uk-article-meta">
+		<h2><a href="https://piotr-rusin.github.io/posts/2016-11-30-the-first-stable-release-of-spam-lists/">The first stable release of spam-lists</a></h2>
+		<p>
     <time>Nov 30, 2016</time> /
     
-    <a class="tag" href="/tags/python">python</a>
+    <a href="/tags/python">python</a>
 </p>
 	</header>
-	<div>
-		I released the first stable version of spam-lists. It can be downloaded from github or PyPI.
+	I released the first stable version of spam-lists. It can be downloaded from github or PyPI.
 In comparison to the version described in this post, the stable version contains some changes, mostly spelling error corrections and reformatting of docstrings. I have also changed the license of the project from Apache License 2.0 to MIT.
-		
-	</div>
+	
 </article>
 
 		
-			<article class="uk-article">
+			<article>
 	<header>
-		<h2><a href="https://piotr-rusin.github.io/posts/2016-08-05-introducing-my-url-shortener/" class="uk-link-heading">Introducing my URL shortener</a></h2>
-		<p class="uk-article-meta">
+		<h2><a href="https://piotr-rusin.github.io/posts/2016-08-05-introducing-my-url-shortener/">Introducing my URL shortener</a></h2>
+		<p>
     <time>Aug 05, 2016</time> /
     
-    <a class="tag" href="/tags/flask">flask</a>
-    , <a class="tag" href="/tags/python">python</a>
-    , <a class="tag" href="/tags/sqlalchemy">sqlalchemy</a>
-    , <a class="tag" href="/tags/wtforms">wtforms</a>
+    <a href="/tags/flask">flask</a>
+    , <a href="/tags/python">python</a>
+    , <a href="/tags/sqlalchemy">sqlalchemy</a>
+    , <a href="/tags/wtforms">wtforms</a>
 </p>
 	</header>
-	<div>
-		<p>URL addresses can be quite long, mainly because they often consist of path and query components, both containing a number of characters forming names of path segments and values of parameters (not necessarily meaningful to a human reader), or performing other functions. For that reason, they may be hard to type and memorize, or simply aesthetically unpleasing.</p>
+	<p>URL addresses can be quite long, mainly because they often consist of path and query components, both containing a number of characters forming names of path segments and values of parameters (not necessarily meaningful to a human reader), or performing other functions. For that reason, they may be hard to type and memorize, or simply aesthetically unpleasing.</p>
 <p>Because of that, URL shorteners were created. There are plenty of them already, so there is probably no reason to create yet another such application, perhaps with one exception: it seems like an interesting idea for a small programming project that could be later extended with other features. This is why I decided to create <a href="https://github.com/piotr-rusin/url-shortener">my own URL shortener</a>.</p>
-		
-			<a href="https://piotr-rusin.github.io/posts/2016-08-05-introducing-my-url-shortener/">Read more...</a>
-		
-	</div>
+	
+		<a href="https://piotr-rusin.github.io/posts/2016-08-05-introducing-my-url-shortener/">Read more...</a>
+	
 </article>
 
 		
-			<article class="uk-article">
+			<article>
 	<header>
-		<h2><a href="https://piotr-rusin.github.io/posts/2016-07-09-progress-in-development-of-spam-lists/" class="uk-link-heading">Progress in development of spam-lists</a></h2>
-		<p class="uk-article-meta">
+		<h2><a href="https://piotr-rusin.github.io/posts/2016-07-09-progress-in-development-of-spam-lists/">Progress in development of spam-lists</a></h2>
+		<p>
     <time>Jul 09, 2016</time> /
     
-    <a class="tag" href="/tags/python">python</a>
+    <a href="/tags/python">python</a>
 </p>
 	</header>
-	<div>
-		<p>Since the introduction of my spam-lists library on this blog, I made some progress in its development.</p>
+	<p>Since the introduction of my spam-lists library on this blog, I made some progress in its development.</p>
 <p>I reorganized the library a bit, changed the inheritance hierarchy of exception classes, fixed some errors and published the package on PyPI. In this post, I’m going to describe the changes and explain my reasoning behind them.</p>
-		
-			<a href="https://piotr-rusin.github.io/posts/2016-07-09-progress-in-development-of-spam-lists/">Read more...</a>
-		
-	</div>
+	
+		<a href="https://piotr-rusin.github.io/posts/2016-07-09-progress-in-development-of-spam-lists/">Read more...</a>
+	
 </article>
 
 		
-			<article class="uk-article">
+			<article>
 	<header>
-		<h2><a href="https://piotr-rusin.github.io/posts/2016-06-16-spam-lists-a-host-blacklistwhitelist-library/" class="uk-link-heading">Spam-lists – a host blacklist/whitelist library</a></h2>
-		<p class="uk-article-meta">
+		<h2><a href="https://piotr-rusin.github.io/posts/2016-06-16-spam-lists-a-host-blacklistwhitelist-library/">Spam-lists – a host blacklist/whitelist library</a></h2>
+		<p>
     <time>Jun 16, 2016</time> /
     
-    <a class="tag" href="/tags/python">python</a>
+    <a href="/tags/python">python</a>
 </p>
 	</header>
-	<div>
-		<p>The first project I would like to present on this blog is spam-lists (<a href="https://github.com/piotr-rusin/spam-lists">GitHub</a>): a library for querying custom and third party web address blacklists and whitelists.</p>
-		
-			<a href="https://piotr-rusin.github.io/posts/2016-06-16-spam-lists-a-host-blacklistwhitelist-library/">Read more...</a>
-		
-	</div>
+	<p>The first project I would like to present on this blog is spam-lists (<a href="https://github.com/piotr-rusin/spam-lists">GitHub</a>): a library for querying custom and third party web address blacklists and whitelists.</p>
+	
+		<a href="https://piotr-rusin.github.io/posts/2016-06-16-spam-lists-a-host-blacklistwhitelist-library/">Read more...</a>
+	
 </article>
 
 		
-		<div class="pagination">
-	
-	1 / 1
+		<div>
 	
 </div>
 	</main>
+
+	
+	<div>
+    <h2>Latest articles</h2>
+    <ul>
+    
+    
+      <li>
+        <a href="https://piotr-rusin.github.io/posts/2017-12-04-revisiting-my-blog-engine-project/">Revisiting my blog engine project</a> - <time>Dec 04, 2017</time>
+      </li>
+    
+      <li>
+        <a href="https://piotr-rusin.github.io/posts/2017-11-12-migrating-to-hugo-and-github-pages/">Migrating to Hugo and GitHub Pages</a> - <time>Nov 12, 2017</time>
+      </li>
+    
+      <li>
+        <a href="https://piotr-rusin.github.io/posts/2017-11-02-designing-a-plugin-system-for-base16-theme-switcher/">Designing a plugin system for base16-theme-switcher</a> - <time>Nov 02, 2017</time>
+      </li>
+    
+      <li>
+        <a href="https://piotr-rusin.github.io/posts/2017-10-22-a-new-project-base16-theme-switcher/">A new project: base16-theme-switcher</a> - <time>Oct 22, 2017</time>
+      </li>
+    
+      <li>
+        <a href="https://piotr-rusin.github.io/posts/2017-09-04-the-first-working-version-of-yule/">The first working version of Yule</a> - <time>Sep 04, 2017</time>
+      </li>
+    
+    </ul>
 </div>
-	<div class="uk-background-primary">
-	<nav class="uk-container uk-container-small" uk-navbar>
-		<div class="uk-navbar-left">
-			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
-			<ul class="uk-navbar-nav uk-visible@m">	
-				
-					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
-				
-			</ul>
-		</div>
-		<div class="uk-navbar-right">
-			<ul class="uk-navbar-nav uk-visible@m">
-				
-					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
-				
-					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
-				
-			</ul>
-			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
-		</div>
-	</nav>
-</div>
-<div id="off-canvas-menu" uk-offcanvas="flip: true">
-	<div class="uk-offcanvas-bar">
-		<button class="uk-offcanvas-close" type="button" uk-close></button>
-		<ul class="uk-nav uk-nav-default">
-			
-				<li><a href="/tags/java">Java</a></li>
-			
-				<li><a href="/tags/python">Python</a></li>
-			
-				<li><a href="/tags/spring">Spring</a></li>
-			
-				<li><a href="/tags/">More...</a></li>
-			
-			
-				<li><a href="/about/">About</a></li>
-			
-				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
-			
-				<li><a href="https://github.com/piotr-rusin">Github</a></li>
-			
-		</ul>
-	</div>
-</div>
+
+	<footer><ul>
+    <li><span>&copy; 2016 - 2020 Piotr Rusin</li>
+    <li><a href="mailto:piotr.rusin88@gmail.com">Contact</a></li>
+    <li><a href="https://github.com/piotr-rusin">Github</a></li>
+</ul></footer>
 
 </body>
 </html>

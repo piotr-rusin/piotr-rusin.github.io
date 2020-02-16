@@ -7,71 +7,29 @@
 	<title>Blog Engine</title>
 	
 	
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/css/uikit.min.css" />
+	<link rel="stylesheet" href="/css/watercss.light.css">
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="alternate" type="application/rss+xml" href="/projects/blog-engine/index.xml" title="Reusing the wheel">
 </head>
 <body>
-	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit-icons.min.js"></script>
-	<header class="main-header">
-		<div class="uk-background-primary">
-	<nav class="uk-container uk-container-small" uk-navbar>
-		<div class="uk-navbar-left">
-			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
-			<ul class="uk-navbar-nav uk-visible@m">	
-				
-					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
-				
-			</ul>
-		</div>
-		<div class="uk-navbar-right">
-			<ul class="uk-navbar-nav uk-visible@m">
-				
-					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
-				
-					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
-				
-			</ul>
-			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
-		</div>
-	</nav>
-</div>
-<div id="off-canvas-menu" uk-offcanvas="flip: true">
-	<div class="uk-offcanvas-bar">
-		<button class="uk-offcanvas-close" type="button" uk-close></button>
-		<ul class="uk-nav uk-nav-default">
-			
-				<li><a href="/tags/java">Java</a></li>
-			
-				<li><a href="/tags/python">Python</a></li>
-			
-				<li><a href="/tags/spring">Spring</a></li>
-			
-				<li><a href="/tags/">More...</a></li>
-			
-			
-				<li><a href="/about/">About</a></li>
-			
-				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
-			
-				<li><a href="https://github.com/piotr-rusin">Github</a></li>
-			
-		</ul>
-	</div>
-</div>
-
+	<header>
+		<nav class="nav">
+	
+	<a href="https://piotr-rusin.github.io">Reusing the wheel</a>
+	
+	<ul>
 		
-	<h1 class="uk-container uk-container-xsmall">
-    <a href="https://piotr-rusin.github.io/projects/blog-engine/" class="uk-link-heading">
+		<li><a class="uk-text-capitalize" href="/categories/">Categories</a></li>
+		
+		<li><a class="uk-text-capitalize" href="/tags/">Tags</a></li>
+		
+		<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+		
+	</ul>
+</nav>
+		
+	<h1>
+    <a href="https://piotr-rusin.github.io/projects/blog-engine/">
         
             Blog Engine
         
@@ -79,114 +37,89 @@
 </h1>
 
 	</header>
-	<div class="uk-container uk-container-xsmall">
+	
 	<main>
 		<div><p>A blog engine application written in PHP 5.3.* and based on Symfony 2.8.*.</p>
 </div>
 		
-			<article class="uk-article">
+			<article>
 	<header>
-		<h2><a href="https://piotr-rusin.github.io/posts/2017-05-16-a-new-blog-engine-project/" class="uk-link-heading">A new blog engine project</a></h2>
-		<p class="uk-article-meta">
+		<h2><a href="https://piotr-rusin.github.io/posts/2017-05-16-a-new-blog-engine-project/">A new blog engine project</a></h2>
+		<p>
     <time>May 16, 2017</time> /
     
-    <a class="tag" href="/tags/blog-engine">blog-engine</a>
-    , <a class="tag" href="/tags/hibernate">hibernate</a>
-    , <a class="tag" href="/tags/java">java</a>
-    , <a class="tag" href="/tags/java-bean-validation">java-bean-validation</a>
-    , <a class="tag" href="/tags/jpa">jpa</a>
-    , <a class="tag" href="/tags/spring">spring</a>
+    <a href="/tags/blog-engine">blog-engine</a>
+    , <a href="/tags/hibernate">hibernate</a>
+    , <a href="/tags/java">java</a>
+    , <a href="/tags/java-bean-validation">java-bean-validation</a>
+    , <a href="/tags/jpa">jpa</a>
+    , <a href="/tags/spring">spring</a>
 </p>
 	</header>
-	<div>
-		<p>In <a href="/posts/2016-12-06-a-php-symfony-blog-engine/">one of my previous posts</a> I described a blog engine I was developing. At the time, I had returned to it after a hiatus and I was convinced I would continue working on it. However, at the same time I was still more interested in developing my python-based <a href="/projects/url-shortener/">url-shortener project</a> and I also already planned moving on to other projects and technologies. As a result, I got bored of blog-engine again.</p>
+	<p>In <a href="/posts/2016-12-06-a-php-symfony-blog-engine/">one of my previous posts</a> I described a blog engine I was developing. At the time, I had returned to it after a hiatus and I was convinced I would continue working on it. However, at the same time I was still more interested in developing my python-based <a href="/projects/url-shortener/">url-shortener project</a> and I also already planned moving on to other projects and technologies. As a result, I got bored of blog-engine again.</p>
 <p>Since then, I’ve been focusing on Java and <a href="https://projects.spring.io/spring-framework/">Spring Framework</a>. This resulted in a new project: another blog engine, but this time based on Spring and designed with different features.</p>
-		
-			<a href="https://piotr-rusin.github.io/posts/2017-05-16-a-new-blog-engine-project/">Read more...</a>
-		
-	</div>
+	
+		<a href="https://piotr-rusin.github.io/posts/2017-05-16-a-new-blog-engine-project/">Read more...</a>
+	
 </article>
 
 		
-			<article class="uk-article">
+			<article>
 	<header>
-		<h2><a href="https://piotr-rusin.github.io/posts/2016-12-06-a-php-symfony-blog-engine/" class="uk-link-heading">A PHP/Symfony blog engine</a></h2>
-		<p class="uk-article-meta">
+		<h2><a href="https://piotr-rusin.github.io/posts/2016-12-06-a-php-symfony-blog-engine/">A PHP/Symfony blog engine</a></h2>
+		<p>
     <time>Dec 06, 2016</time> /
     
-    <a class="tag" href="/tags/php">php</a>
-    , <a class="tag" href="/tags/symfony">symfony</a>
+    <a href="/tags/php">php</a>
+    , <a href="/tags/symfony">symfony</a>
 </p>
 	</header>
-	<div>
-		<p>A few months ago I started a blog engine project based on <a href="https://symfony.com/">Symfony framework</a>. I’ve been adding things and making changes to it from time to time. Since August, I took a longer break in its development because I wanted to focus on other things, but now I’m returning to the project.</p>
-		
-			<a href="https://piotr-rusin.github.io/posts/2016-12-06-a-php-symfony-blog-engine/">Read more...</a>
-		
-	</div>
+	<p>A few months ago I started a blog engine project based on <a href="https://symfony.com/">Symfony framework</a>. I’ve been adding things and making changes to it from time to time. Since August, I took a longer break in its development because I wanted to focus on other things, but now I’m returning to the project.</p>
+	
+		<a href="https://piotr-rusin.github.io/posts/2016-12-06-a-php-symfony-blog-engine/">Read more...</a>
+	
 </article>
 
 		
-		<div class="pagination">
-	
-	1 / 1
+		<div>
 	
 </div>
 	</main>
+
+	
+	<div>
+    <h2>Latest articles</h2>
+    <ul>
+    
+    
+      <li>
+        <a href="https://piotr-rusin.github.io/posts/2017-12-04-revisiting-my-blog-engine-project/">Revisiting my blog engine project</a> - <time>Dec 04, 2017</time>
+      </li>
+    
+      <li>
+        <a href="https://piotr-rusin.github.io/posts/2017-11-12-migrating-to-hugo-and-github-pages/">Migrating to Hugo and GitHub Pages</a> - <time>Nov 12, 2017</time>
+      </li>
+    
+      <li>
+        <a href="https://piotr-rusin.github.io/posts/2017-11-02-designing-a-plugin-system-for-base16-theme-switcher/">Designing a plugin system for base16-theme-switcher</a> - <time>Nov 02, 2017</time>
+      </li>
+    
+      <li>
+        <a href="https://piotr-rusin.github.io/posts/2017-10-22-a-new-project-base16-theme-switcher/">A new project: base16-theme-switcher</a> - <time>Oct 22, 2017</time>
+      </li>
+    
+      <li>
+        <a href="https://piotr-rusin.github.io/posts/2017-09-04-the-first-working-version-of-yule/">The first working version of Yule</a> - <time>Sep 04, 2017</time>
+      </li>
+    
+    </ul>
 </div>
-	<div class="uk-background-primary">
-	<nav class="uk-container uk-container-small" uk-navbar>
-		<div class="uk-navbar-left">
-			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
-			<ul class="uk-navbar-nav uk-visible@m">	
-				
-					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
-				
-			</ul>
-		</div>
-		<div class="uk-navbar-right">
-			<ul class="uk-navbar-nav uk-visible@m">
-				
-					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
-				
-					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
-				
-			</ul>
-			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
-		</div>
-	</nav>
-</div>
-<div id="off-canvas-menu" uk-offcanvas="flip: true">
-	<div class="uk-offcanvas-bar">
-		<button class="uk-offcanvas-close" type="button" uk-close></button>
-		<ul class="uk-nav uk-nav-default">
-			
-				<li><a href="/tags/java">Java</a></li>
-			
-				<li><a href="/tags/python">Python</a></li>
-			
-				<li><a href="/tags/spring">Spring</a></li>
-			
-				<li><a href="/tags/">More...</a></li>
-			
-			
-				<li><a href="/about/">About</a></li>
-			
-				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
-			
-				<li><a href="https://github.com/piotr-rusin">Github</a></li>
-			
-		</ul>
-	</div>
-</div>
+
+	<footer><ul>
+    <li><span>&copy; 2016 - 2020 Piotr Rusin</li>
+    <li><a href="mailto:piotr.rusin88@gmail.com">Contact</a></li>
+    <li><a href="https://github.com/piotr-rusin">Github</a></li>
+</ul></footer>
 
 </body>
 </html>

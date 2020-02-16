@@ -7,103 +7,61 @@
 	<title>Migrating to Hugo and GitHub Pages</title>
 	
 	
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/css/uikit.min.css" />
+	<link rel="stylesheet" href="/css/watercss.light.css">
 	<link rel="stylesheet" href="/css/style.css">
 	
 </head>
 <body>
-	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/uikit@3.2.7/dist/js/uikit-icons.min.js"></script>
-	<header class="main-header">
-		<div class="uk-background-primary">
-	<nav class="uk-container uk-container-small" uk-navbar>
-		<div class="uk-navbar-left">
-			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
-			<ul class="uk-navbar-nav uk-visible@m">	
-				
-					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
-				
-			</ul>
-		</div>
-		<div class="uk-navbar-right">
-			<ul class="uk-navbar-nav uk-visible@m">
-				
-					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
-				
-					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
-				
-			</ul>
-			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
-		</div>
-	</nav>
-</div>
-<div id="off-canvas-menu" uk-offcanvas="flip: true">
-	<div class="uk-offcanvas-bar">
-		<button class="uk-offcanvas-close" type="button" uk-close></button>
-		<ul class="uk-nav uk-nav-default">
-			
-				<li><a href="/tags/java">Java</a></li>
-			
-				<li><a href="/tags/python">Python</a></li>
-			
-				<li><a href="/tags/spring">Spring</a></li>
-			
-				<li><a href="/tags/">More...</a></li>
-			
-			
-				<li><a href="/about/">About</a></li>
-			
-				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
-			
-				<li><a href="https://github.com/piotr-rusin">Github</a></li>
-			
-		</ul>
-	</div>
-</div>
-
+	<header>
+		<nav class="nav">
+	
+	<a href="https://piotr-rusin.github.io">Reusing the wheel</a>
+	
+	<ul>
+		
+		<li><a class="uk-text-capitalize" href="/categories/">Categories</a></li>
+		
+		<li><a class="uk-text-capitalize" href="/tags/">Tags</a></li>
+		
+		<li><a class="uk-text-capitalize" href="/about/">About</a></li>
+		
+	</ul>
+</nav>
 		
 		
 	</header>
-	<div class="uk-container uk-container-xsmall">
+	
 	<main>
-		<article class="uk-article">
-			<header class="main-article-header">
-				<h1><a href="https://piotr-rusin.github.io/posts/2017-11-12-migrating-to-hugo-and-github-pages/" class="uk-link-heading">Migrating to Hugo and GitHub Pages</a></h1>
-				<p class="uk-article-meta">
+		<article>
+			<header>
+				<h1><a href="https://piotr-rusin.github.io/posts/2017-11-12-migrating-to-hugo-and-github-pages/">Migrating to Hugo and GitHub Pages</a></h1>
+				<p>
     <time>Nov 12, 2017</time> /
     
-    <a class="tag" href="/tags/disqus">disqus</a>
-    , <a class="tag" href="/tags/hugo">hugo</a>
-    , <a class="tag" href="/tags/jekyll">jekyll</a>
-    , <a class="tag" href="/tags/pelican">pelican</a>
-    , <a class="tag" href="/tags/static-website-generator">static-website-generator</a>
+    <a href="/tags/disqus">disqus</a>
+    , <a href="/tags/hugo">hugo</a>
+    , <a href="/tags/jekyll">jekyll</a>
+    , <a href="/tags/pelican">pelican</a>
+    , <a href="/tags/static-website-generator">static-website-generator</a>
 </p>
 			</header>
 			<div>
-				<p>I wanted to have greater control over my blog, so I've been thinking about moving it to a self-hosted WordPress installation. In the end, I decided to migrate from WordPress to a static blog generated with <a href="https://gohugo.io/">Hugo</a> and hosted on <a href="https://pages.github.com/">GitHub Pages</a>. This post will be the last one posted on <a href="https://reusingthewheel.wordpress.com/">reusingthewheel.wordpress.com</a> - the future ones will be posted on <a href="https://piotr-rusin.github.io">piotr-rusin.github.io</a>.</p>
+				<p>I wanted to have greater control over my blog, so I&rsquo;ve been thinking about moving it to a self-hosted WordPress installation. In the end, I decided to migrate from WordPress to a static blog generated with <a href="https://gohugo.io/">Hugo</a> and hosted on <a href="https://pages.github.com/">GitHub Pages</a>. This post will be the last one posted on <a href="https://reusingthewheel.wordpress.com/">reusingthewheel.wordpress.com</a> - the future ones will be posted on <a href="https://piotr-rusin.github.io">piotr-rusin.github.io</a>.</p>
 <h2 id="why-a-static-website-generator">Why a static website generator?</h2>
 <p>I like the convenience of writing content (including tags, categories and other metadata) in markdown, in my editor of choice, saving it to a file and running a few console commands to rebuild my website and send updates to a server. Static website generators, combined with a couple of Git repositories (<a href="https://github.com/piotr-rusin/reusingthewheel">one</a> for templates and content and <a href="https://github.com/piotr-rusin/piotr-rusin.github.io">the other</a> for generated static website) and a GitHub account allow me to enjoy it.</p>
 <p>Another reason for my choice is that static HTML files can be hosted anywhere, with minimal to no setup. I can even get a reliable, efficient and ad-free hosting for free.</p>
 <p>Although no HTML is generated server-side, static website generators still use web templating systems, with all their advantages, like separating data from presentation, allowing me to easily update or replace the latter without having to deal with too much repetitiveness in template code.</p>
 <p>Finally, there are security and performance concerns regarding WordPress and other dynamic website engines and web applications (but especially WordPress, judging from both its reputation and popularity). Their complexity and reliance on storing data in database introduce both a potential for bugs that may allow unauthorized access to sensitive data and an overhead in handling HTTP requests. Using a static website generator allows me to avoid these issues without effort.</p>
 <h2 id="user-interactions-and-contributions">User interactions and contributions</h2>
-<p>I'm the only author of this blog and I don't plan to change that. However, I want potential readers to be able to post comments below my posts, and it's obviously impossible without a server side application for managing comments and data of their authors. Luckily, there are third party comment systems like <a href="https://disqus.com/">Disqus</a> or <a href="https://www.discourse.org/">Discourse</a>. One's website needs only to contain a piece of JavaScript code responsible for communicating with a server of such a system and presenting comments, so it can be easily integrated with a static website. When I was still planning to move to a self-hosted WordPress installation, I was going to use such a system anyway, mainly because I didn't want to force my readers to register on yet another website if they wanted to both comment and use a persistent account for that.</p>
+<p>I&rsquo;m the only author of this blog and I don&rsquo;t plan to change that. However, I want potential readers to be able to post comments below my posts, and it&rsquo;s obviously impossible without a server side application for managing comments and data of their authors. Luckily, there are third party comment systems like <a href="https://disqus.com/">Disqus</a> or <a href="https://www.discourse.org/">Discourse</a>. One&rsquo;s website needs only to contain a piece of JavaScript code responsible for communicating with a server of such a system and presenting comments, so it can be easily integrated with a static website. When I was still planning to move to a self-hosted WordPress installation, I was going to use such a system anyway, mainly because I didn&rsquo;t want to force my readers to register on yet another website if they wanted to both comment and use a persistent account for that.</p>
 <h2 id="choosing-the-right-tool">Choosing the right tool</h2>
-<p>I must admit I didn't do a lot of research before making the choice. I only considered <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/getpelican/pelican">Pelican</a> and Hugo, and I chose the latter for:</p>
+<p>I must admit I didn&rsquo;t do a lot of research before making the choice. I only considered <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://github.com/getpelican/pelican">Pelican</a> and Hugo, and I chose the latter for:</p>
 <ul>
-<li>its relative popularity - it's second (after Jekyll) according to data presented on <a href="https://www.staticgen.com/">StaticGen</a></li>
+<li>its relative popularity - it&rsquo;s second (after Jekyll) according to data presented on <a href="https://www.staticgen.com/">StaticGen</a></li>
 <li>ease of setup - unlike Jekyll and Pelican, Hugo is distributed as a static binary, ready to be put and executed anywhere</li>
 <li>speed - rebuilding even large websites is said to be much faster than in case of Jekyll</li>
 </ul>
-<p>After downloading Hugo, trying it out and using it to do a test migration of my blog, I decided I didn't need to look further.</p>
+<p>After downloading Hugo, trying it out and using it to do a test migration of my blog, I decided I didn&rsquo;t need to look further.</p>
 			</div>
 			<div>
 				<div id="disqus_thread"></div>
@@ -127,62 +85,46 @@
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 			</div>
+			
+
+
 		</article>
 	</main>
+
+	
+	<div>
+    <h2>Latest articles</h2>
+    <ul>
+    
+    
+      <li>
+        <a href="https://piotr-rusin.github.io/posts/2017-12-04-revisiting-my-blog-engine-project/">Revisiting my blog engine project</a> - <time>Dec 04, 2017</time>
+      </li>
+    
+      <li>
+        <a href="https://piotr-rusin.github.io/posts/2017-11-12-migrating-to-hugo-and-github-pages/">Migrating to Hugo and GitHub Pages</a> - <time>Nov 12, 2017</time>
+      </li>
+    
+      <li>
+        <a href="https://piotr-rusin.github.io/posts/2017-11-02-designing-a-plugin-system-for-base16-theme-switcher/">Designing a plugin system for base16-theme-switcher</a> - <time>Nov 02, 2017</time>
+      </li>
+    
+      <li>
+        <a href="https://piotr-rusin.github.io/posts/2017-10-22-a-new-project-base16-theme-switcher/">A new project: base16-theme-switcher</a> - <time>Oct 22, 2017</time>
+      </li>
+    
+      <li>
+        <a href="https://piotr-rusin.github.io/posts/2017-09-04-the-first-working-version-of-yule/">The first working version of Yule</a> - <time>Sep 04, 2017</time>
+      </li>
+    
+    </ul>
 </div>
-	<div class="uk-background-primary">
-	<nav class="uk-container uk-container-small" uk-navbar>
-		<div class="uk-navbar-left">
-			<a href="https://piotr-rusin.github.io" class="uk-navbar-item">R t w</a>
-			<ul class="uk-navbar-nav uk-visible@m">	
-				
-					<li><a class="uk-text-capitalize" href="/tags/java">Java</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/tags/python">Python</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/tags/spring">Spring</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/tags/">More...</a></li>
-				
-			</ul>
-		</div>
-		<div class="uk-navbar-right">
-			<ul class="uk-navbar-nav uk-visible@m">
-				
-					<li><a class="uk-text-capitalize" href="/about/">About</a></li>
-				
-					<li><a class="uk-text-capitalize" href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
-				
-					<li><a class="uk-text-capitalize" href="https://github.com/piotr-rusin">Github</a></li>
-				
-			</ul>
-			<a href="#off-canvas-menu" class="uk-navbar-item uk-hidden@m" uk-toggle>Off canvas</a>
-		</div>
-	</nav>
-</div>
-<div id="off-canvas-menu" uk-offcanvas="flip: true">
-	<div class="uk-offcanvas-bar">
-		<button class="uk-offcanvas-close" type="button" uk-close></button>
-		<ul class="uk-nav uk-nav-default">
-			
-				<li><a href="/tags/java">Java</a></li>
-			
-				<li><a href="/tags/python">Python</a></li>
-			
-				<li><a href="/tags/spring">Spring</a></li>
-			
-				<li><a href="/tags/">More...</a></li>
-			
-			
-				<li><a href="/about/">About</a></li>
-			
-				<li><a href="/mailto:piotr.rusin88@gmail.com">Contact</a></li>
-			
-				<li><a href="https://github.com/piotr-rusin">Github</a></li>
-			
-		</ul>
-	</div>
-</div>
+
+	<footer><ul>
+    <li><span>&copy; 2016 - 2020 Piotr Rusin</li>
+    <li><a href="mailto:piotr.rusin88@gmail.com">Contact</a></li>
+    <li><a href="https://github.com/piotr-rusin">Github</a></li>
+</ul></footer>
 
 </body>
 </html>
