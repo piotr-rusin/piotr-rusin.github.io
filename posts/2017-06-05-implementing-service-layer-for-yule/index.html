@@ -1,55 +1,66 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Implementing service layer for Yule</title>
-	
-	
-	<link rel="stylesheet" href="/css/watercss.light.css">
-	<link rel="stylesheet" href="/css/style.css">
-	
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.65.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Implementing service layer for Yule &middot; Reusing the wheel</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
 </head>
-<body>
-	<header>
-		<nav class="nav">
-	
-	<a href="https://piotr-rusin.github.io">Reusing the wheel</a>
-	
-	<ul>
-		
-		<li><a class="uk-text-capitalize" href="/categories/">Categories</a></li>
-		
-		<li><a class="uk-text-capitalize" href="/tags/">Tags</a></li>
-		
-		<li><a class="uk-text-capitalize" href="/about/">About</a></li>
-		
-	</ul>
-</nav>
-		
-		
-	</header>
-	
-	<main>
-		<article>
-			<header>
-				<h1><a href="https://piotr-rusin.github.io/posts/2017-06-05-implementing-service-layer-for-yule/">Implementing service layer for Yule</a></h1>
-				<p>
-    <time>Jun 05, 2017</time> /
-    
-    <a href="/tags/dependency-injection">dependency-injection</a>
-    , <a href="/tags/integration-testing">integration-testing</a>
-    , <a href="/tags/java">java</a>
-    , <a href="/tags/jpa">jpa</a>
-    , <a href="/tags/maven">maven</a>
-    , <a href="/tags/spring">spring</a>
-    , <a href="/tags/testing">testing</a>
-    , <a href="/tags/unit-testing">unit-testing</a>
-</p>
-			</header>
-			<div>
-				<p>Since my <a href="/posts/2017-05-16-a-new-blog-engine-project/">introductory post on Yule</a>, I’ve been doing some work on the project. I’ve implemented an automatic article publication feature as a part of service layer and I added some methods used by it to the repository layer of my project.</p>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+
+      
+      <p class="lead">
+        Posted in
+          <a href="https://piotr-rusin.github.io/categories/development/">"Development"</a> on
+      </ul>
+      </p>
+      
+      <a href="https://piotr-rusin.github.io"><h1>Reusing the wheel</h1></a>
+      <p class="lead">
+       A blog about programming 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://piotr-rusin.github.io">Home</a> </li>
+        <li><a href="/categories/"> Categories </a></li><li><a href="/tags/"> Tags </a></li><li><a href="/about/"> About </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Implementing service layer for Yule</h1>
+  <time datetime=2017-06-05T09:17:41Z class="post-date">Mon, Jun 5, 2017</time>
+  <p>Since my <a href="/posts/2017-05-16-a-new-blog-engine-project/">introductory post on Yule</a>, I’ve been doing some work on the project. I’ve implemented an automatic article publication feature as a part of service layer and I added some methods used by it to the repository layer of my project.</p>
 <p>This post covers these changes and some problems I encountered during testing.</p>
 <h2 id="repository-layer">Repository layer</h2>
 <p>Although in the previous post I promised the next one would be about the service layer, and <a href="https://stackoverflow.com/questions/22963352/difference-between-repository-and-service-layer">repositories constitute their own layer</a>, I decided to cover it here as I didn’t do it before. Plus, the repository layer is used by the service layer, and will also be used by the controllers, so it needs to be touched upon.</p>
@@ -121,9 +132,10 @@ ch.qos.logback.classic.joran.JoranConfigurator
 <li>I decided the article manager class did too little to warrant its existence</li>
 </ul>
 <p>As for other operations that will be parts of the business logic of my application: I also decided to implement them first in controllers. This way, I will separate two tasks: implementing features and refactoring their code into separate service layer components, and I will be able to complete them in separate steps.</p>
-			</div>
-			<div>
-				<div id="disqus_thread"></div>
+</div>
+
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -143,62 +155,21 @@ ch.qos.logback.classic.joran.JoranConfigurator
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-			</div>
-			
+    </main>
 
-
-<div>
-    <h2>Related articles</h2>
-    <ul>
     
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-05-16-a-new-blog-engine-project/">A new blog engine project</a> - <time>May 16, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2016-12-04-changes-in-url-shortener/">Changes in url-shortener</a> - <time>Dec 04, 2016</time>
-      </li>
-    
-    </ul>
-</div>
-
-		</article>
-	</main>
-
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-109495807-1', 'auto');
 	
-	<div>
-    <h2>Latest articles</h2>
-    <ul>
-    
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-12-04-revisiting-my-blog-engine-project/">Revisiting my blog engine project</a> - <time>Dec 04, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-11-12-migrating-to-hugo-and-github-pages/">Migrating to Hugo and GitHub Pages</a> - <time>Nov 12, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-11-02-designing-a-plugin-system-for-base16-theme-switcher/">Designing a plugin system for base16-theme-switcher</a> - <time>Nov 02, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-10-22-a-new-project-base16-theme-switcher/">A new project: base16-theme-switcher</a> - <time>Oct 22, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-09-04-the-first-working-version-of-yule/">The first working version of Yule</a> - <time>Sep 04, 2017</time>
-      </li>
-    
-    </ul>
-</div>
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
-	<footer><ul>
-    <li><span>&copy; 2016 - 2020 Piotr Rusin</li>
-    <li><a href="mailto:piotr.rusin88@gmail.com">Contact</a></li>
-    <li><a href="https://github.com/piotr-rusin">Github</a></li>
-</ul></footer>
-
-</body>
+    
+  </body>
 </html>

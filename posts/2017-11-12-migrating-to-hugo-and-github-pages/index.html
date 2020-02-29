@@ -1,52 +1,66 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Migrating to Hugo and GitHub Pages</title>
-	
-	
-	<link rel="stylesheet" href="/css/watercss.light.css">
-	<link rel="stylesheet" href="/css/style.css">
-	
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.65.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Migrating to Hugo and GitHub Pages &middot; Reusing the wheel</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
 </head>
-<body>
-	<header>
-		<nav class="nav">
-	
-	<a href="https://piotr-rusin.github.io">Reusing the wheel</a>
-	
-	<ul>
-		
-		<li><a class="uk-text-capitalize" href="/categories/">Categories</a></li>
-		
-		<li><a class="uk-text-capitalize" href="/tags/">Tags</a></li>
-		
-		<li><a class="uk-text-capitalize" href="/about/">About</a></li>
-		
-	</ul>
-</nav>
-		
-		
-	</header>
-	
-	<main>
-		<article>
-			<header>
-				<h1><a href="https://piotr-rusin.github.io/posts/2017-11-12-migrating-to-hugo-and-github-pages/">Migrating to Hugo and GitHub Pages</a></h1>
-				<p>
-    <time>Nov 12, 2017</time> /
-    
-    <a href="/tags/disqus">disqus</a>
-    , <a href="/tags/hugo">hugo</a>
-    , <a href="/tags/jekyll">jekyll</a>
-    , <a href="/tags/pelican">pelican</a>
-    , <a href="/tags/static-website-generator">static-website-generator</a>
-</p>
-			</header>
-			<div>
-				<p>I wanted to have greater control over my blog, so I&rsquo;ve been thinking about moving it to a self-hosted WordPress installation. In the end, I decided to migrate from WordPress to a static blog generated with <a href="https://gohugo.io/">Hugo</a> and hosted on <a href="https://pages.github.com/">GitHub Pages</a>. This post will be the last one posted on <a href="https://reusingthewheel.wordpress.com/">reusingthewheel.wordpress.com</a> - the future ones will be posted on <a href="https://piotr-rusin.github.io">piotr-rusin.github.io</a>.</p>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+
+      
+      <p class="lead">
+        Posted in
+          <a href="https://piotr-rusin.github.io/categories/blog/">"Blog"</a> on
+      </ul>
+      </p>
+      
+      <a href="https://piotr-rusin.github.io"><h1>Reusing the wheel</h1></a>
+      <p class="lead">
+       A blog about programming 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://piotr-rusin.github.io">Home</a> </li>
+        <li><a href="/categories/"> Categories </a></li><li><a href="/tags/"> Tags </a></li><li><a href="/about/"> About </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Migrating to Hugo and GitHub Pages</h1>
+  <time datetime=2017-11-12T16:43:40&#43;0100 class="post-date">Sun, Nov 12, 2017</time>
+  <p>I wanted to have greater control over my blog, so I&rsquo;ve been thinking about moving it to a self-hosted WordPress installation. In the end, I decided to migrate from WordPress to a static blog generated with <a href="https://gohugo.io/">Hugo</a> and hosted on <a href="https://pages.github.com/">GitHub Pages</a>. This post will be the last one posted on <a href="https://reusingthewheel.wordpress.com/">reusingthewheel.wordpress.com</a> - the future ones will be posted on <a href="https://piotr-rusin.github.io">piotr-rusin.github.io</a>.</p>
 <h2 id="why-a-static-website-generator">Why a static website generator?</h2>
 <p>I like the convenience of writing content (including tags, categories and other metadata) in markdown, in my editor of choice, saving it to a file and running a few console commands to rebuild my website and send updates to a server. Static website generators, combined with a couple of Git repositories (<a href="https://github.com/piotr-rusin/reusingthewheel">one</a> for templates and content and <a href="https://github.com/piotr-rusin/piotr-rusin.github.io">the other</a> for generated static website) and a GitHub account allow me to enjoy it.</p>
 <p>Another reason for my choice is that static HTML files can be hosted anywhere, with minimal to no setup. I can even get a reliable, efficient and ad-free hosting for free.</p>
@@ -62,9 +76,10 @@
 <li>speed - rebuilding even large websites is said to be much faster than in case of Jekyll</li>
 </ul>
 <p>After downloading Hugo, trying it out and using it to do a test migration of my blog, I decided I didn&rsquo;t need to look further.</p>
-			</div>
-			<div>
-				<div id="disqus_thread"></div>
+</div>
+
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -84,47 +99,21 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-			</div>
-			
+    </main>
 
-
-		</article>
-	</main>
-
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-109495807-1', 'auto');
 	
-	<div>
-    <h2>Latest articles</h2>
-    <ul>
-    
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-12-04-revisiting-my-blog-engine-project/">Revisiting my blog engine project</a> - <time>Dec 04, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-11-12-migrating-to-hugo-and-github-pages/">Migrating to Hugo and GitHub Pages</a> - <time>Nov 12, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-11-02-designing-a-plugin-system-for-base16-theme-switcher/">Designing a plugin system for base16-theme-switcher</a> - <time>Nov 02, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-10-22-a-new-project-base16-theme-switcher/">A new project: base16-theme-switcher</a> - <time>Oct 22, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-09-04-the-first-working-version-of-yule/">The first working version of Yule</a> - <time>Sep 04, 2017</time>
-      </li>
-    
-    </ul>
-</div>
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
-	<footer><ul>
-    <li><span>&copy; 2016 - 2020 Piotr Rusin</li>
-    <li><a href="mailto:piotr.rusin88@gmail.com">Contact</a></li>
-    <li><a href="https://github.com/piotr-rusin">Github</a></li>
-</ul></footer>
-
-</body>
+    
+  </body>
 </html>

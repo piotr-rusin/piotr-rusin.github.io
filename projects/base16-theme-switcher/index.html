@@ -1,127 +1,97 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>base16-theme-switcher</title>
-	
-	
-	<link rel="stylesheet" href="/css/watercss.light.css">
-	<link rel="stylesheet" href="/css/style.css">
-	<link rel="alternate" type="application/rss+xml" href="/projects/base16-theme-switcher/index.xml" title="Reusing the wheel">
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.65.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>base16-theme-switcher &middot; Reusing the wheel</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="https://piotr-rusin.github.io/projects/base16-theme-switcher/index.xml" rel="alternate" type="application/rss+xml" title="Reusing the wheel" />
+  
 </head>
-<body>
-	<header>
-		<nav class="nav">
-	
-	<a href="https://piotr-rusin.github.io">Reusing the wheel</a>
-	
-	<ul>
-		
-		<li><a class="uk-text-capitalize" href="/categories/">Categories</a></li>
-		
-		<li><a class="uk-text-capitalize" href="/tags/">Tags</a></li>
-		
-		<li><a class="uk-text-capitalize" href="/about/">About</a></li>
-		
-	</ul>
-</nav>
-		
-	<h1>
-    <a href="https://piotr-rusin.github.io/projects/base16-theme-switcher/">
-        
-            base16-theme-switcher
-        
-    </a>
-</h1>
 
-	</header>
-	
-	<main>
-		<div><p>A tool for setting base16 color themes for various applications, using themes from <a href="https://github.com/chriskempson/base16-xresources">base16-xresources</a> project. Supports applications configurable through .Xresources configuration file and provides a plugin API for adding theme-selection menu and extending support to applications that don&rsquo;t use .Xresources.</p>
-</div>
-		
-			<article>
-	<header>
-		<h2><a href="https://piotr-rusin.github.io/posts/2017-11-02-designing-a-plugin-system-for-base16-theme-switcher/">Designing a plugin system for base16-theme-switcher</a></h2>
-		<p>
-    <time>Nov 02, 2017</time> /
-    
-    <a href="/tags/api">api</a>
-    , <a href="/tags/bash">bash</a>
-    , <a href="/tags/configuration">configuration</a>
-    , <a href="/tags/linux">linux</a>
-    , <a href="/tags/plugin-system">plugin-system</a>
-    , <a href="/tags/plugins">plugins</a>
-    , <a href="/tags/python">python</a>
-</p>
-	</header>
-	<p>I’ve been working on a plugin system for my <a href="https://github.com/piotr-rusin/base16-theme-switcher">theme switcher project</a>, and I think now it’s the time to introduce it here and describe my rationale behind its design.</p>
-	
-		<a href="https://piotr-rusin.github.io/posts/2017-11-02-designing-a-plugin-system-for-base16-theme-switcher/">Read more...</a>
-	
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+
+      
+      <a href="https://piotr-rusin.github.io"><h1>Reusing the wheel</h1></a>
+      <p class="lead">
+       A blog about programming 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://piotr-rusin.github.io">Home</a> </li>
+        <li><a href="/categories/"> Categories </a></li><li><a href="/tags/"> Tags </a></li><li><a href="/about/"> About </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="posts">
+<article class="post">
+  <h1 class="post-title">
+    <a href="https://piotr-rusin.github.io/posts/2017-11-02-designing-a-plugin-system-for-base16-theme-switcher/">Designing a plugin system for base16-theme-switcher</a>
+  </h1>
+  <time datetime="2017-11-02T09:22:29Z" class="post-date">Thu, Nov 2, 2017</time>
+  <p>I’ve been working on a plugin system for my <a href="https://github.com/piotr-rusin/base16-theme-switcher">theme switcher project</a>, and I think now it’s the time to introduce it here and describe my rationale behind its design.</p>
+  
+  <div class="read-more-link">
+    <a href="/posts/2017-11-02-designing-a-plugin-system-for-base16-theme-switcher/">Read More…</a>
+  </div>
+  
+</article><article class="post">
+  <h1 class="post-title">
+    <a href="https://piotr-rusin.github.io/posts/2017-10-22-a-new-project-base16-theme-switcher/">A new project: base16-theme-switcher</a>
+  </h1>
+  <time datetime="2017-10-22T14:39:20Z" class="post-date">Sun, Oct 22, 2017</time>
+  <p>Configurability and availability of multiple desktop environments and window managers are some of the things I like about using Linux-based operating systems. In recent months I gradually migrated from using full-fledged desktop environments like <a href="https://en.wikipedia.org/wiki/Cinnamon_(software)">Cinnamon</a> and <a href="https://xfce.org/">Xfce</a> to using <a href="https://i3wm.org/">i3wm</a> in combination with <a href="https://wiki.archlinux.org/index.php/rxvt-unicode">urxvt</a>, <a href="https://dunst-project.org/">dunst</a> and other applications commonly used with light window managers. While experimenting with their configuration, I discovered <a href="https://chriskempson.github.io/base16/">base16</a> and its derivative: <a href="https://github.com/chriskempson/base16-xresources">base16-xresources</a> – projects providing color schemes for syntax highlighting and application theming, each based on 16 colors.</p>
+  
+  <div class="read-more-link">
+    <a href="/posts/2017-10-22-a-new-project-base16-theme-switcher/">Read More…</a>
+  </div>
+  
 </article>
-
-		
-			<article>
-	<header>
-		<h2><a href="https://piotr-rusin.github.io/posts/2017-10-22-a-new-project-base16-theme-switcher/">A new project: base16-theme-switcher</a></h2>
-		<p>
-    <time>Oct 22, 2017</time> /
-    
-    <a href="/tags/bash">bash</a>
-    , <a href="/tags/configuration">configuration</a>
-    , <a href="/tags/linux">linux</a>
-    , <a href="/tags/python">python</a>
-</p>
-	</header>
-	<p>Configurability and availability of multiple desktop environments and window managers are some of the things I like about using Linux-based operating systems. In recent months I gradually migrated from using full-fledged desktop environments like <a href="https://en.wikipedia.org/wiki/Cinnamon_(software)">Cinnamon</a> and <a href="https://xfce.org/">Xfce</a> to using <a href="https://i3wm.org/">i3wm</a> in combination with <a href="https://wiki.archlinux.org/index.php/rxvt-unicode">urxvt</a>, <a href="https://dunst-project.org/">dunst</a> and other applications commonly used with light window managers. While experimenting with their configuration, I discovered <a href="https://chriskempson.github.io/base16/">base16</a> and its derivative: <a href="https://github.com/chriskempson/base16-xresources">base16-xresources</a> – projects providing color schemes for syntax highlighting and application theming, each based on 16 colors.</p>
-	
-		<a href="https://piotr-rusin.github.io/posts/2017-10-22-a-new-project-base16-theme-switcher/">Read more...</a>
-	
-</article>
-
-		
-		<div>
-	
 </div>
-	</main>
+    </main>
 
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-109495807-1', 'auto');
 	
-	<div>
-    <h2>Latest articles</h2>
-    <ul>
-    
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-12-04-revisiting-my-blog-engine-project/">Revisiting my blog engine project</a> - <time>Dec 04, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-11-12-migrating-to-hugo-and-github-pages/">Migrating to Hugo and GitHub Pages</a> - <time>Nov 12, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-11-02-designing-a-plugin-system-for-base16-theme-switcher/">Designing a plugin system for base16-theme-switcher</a> - <time>Nov 02, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-10-22-a-new-project-base16-theme-switcher/">A new project: base16-theme-switcher</a> - <time>Oct 22, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-09-04-the-first-working-version-of-yule/">The first working version of Yule</a> - <time>Sep 04, 2017</time>
-      </li>
-    
-    </ul>
-</div>
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
-	<footer><ul>
-    <li><span>&copy; 2016 - 2020 Piotr Rusin</li>
-    <li><a href="mailto:piotr.rusin88@gmail.com">Contact</a></li>
-    <li><a href="https://github.com/piotr-rusin">Github</a></li>
-</ul></footer>
-
-</body>
+    
+  </body>
 </html>

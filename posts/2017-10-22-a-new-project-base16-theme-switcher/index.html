@@ -1,51 +1,66 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>A new project: base16-theme-switcher</title>
-	
-	
-	<link rel="stylesheet" href="/css/watercss.light.css">
-	<link rel="stylesheet" href="/css/style.css">
-	
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.65.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>A new project: base16-theme-switcher &middot; Reusing the wheel</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
 </head>
-<body>
-	<header>
-		<nav class="nav">
-	
-	<a href="https://piotr-rusin.github.io">Reusing the wheel</a>
-	
-	<ul>
-		
-		<li><a class="uk-text-capitalize" href="/categories/">Categories</a></li>
-		
-		<li><a class="uk-text-capitalize" href="/tags/">Tags</a></li>
-		
-		<li><a class="uk-text-capitalize" href="/about/">About</a></li>
-		
-	</ul>
-</nav>
-		
-		
-	</header>
-	
-	<main>
-		<article>
-			<header>
-				<h1><a href="https://piotr-rusin.github.io/posts/2017-10-22-a-new-project-base16-theme-switcher/">A new project: base16-theme-switcher</a></h1>
-				<p>
-    <time>Oct 22, 2017</time> /
-    
-    <a href="/tags/bash">bash</a>
-    , <a href="/tags/configuration">configuration</a>
-    , <a href="/tags/linux">linux</a>
-    , <a href="/tags/python">python</a>
-</p>
-			</header>
-			<div>
-				<p>Configurability and availability of multiple desktop environments and window managers are some of the things I like about using Linux-based operating systems. In recent months I gradually migrated from using full-fledged desktop environments like <a href="https://en.wikipedia.org/wiki/Cinnamon_(software)">Cinnamon</a> and <a href="https://xfce.org/">Xfce</a> to using <a href="https://i3wm.org/">i3wm</a> in combination with <a href="https://wiki.archlinux.org/index.php/rxvt-unicode">urxvt</a>, <a href="https://dunst-project.org/">dunst</a> and other applications commonly used with light window managers. While experimenting with their configuration, I discovered <a href="https://chriskempson.github.io/base16/">base16</a> and its derivative: <a href="https://github.com/chriskempson/base16-xresources">base16-xresources</a> – projects providing color schemes for syntax highlighting and application theming, each based on 16 colors.</p>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+
+      
+      <p class="lead">
+        Posted in
+          <a href="https://piotr-rusin.github.io/categories/development/">"Development"</a> on
+      </ul>
+      </p>
+      
+      <a href="https://piotr-rusin.github.io"><h1>Reusing the wheel</h1></a>
+      <p class="lead">
+       A blog about programming 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://piotr-rusin.github.io">Home</a> </li>
+        <li><a href="/categories/"> Categories </a></li><li><a href="/tags/"> Tags </a></li><li><a href="/about/"> About </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>A new project: base16-theme-switcher</h1>
+  <time datetime=2017-10-22T14:39:20Z class="post-date">Sun, Oct 22, 2017</time>
+  <p>Configurability and availability of multiple desktop environments and window managers are some of the things I like about using Linux-based operating systems. In recent months I gradually migrated from using full-fledged desktop environments like <a href="https://en.wikipedia.org/wiki/Cinnamon_(software)">Cinnamon</a> and <a href="https://xfce.org/">Xfce</a> to using <a href="https://i3wm.org/">i3wm</a> in combination with <a href="https://wiki.archlinux.org/index.php/rxvt-unicode">urxvt</a>, <a href="https://dunst-project.org/">dunst</a> and other applications commonly used with light window managers. While experimenting with their configuration, I discovered <a href="https://chriskempson.github.io/base16/">base16</a> and its derivative: <a href="https://github.com/chriskempson/base16-xresources">base16-xresources</a> – projects providing color schemes for syntax highlighting and application theming, each based on 16 colors.</p>
 <h2 id="theme-switching-commands">Theme-switching commands</h2>
 <p>To easily test its constituent color themes, I implemented <a href="https://github.com/piotr-rusin/dotfiles/blob/5beebb4ab2371aec4e34ff3043cd6c3573e8ae42/.zshrc#L103">a few bash functions</a> in my <a href="https://github.com/piotr-rusin/dotfiles">dotfiles</a> project. Their task was to allow me to switch color schemes for a few applications I’ve been using by simply running a console command.</p>
 <p>The script finds all files with .Xresources extension under a specific directory for storing the color themes and generates a command performing a set of actions for each theme. The actions are:</p>
@@ -60,9 +75,10 @@
 <p>I decided to extend my theme switcher with proper error handling and support for choosing themes from a menu. I also decided to handle its increasing complexity by switching to object oriented programming and moving the code to a <a href="https://github.com/piotr-rusin/base16-theme-switcher">separate project</a>. At first I wanted to continue with bash, partly because I could keep using existing code and partly because I felt like OOP in bash was an interesting challenge, but soon I changed my mind – I decided I prefer the convenience of a language with a large, general purpose standard library and a built-in support of OOP, so I switched to Python.</p>
 <p>The application is all about configuring color themes for other applications, and it maintains its own configuration, too, so naturally its most basic parts are the functions and classes related to handling configs. They are all implemented and documented in <a href="https://github.com/piotr-rusin/base16-theme-switcher/blob/4071e28e8afb4cc92736fc9db7ba0f10f3bc163c/base16_theme_switcher/config_structures.py"><code>config_structures</code> module</a>, so I’m not going to describe them here.</p>
 <p>In future posts, I’d like to describe the plugin system I designed for the application and how it will handle themes and theme changes.</p>
-			</div>
-			<div>
-				<div id="disqus_thread"></div>
+</div>
+
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -82,74 +98,21 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-			</div>
-			
+    </main>
 
-
-<div>
-    <h2>Related articles</h2>
-    <ul>
     
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2016-12-31-url-shortener-a-demo-and-more-refactoring/">Url-shortener: a demo and more refactoring</a> - <time>Dec 31, 2016</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2016-12-04-changes-in-url-shortener/">Changes in url-shortener</a> - <time>Dec 04, 2016</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2016-11-30-the-first-stable-release-of-spam-lists/">The first stable release of spam-lists</a> - <time>Nov 30, 2016</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2016-08-05-introducing-my-url-shortener/">Introducing my URL shortener</a> - <time>Aug 05, 2016</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2016-07-09-progress-in-development-of-spam-lists/">Progress in development of spam-lists</a> - <time>Jul 09, 2016</time>
-      </li>
-    
-    </ul>
-</div>
-
-		</article>
-	</main>
-
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-109495807-1', 'auto');
 	
-	<div>
-    <h2>Latest articles</h2>
-    <ul>
-    
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-12-04-revisiting-my-blog-engine-project/">Revisiting my blog engine project</a> - <time>Dec 04, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-11-12-migrating-to-hugo-and-github-pages/">Migrating to Hugo and GitHub Pages</a> - <time>Nov 12, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-11-02-designing-a-plugin-system-for-base16-theme-switcher/">Designing a plugin system for base16-theme-switcher</a> - <time>Nov 02, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-10-22-a-new-project-base16-theme-switcher/">A new project: base16-theme-switcher</a> - <time>Oct 22, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-09-04-the-first-working-version-of-yule/">The first working version of Yule</a> - <time>Sep 04, 2017</time>
-      </li>
-    
-    </ul>
-</div>
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
-	<footer><ul>
-    <li><span>&copy; 2016 - 2020 Piotr Rusin</li>
-    <li><a href="mailto:piotr.rusin88@gmail.com">Contact</a></li>
-    <li><a href="https://github.com/piotr-rusin">Github</a></li>
-</ul></footer>
-
-</body>
+    
+  </body>
 </html>

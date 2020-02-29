@@ -1,49 +1,66 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>A PHP/Symfony blog engine</title>
-	
-	
-	<link rel="stylesheet" href="/css/watercss.light.css">
-	<link rel="stylesheet" href="/css/style.css">
-	
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.65.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>A PHP/Symfony blog engine &middot; Reusing the wheel</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
 </head>
-<body>
-	<header>
-		<nav class="nav">
-	
-	<a href="https://piotr-rusin.github.io">Reusing the wheel</a>
-	
-	<ul>
-		
-		<li><a class="uk-text-capitalize" href="/categories/">Categories</a></li>
-		
-		<li><a class="uk-text-capitalize" href="/tags/">Tags</a></li>
-		
-		<li><a class="uk-text-capitalize" href="/about/">About</a></li>
-		
-	</ul>
-</nav>
-		
-		
-	</header>
-	
-	<main>
-		<article>
-			<header>
-				<h1><a href="https://piotr-rusin.github.io/posts/2016-12-06-a-php-symfony-blog-engine/">A PHP/Symfony blog engine</a></h1>
-				<p>
-    <time>Dec 06, 2016</time> /
-    
-    <a href="/tags/php">php</a>
-    , <a href="/tags/symfony">symfony</a>
-</p>
-			</header>
-			<div>
-				<p>A few months ago I started a blog engine project based on <a href="https://symfony.com/">Symfony framework</a>. I’ve been adding things and making changes to it from time to time. Since August, I took a longer break in its development because I wanted to focus on other things, but now I’m returning to the project.</p>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+
+      
+      <p class="lead">
+        Posted in
+          <a href="https://piotr-rusin.github.io/categories/development/">"Development"</a> on
+      </ul>
+      </p>
+      
+      <a href="https://piotr-rusin.github.io"><h1>Reusing the wheel</h1></a>
+      <p class="lead">
+       A blog about programming 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://piotr-rusin.github.io">Home</a> </li>
+        <li><a href="/categories/"> Categories </a></li><li><a href="/tags/"> Tags </a></li><li><a href="/about/"> About </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>A PHP/Symfony blog engine</h1>
+  <time datetime=2016-12-06T13:33:10Z class="post-date">Tue, Dec 6, 2016</time>
+  <p>A few months ago I started a blog engine project based on <a href="https://symfony.com/">Symfony framework</a>. I’ve been adding things and making changes to it from time to time. Since August, I took a longer break in its development because I wanted to focus on other things, but now I’m returning to the project.</p>
 <h2 id="articles">Articles</h2>
 <p>The core feature of each blogging software is the ability to manage and publish articles or blog posts. Each of them should obviously have a title and content.</p>
 <p>It is also useful for an article to have a slug that represents it in URL addresses. It will generally be based on the title of an article, but it’s good to be able to replace a generated slug with a custom value so that it would be shorter or work better with search engines.</p>
@@ -102,9 +119,10 @@
 <li>adding controller classes and implementing methods for handling HTTP requests</li>
 </ul>
 <p>However, there are some decisions I made soon after starting the project which I’m now reconsidering – particularly ones related to the user role hierarchy. I will explain everything in the next article about the project, once I decide on possible changes.</p>
-			</div>
-			<div>
-				<div id="disqus_thread"></div>
+</div>
+
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -124,47 +142,21 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-			</div>
-			
+    </main>
 
-
-		</article>
-	</main>
-
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-109495807-1', 'auto');
 	
-	<div>
-    <h2>Latest articles</h2>
-    <ul>
-    
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-12-04-revisiting-my-blog-engine-project/">Revisiting my blog engine project</a> - <time>Dec 04, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-11-12-migrating-to-hugo-and-github-pages/">Migrating to Hugo and GitHub Pages</a> - <time>Nov 12, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-11-02-designing-a-plugin-system-for-base16-theme-switcher/">Designing a plugin system for base16-theme-switcher</a> - <time>Nov 02, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-10-22-a-new-project-base16-theme-switcher/">A new project: base16-theme-switcher</a> - <time>Oct 22, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-09-04-the-first-working-version-of-yule/">The first working version of Yule</a> - <time>Sep 04, 2017</time>
-      </li>
-    
-    </ul>
-</div>
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
-	<footer><ul>
-    <li><span>&copy; 2016 - 2020 Piotr Rusin</li>
-    <li><a href="mailto:piotr.rusin88@gmail.com">Contact</a></li>
-    <li><a href="https://github.com/piotr-rusin">Github</a></li>
-</ul></footer>
-
-</body>
+    
+  </body>
 </html>

@@ -17,7 +17,7 @@
       <pubDate>Mon, 04 Dec 2017 14:38:10 +0100</pubDate>
       
       <guid>https://piotr-rusin.github.io/projects/yule/</guid>
-      <description>a Spring-based blog engine with schedulable auto-publishing mechanism</description>
+      <description></description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Thu, 02 Nov 2017 09:22:29 +0000</pubDate>
       
       <guid>https://piotr-rusin.github.io/projects/base16-theme-switcher/</guid>
-      <description>A tool for setting base16 color themes for various applications, using themes from base16-xresources project. Supports applications configurable through .Xresources configuration file and provides a plugin API for adding theme-selection menu and extending support to applications that don&amp;rsquo;t use .Xresources.</description>
+      <description></description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Tue, 16 May 2017 10:59:50 +0000</pubDate>
       
       <guid>https://piotr-rusin.github.io/projects/blog-engine/</guid>
-      <description>A blog engine application written in PHP 5.3.* and based on Symfony 2.8.*.</description>
+      <description></description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       <pubDate>Sat, 31 Dec 2016 16:13:22 +0000</pubDate>
       
       <guid>https://piotr-rusin.github.io/projects/url-shortener/</guid>
-      <description>a URL shortener with spam-protection mechanisms</description>
+      <description></description>
     </item>
     
     <item>
@@ -53,7 +53,7 @@
       <pubDate>Sun, 04 Dec 2016 16:09:24 +0000</pubDate>
       
       <guid>https://piotr-rusin.github.io/projects/spam-lists/</guid>
-      <description>a set of tools for filtering spam URLs</description>
+      <description></description>
     </item>
     
   </channel>

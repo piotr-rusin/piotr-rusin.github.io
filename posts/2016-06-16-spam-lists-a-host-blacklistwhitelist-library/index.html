@@ -1,48 +1,66 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Spam-lists – a host blacklist/whitelist library</title>
-	
-	
-	<link rel="stylesheet" href="/css/watercss.light.css">
-	<link rel="stylesheet" href="/css/style.css">
-	
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.65.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Spam-lists – a host blacklist/whitelist library &middot; Reusing the wheel</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
 </head>
-<body>
-	<header>
-		<nav class="nav">
-	
-	<a href="https://piotr-rusin.github.io">Reusing the wheel</a>
-	
-	<ul>
-		
-		<li><a class="uk-text-capitalize" href="/categories/">Categories</a></li>
-		
-		<li><a class="uk-text-capitalize" href="/tags/">Tags</a></li>
-		
-		<li><a class="uk-text-capitalize" href="/about/">About</a></li>
-		
-	</ul>
-</nav>
-		
-		
-	</header>
-	
-	<main>
-		<article>
-			<header>
-				<h1><a href="https://piotr-rusin.github.io/posts/2016-06-16-spam-lists-a-host-blacklistwhitelist-library/">Spam-lists – a host blacklist/whitelist library</a></h1>
-				<p>
-    <time>Jun 16, 2016</time> /
-    
-    <a href="/tags/python">python</a>
-</p>
-			</header>
-			<div>
-				<p>The first project I would like to present on this blog is spam-lists (<a href="https://github.com/piotr-rusin/spam-lists">GitHub</a>): a library for querying custom and third party web address blacklists and whitelists.</p>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+
+      
+      <p class="lead">
+        Posted in
+          <a href="https://piotr-rusin.github.io/categories/development/">"Development"</a> on
+      </ul>
+      </p>
+      
+      <a href="https://piotr-rusin.github.io"><h1>Reusing the wheel</h1></a>
+      <p class="lead">
+       A blog about programming 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://piotr-rusin.github.io">Home</a> </li>
+        <li><a href="/categories/"> Categories </a></li><li><a href="/tags/"> Tags </a></li><li><a href="/about/"> About </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Spam-lists – a host blacklist/whitelist library</h1>
+  <time datetime=2016-06-16T15:59:43Z class="post-date">Thu, Jun 16, 2016</time>
+  <p>The first project I would like to present on this blog is spam-lists (<a href="https://github.com/piotr-rusin/spam-lists">GitHub</a>): a library for querying custom and third party web address blacklists and whitelists.</p>
 <p>The first service supported by the project is <a href="http://www.surbl.org/">SURBL</a> – a DNSBL service listing spam hostnames and IP addresses. DNSBLs are queried by performing DNS queries for a domain consisting of the queried value (or a value derived from it, in case of IP addresses) and a proper suffix associated with the service.</p>
 <p>An item is resolved as non-spam if the result of query is NXDOMAIN. If the query returns an IP address, the item is listed – and the IP address can contain additional information, like classification of the item. In case of SURBL, this information is encoded in the last octet of ip address, as a sum of numbers associated with classifications.</p>
 <p>Two other DNSBL services supported by my project are <a href="https://www.spamhaus.org/zen/">Spamhaus ZEN</a> – a list combining a few other lists from Spamhaus, listing different types of malicious IP addresses, and <a href="https://www.spamhaus.org/dbl/">Spamhaus DBL</a> – a blacklist containing hostnames. Queries to these lists also return classification information, but not in the same way as SURBL – here, each possible final octet of returned IP address is associated with a classification value, and always represents membership in a single sublist.</p>
@@ -54,9 +72,10 @@
 <p>Writing the library took much more time and effort than I thought it would, partially because I was making frequent changes to its design, although at first I was convinced my intial project was good enough. For example, the classes responsible for querying host blacklists were not going to contain methods for testing URLs, but instead their instances would be used as dependencies of an instance of a class implementing these methods. However, I decided eventually that it would be better to provide each class of a host-list client with URL-testing methods, and create separate classes (<code>spam_lists.utils.UrlTesterChain</code>, and also <code>spam_lists.utils.GeneralizedUrlTester</code>) with a responsibility of combining multiple clients.</p>
 <p>The library also contains a package with unit and integration tests. Its inclusion was one of the reasons for the development taking more time and effort, because it was the first time I added automated tests to a project. Before that, the closest I got to unit testing was just reading about the topic and writing some unit tests using PHPUnit, just to learn something about it and see how it works. It probably should not be surprising I could not write my tests right at first, even if they passed. I put a lot of effort into refactoring them, for example: by making them parameterized with the help of <a href="https://pypi.python.org/pypi/nose-parameterized/">nose-parameterized library</a>. I am sure I could still improve the quality of code and organization of <code>spam_lists.test</code> package, but I also know I learned a lot. Automatic testing proved extremely helpful during development of the library, and I am already using it for my other new projects.</p>
 <p>I am going to continue developing this project by improving quality of its code, adding and improving features and fixing errors. Eventually, I would like to publish it on <a href="https://pypi.python.org/pypi">PyPI</a>.</p>
-			</div>
-			<div>
-				<div id="disqus_thread"></div>
+</div>
+
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -76,47 +95,21 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-			</div>
-			
+    </main>
 
-
-		</article>
-	</main>
-
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-109495807-1', 'auto');
 	
-	<div>
-    <h2>Latest articles</h2>
-    <ul>
-    
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-12-04-revisiting-my-blog-engine-project/">Revisiting my blog engine project</a> - <time>Dec 04, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-11-12-migrating-to-hugo-and-github-pages/">Migrating to Hugo and GitHub Pages</a> - <time>Nov 12, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-11-02-designing-a-plugin-system-for-base16-theme-switcher/">Designing a plugin system for base16-theme-switcher</a> - <time>Nov 02, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-10-22-a-new-project-base16-theme-switcher/">A new project: base16-theme-switcher</a> - <time>Oct 22, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-09-04-the-first-working-version-of-yule/">The first working version of Yule</a> - <time>Sep 04, 2017</time>
-      </li>
-    
-    </ul>
-</div>
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
-	<footer><ul>
-    <li><span>&copy; 2016 - 2020 Piotr Rusin</li>
-    <li><a href="mailto:piotr.rusin88@gmail.com">Contact</a></li>
-    <li><a href="https://github.com/piotr-rusin">Github</a></li>
-</ul></footer>
-
-</body>
+    
+  </body>
 </html>

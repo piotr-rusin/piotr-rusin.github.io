@@ -1,53 +1,66 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>A new blog engine project</title>
-	
-	
-	<link rel="stylesheet" href="/css/watercss.light.css">
-	<link rel="stylesheet" href="/css/style.css">
-	
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.65.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>A new blog engine project &middot; Reusing the wheel</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
 </head>
-<body>
-	<header>
-		<nav class="nav">
-	
-	<a href="https://piotr-rusin.github.io">Reusing the wheel</a>
-	
-	<ul>
-		
-		<li><a class="uk-text-capitalize" href="/categories/">Categories</a></li>
-		
-		<li><a class="uk-text-capitalize" href="/tags/">Tags</a></li>
-		
-		<li><a class="uk-text-capitalize" href="/about/">About</a></li>
-		
-	</ul>
-</nav>
-		
-		
-	</header>
-	
-	<main>
-		<article>
-			<header>
-				<h1><a href="https://piotr-rusin.github.io/posts/2017-05-16-a-new-blog-engine-project/">A new blog engine project</a></h1>
-				<p>
-    <time>May 16, 2017</time> /
-    
-    <a href="/tags/blog-engine">blog-engine</a>
-    , <a href="/tags/hibernate">hibernate</a>
-    , <a href="/tags/java">java</a>
-    , <a href="/tags/java-bean-validation">java-bean-validation</a>
-    , <a href="/tags/jpa">jpa</a>
-    , <a href="/tags/spring">spring</a>
-</p>
-			</header>
-			<div>
-				<p>In <a href="/posts/2016-12-06-a-php-symfony-blog-engine/">one of my previous posts</a> I described a blog engine I was developing. At the time, I had returned to it after a hiatus and I was convinced I would continue working on it. However, at the same time I was still more interested in developing my python-based <a href="/projects/url-shortener/">url-shortener project</a> and I also already planned moving on to other projects and technologies. As a result, I got bored of blog-engine again.</p>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+
+      
+      <p class="lead">
+        Posted in
+          <a href="https://piotr-rusin.github.io/categories/development/">"Development"</a> on
+      </ul>
+      </p>
+      
+      <a href="https://piotr-rusin.github.io"><h1>Reusing the wheel</h1></a>
+      <p class="lead">
+       A blog about programming 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://piotr-rusin.github.io">Home</a> </li>
+        <li><a href="/categories/"> Categories </a></li><li><a href="/tags/"> Tags </a></li><li><a href="/about/"> About </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>A new blog engine project</h1>
+  <time datetime=2017-05-16T10:59:50Z class="post-date">Tue, May 16, 2017</time>
+  <p>In <a href="/posts/2016-12-06-a-php-symfony-blog-engine/">one of my previous posts</a> I described a blog engine I was developing. At the time, I had returned to it after a hiatus and I was convinced I would continue working on it. However, at the same time I was still more interested in developing my python-based <a href="https://piotr-rusin.github.io/projects/url-shortener/">url-shortener project</a> and I also already planned moving on to other projects and technologies. As a result, I got bored of blog-engine again.</p>
 <p>Since then, I’ve been focusing on Java and <a href="https://projects.spring.io/spring-framework/">Spring Framework</a>. This resulted in a new project: another blog engine, but this time based on Spring and designed with different features.</p>
 <h2 id="ideas-and-features">Ideas and features</h2>
 <p>I decided this blog engine will be simpler than the previous one (at least initially) and will have the following features:</p>
@@ -75,9 +88,10 @@
 <p>The <code>Article</code> class has a <a href="https://github.com/piotr-rusin/yule/blob/8482b99fedf89311bb9a59f4503be260d67eeac7/src/main/java/com/github/piotr_rusin/yule/domain/Article.java#L278"><code>getViolatedStatusConstraints()</code></a> method validating constraints provided by the current status of an article and returning those constraints that aren’t fulfilled by it. This method <a href="https://github.com/piotr-rusin/yule/blob/8482b99fedf89311bb9a59f4503be260d67eeac7/src/main/java/com/github/piotr_rusin/yule/validation/StatusConstraintValidator.java#L52">is called</a> by my custom constraint validator class. Objects representing violated status constraints are returned by the method and then are used by the validator to <a href="https://github.com/piotr-rusin/yule/blob/8482b99fedf89311bb9a59f4503be260d67eeac7/src/main/java/com/github/piotr_rusin/yule/validation/StatusConstraintValidator.java#L56">build constraint violations</a>, assigning proper error messages to fields for which the constraints were violated.</p>
 <p>The validator class is used by my custom constraint annotation: <a href="https://github.com/piotr-rusin/yule/blob/8482b99fedf89311bb9a59f4503be260d67eeac7/src/main/java/com/github/piotr_rusin/yule/validation/StatusConstraintsFulfilled.java#L48"><code>StatusConstraintsFulfilled</code></a>, which is <a href="https://github.com/piotr-rusin/yule/blob/8482b99fedf89311bb9a59f4503be260d67eeac7/src/main/java/com/github/piotr_rusin/yule/domain/Article.java#L59">applied</a> to the <code>Article</code> class.</p>
 <p>I think that’s enough for this post. In the next one, I will describe the service layer of the project.</p>
-			</div>
-			<div>
-				<div id="disqus_thread"></div>
+</div>
+
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -97,47 +111,21 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-			</div>
-			
+    </main>
 
-
-		</article>
-	</main>
-
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-109495807-1', 'auto');
 	
-	<div>
-    <h2>Latest articles</h2>
-    <ul>
-    
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-12-04-revisiting-my-blog-engine-project/">Revisiting my blog engine project</a> - <time>Dec 04, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-11-12-migrating-to-hugo-and-github-pages/">Migrating to Hugo and GitHub Pages</a> - <time>Nov 12, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-11-02-designing-a-plugin-system-for-base16-theme-switcher/">Designing a plugin system for base16-theme-switcher</a> - <time>Nov 02, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-10-22-a-new-project-base16-theme-switcher/">A new project: base16-theme-switcher</a> - <time>Oct 22, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-09-04-the-first-working-version-of-yule/">The first working version of Yule</a> - <time>Sep 04, 2017</time>
-      </li>
-    
-    </ul>
-</div>
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
-	<footer><ul>
-    <li><span>&copy; 2016 - 2020 Piotr Rusin</li>
-    <li><a href="mailto:piotr.rusin88@gmail.com">Contact</a></li>
-    <li><a href="https://github.com/piotr-rusin">Github</a></li>
-</ul></footer>
-
-</body>
+    
+  </body>
 </html>

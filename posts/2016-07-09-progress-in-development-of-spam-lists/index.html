@@ -1,48 +1,66 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Progress in development of spam-lists</title>
-	
-	
-	<link rel="stylesheet" href="/css/watercss.light.css">
-	<link rel="stylesheet" href="/css/style.css">
-	
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.65.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Progress in development of spam-lists &middot; Reusing the wheel</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
 </head>
-<body>
-	<header>
-		<nav class="nav">
-	
-	<a href="https://piotr-rusin.github.io">Reusing the wheel</a>
-	
-	<ul>
-		
-		<li><a class="uk-text-capitalize" href="/categories/">Categories</a></li>
-		
-		<li><a class="uk-text-capitalize" href="/tags/">Tags</a></li>
-		
-		<li><a class="uk-text-capitalize" href="/about/">About</a></li>
-		
-	</ul>
-</nav>
-		
-		
-	</header>
-	
-	<main>
-		<article>
-			<header>
-				<h1><a href="https://piotr-rusin.github.io/posts/2016-07-09-progress-in-development-of-spam-lists/">Progress in development of spam-lists</a></h1>
-				<p>
-    <time>Jul 09, 2016</time> /
-    
-    <a href="/tags/python">python</a>
-</p>
-			</header>
-			<div>
-				<p>Since the introduction of my spam-lists library on this blog, I made some progress in its development.</p>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+
+      
+      <p class="lead">
+        Posted in
+          <a href="https://piotr-rusin.github.io/categories/development/">"Development"</a> on
+      </ul>
+      </p>
+      
+      <a href="https://piotr-rusin.github.io"><h1>Reusing the wheel</h1></a>
+      <p class="lead">
+       A blog about programming 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://piotr-rusin.github.io">Home</a> </li>
+        <li><a href="/categories/"> Categories </a></li><li><a href="/tags/"> Tags </a></li><li><a href="/about/"> About </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Progress in development of spam-lists</h1>
+  <time datetime=2016-07-09T19:19:49Z class="post-date">Sat, Jul 9, 2016</time>
+  <p>Since the introduction of my spam-lists library on this blog, I made some progress in its development.</p>
 <p>I reorganized the library a bit, changed the inheritance hierarchy of exception classes, fixed some errors and published the package on PyPI. In this post, I’m going to describe the changes and explain my reasoning behind them.</p>
 <h2 id="splitting-spam_listsservice_models-module">Splitting spam_lists.service_models module</h2>
 <p>The <code>spam_lists.service_models</code> module contained two groups of classes:</p>
@@ -78,15 +96,15 @@
 <p>At some moment, I decided to replace inheritance with composition for these classes. Instances of my own host object classes were going to store and use instances of the dependency classes in their value attribute. I was already planning to introduce a custom host list class that would utilize sorting, and for that, my host classes needed to implement <code>__lt__(other)</code> method (responsible for overloading “&lt;” comparison operator), and with the change of their relationship to the third-party classes, they could no longer use their implementations of the method directly. I had to implement it myself, and I did it for the <code>IPAddress</code> class (a base class for both of my ip address classes), but I forgot about it when modifying the <code>Hostname</code> class. I realized it only after writing my first blog post, and I fixed the omission by introducing <code>Host</code>: a common base class for <code>Hostname</code> and <code>IPAddress</code>, and moving <code>__lt__(other)</code> method from <code>IPAddress</code> class to it. I also added unit tests for this method for all of my host object classes, not only for those extending <code>IPAddress</code> class.</p>
 <p>At this moment, the code of the method looked like this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> __lt__(self, other):
-    <span style="color:#00f"></span><span style="color:#00f">&#39;&#39;&#39;</span><span style="color:#00f"> Check if the other is smaller</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">    This method is necessary for sorting and search</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">    algorithms using bisect_right. It handles TypeError</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">    by returning NotImplemented</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f"></span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">    :param other: a value to be compared</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">    :returns: result of comparison as implemented in base</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">        classes, or NotImplemented</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">    </span><span style="color:#00f">&#39;&#39;&#39;</span>
+    <span style="color:#00f">&#39;&#39;&#39; Check if the other is smaller
+</span><span style="color:#00f">    This method is necessary for sorting and search
+</span><span style="color:#00f">    algorithms using bisect_right. It handles TypeError
+</span><span style="color:#00f">    by returning NotImplemented
+</span><span style="color:#00f">
+</span><span style="color:#00f">    :param other: a value to be compared
+</span><span style="color:#00f">    :returns: result of comparison as implemented in base
+</span><span style="color:#00f">        classes, or NotImplemented
+</span><span style="color:#00f">    &#39;&#39;&#39;</span>
     <span style="color:#000080;font-weight:bold">try</span>:
         <span style="color:#000080;font-weight:bold">return</span> self.value &lt; other
     <span style="color:#000080;font-weight:bold">except</span> TypeError:
@@ -100,18 +118,18 @@
 <p>As you can see in the code, my method handled <code>TypeError</code> raised by the comparison operation by returning <code>NotImplemented</code> constant. It means that my rich comparsion method could not handle comparison for some combinations of versions of the Python interpreter and types of the objects being compared.</p>
 <p>I fixed this compatibility error by modifying the code like this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> __lt__(self, other):
-    <span style="color:#00f"></span><span style="color:#00f">&#39;&#39;&#39;</span><span style="color:#00f"> Check if the other is smaller.</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f"></span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">    This method is necessary for sorting and search</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">    algorithms using bisect_right.</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f"></span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">    :param other: a value to be compared</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">    :returns: result of comparison between value attributes of</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">        both this object and the other, or of comparison between</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">        their unicode string representations.</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">        In case of the other not having necessary attributes,</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">        NotImplemented constant is returned.</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">    </span><span style="color:#00f">&#39;&#39;&#39;</span>
+    <span style="color:#00f">&#39;&#39;&#39; Check if the other is smaller.
+</span><span style="color:#00f">
+</span><span style="color:#00f">    This method is necessary for sorting and search
+</span><span style="color:#00f">    algorithms using bisect_right.
+</span><span style="color:#00f">
+</span><span style="color:#00f">    :param other: a value to be compared
+</span><span style="color:#00f">    :returns: result of comparison between value attributes of
+</span><span style="color:#00f">        both this object and the other, or of comparison between
+</span><span style="color:#00f">        their unicode string representations.
+</span><span style="color:#00f">        In case of the other not having necessary attributes,
+</span><span style="color:#00f">        NotImplemented constant is returned.
+</span><span style="color:#00f">    &#39;&#39;&#39;</span>
     <span style="color:#000080;font-weight:bold">try</span>:
         <span style="color:#000080;font-weight:bold">try</span>:
             <span style="color:#000080;font-weight:bold">return</span> self.value &lt; other.value
@@ -123,19 +141,19 @@
 <p>Returning <code>NotImplemented</code> constant in response to an <code>AttributeError</code> being raised also resulted in inconsistent behaviour of my method in different Python versions. Because of this, I had to modify the code again to fix this inconsistency.</p>
 <p>I also noticed the docstring of my method was misleading, because its first line sounded like the method was responsible for “other &lt; self” comparison, not “self &lt; other”. I fixed it, too, and the current code of the method looks like this:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000080;font-weight:bold">def</span> __lt__(self, other):
-    <span style="color:#00f"></span><span style="color:#00f">&#39;&#39;&#39;</span><span style="color:#00f"> Check if self is less than the other</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f"></span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">    This method is necessary for sorting and search</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">    algorithms using bisect_right.</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f"></span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">    :param other: a value to be compared</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">    :returns: result of comparison between value</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">        attributes of both this object and the other,</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">        or of comparison between their unicode string</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">        representations.</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">    :raises TypeError: in case of the other not having</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">        either value or to_unicode attributes.</span><span style="color:#00f">
-</span><span style="color:#00f"></span><span style="color:#00f">    </span><span style="color:#00f">&#39;&#39;&#39;</span>
+    <span style="color:#00f">&#39;&#39;&#39; Check if self is less than the other
+</span><span style="color:#00f">
+</span><span style="color:#00f">    This method is necessary for sorting and search
+</span><span style="color:#00f">    algorithms using bisect_right.
+</span><span style="color:#00f">
+</span><span style="color:#00f">    :param other: a value to be compared
+</span><span style="color:#00f">    :returns: result of comparison between value
+</span><span style="color:#00f">        attributes of both this object and the other,
+</span><span style="color:#00f">        or of comparison between their unicode string
+</span><span style="color:#00f">        representations.
+</span><span style="color:#00f">    :raises TypeError: in case of the other not having
+</span><span style="color:#00f">        either value or to_unicode attributes.
+</span><span style="color:#00f">    &#39;&#39;&#39;</span>
     <span style="color:#000080;font-weight:bold">try</span>:
         <span style="color:#000080;font-weight:bold">try</span>:
             result = self.value.__lt__(other.value)
@@ -146,7 +164,7 @@
             result = self._compare_strings(other)
         <span style="color:#000080;font-weight:bold">return</span> result
     <span style="color:#000080;font-weight:bold">except</span> AttributeError:
-        msg = <span style="color:#00f"></span><span style="color:#00f">&#39;</span><span style="color:#00f">Unorderable types: {}() &lt; {}()</span><span style="color:#00f">&#39;</span>.format(
+        msg = <span style="color:#00f">&#39;Unorderable types: {}() &lt; {}()&#39;</span>.format(
             self.__class__.__name__,
             other.__class__.__name__
         )
@@ -159,9 +177,10 @@
 <p>I added a setup module, updated the project’s README, registered and published it in the repository. Although the library seemed to work properly, I knew there might still be some bugs I should fix and improvements I should make before declaring it stable, so I published it as a beta version. I was right: the initial package turned out not to contain LICENSE and requirements.txt files. I added MANIFEST.in file to fix it, and I converted the README from markdown to reStructuredText, so its rendering could be handled by PyPI website. I made a few other improvements and published the second beta of the package: since then, I further improved the README, fixed some errors and published a few more beta versions.</p>
 <p>I think version numbers of the project need an explanation: the current version is 1.0.0b7, the first beta version was 1.0.0b1, and the version before that was 0.9. The previous number was result of me realising I should apply a version number to the library. At the moment, I thought I was close to publishing its first stable, “finished” release, with all functionality that was planned for it already implemented and all errors either fixed or still undetected. I wanted to mark such a version as 1.0, so I thought it was reasonable for the last versions before it to be given the number 0.9. After that, I read more about versioning systems, and although I decided to still follow the 0.9 version with a 1.0 one, I also decided to apply <a href="https://www.python.org/dev/peps/pep-0440/#public-version-identifiers">the pattern recommended by PEP 440</a> and the suggestions provided by <a href="http://stackoverflow.com/a/8867153/5069081">this answer on stackoverflow</a>. Hence the version 1.0.0b1, with the initial section marking the release of the stable version of the library and the change in the versioning pattern. The middle number is going to change for subsequent feature updates, and the third number is going to signify stable bugfix-only releases. The final “b1” segment signifies the first beta version, and it follows the pattern from the PEP.</p>
 <p>I think I will spend a little more time reading the code, looking for errors to fix and improvements to documentation I could make. I do not plan to make any major changes to it until after I release the library as a stable version 1.0.0.</p>
-			</div>
-			<div>
-				<div id="disqus_thread"></div>
+</div>
+
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -181,58 +200,21 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-			</div>
-			
+    </main>
 
-
-<div>
-    <h2>Related articles</h2>
-    <ul>
     
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2016-06-16-spam-lists-a-host-blacklistwhitelist-library/">Spam-lists – a host blacklist/whitelist library</a> - <time>Jun 16, 2016</time>
-      </li>
-    
-    </ul>
-</div>
-
-		</article>
-	</main>
-
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-109495807-1', 'auto');
 	
-	<div>
-    <h2>Latest articles</h2>
-    <ul>
-    
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-12-04-revisiting-my-blog-engine-project/">Revisiting my blog engine project</a> - <time>Dec 04, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-11-12-migrating-to-hugo-and-github-pages/">Migrating to Hugo and GitHub Pages</a> - <time>Nov 12, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-11-02-designing-a-plugin-system-for-base16-theme-switcher/">Designing a plugin system for base16-theme-switcher</a> - <time>Nov 02, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-10-22-a-new-project-base16-theme-switcher/">A new project: base16-theme-switcher</a> - <time>Oct 22, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-09-04-the-first-working-version-of-yule/">The first working version of Yule</a> - <time>Sep 04, 2017</time>
-      </li>
-    
-    </ul>
-</div>
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
-	<footer><ul>
-    <li><span>&copy; 2016 - 2020 Piotr Rusin</li>
-    <li><a href="mailto:piotr.rusin88@gmail.com">Contact</a></li>
-    <li><a href="https://github.com/piotr-rusin">Github</a></li>
-</ul></footer>
-
-</body>
+    
+  </body>
 </html>

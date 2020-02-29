@@ -1,50 +1,66 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Url-shortener: a demo and more refactoring</title>
-	
-	
-	<link rel="stylesheet" href="/css/watercss.light.css">
-	<link rel="stylesheet" href="/css/style.css">
-	
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.65.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Url-shortener: a demo and more refactoring &middot; Reusing the wheel</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://piotr-rusin.github.iocss/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
 </head>
-<body>
-	<header>
-		<nav class="nav">
-	
-	<a href="https://piotr-rusin.github.io">Reusing the wheel</a>
-	
-	<ul>
-		
-		<li><a class="uk-text-capitalize" href="/categories/">Categories</a></li>
-		
-		<li><a class="uk-text-capitalize" href="/tags/">Tags</a></li>
-		
-		<li><a class="uk-text-capitalize" href="/about/">About</a></li>
-		
-	</ul>
-</nav>
-		
-		
-	</header>
-	
-	<main>
-		<article>
-			<header>
-				<h1><a href="https://piotr-rusin.github.io/posts/2016-12-31-url-shortener-a-demo-and-more-refactoring/">Url-shortener: a demo and more refactoring</a></h1>
-				<p>
-    <time>Dec 31, 2016</time> /
-    
-    <a href="/tags/python">python</a>
-    , <a href="/tags/refactoring">refactoring</a>
-    , <a href="/tags/single-responsibility-principle">single-responsibility-principle</a>
-</p>
-			</header>
-			<div>
-				<p>A demo instance of my url-shortener project is now available here:</p>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+
+      
+      <p class="lead">
+        Posted in
+          <a href="https://piotr-rusin.github.io/categories/development/">"Development"</a> on
+      </ul>
+      </p>
+      
+      <a href="https://piotr-rusin.github.io"><h1>Reusing the wheel</h1></a>
+      <p class="lead">
+       A blog about programming 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://piotr-rusin.github.io">Home</a> </li>
+        <li><a href="/categories/"> Categories </a></li><li><a href="/tags/"> Tags </a></li><li><a href="/about/"> About </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Url-shortener: a demo and more refactoring</h1>
+  <time datetime=2016-12-31T16:13:22Z class="post-date">Sat, Dec 31, 2016</time>
+  <p>A demo instance of my url-shortener project is now available here:</p>
 <p><a href="https://url-shortener.reusingthewheel.tk/">https://url-shortener.reusingthewheel.tk</a></p>
 <p>Usually, URL shorteners are deployed under a short domain name (for example: <a href="https://goo.gl/">goo.gl</a>, <a href="https://bitly.com/">bit.ly</a>). It’s not the case here, but since it’s just a demo I didn’t think looking for a short domain for it was necessary, so I chose a longer domain that is also related to my blog.</p>
 <p>I have also made some changes to the application. Some of them were minor, like adjusting font sizes in the front end, renaming some local variables in the back end, etc., but there are also some bigger changes.</p>
@@ -62,9 +78,10 @@
 <h2 id="refactoring-aliasalphabet-class">Refactoring AliasAlphabet class</h2>
 <p>In <a href="/posts/2016-12-04-changes-in-url-shortener/">my last post about the application</a>, I described <a href="https://github.com/piotr-rusin/url-shortener/blob/ee506ab166d3a170ee8790d33f20cf1ee88205a5/url_shortener/domain_and_persistence.py#L35">AliasAlphabet</a> – a class I introduced to the project when I was reorganizing its architecture to make it follow single responsibility principle more closely. At the moment of writing the post, I had doubts about adding it and I saw it as a candidate for further refactoring, but I also wanted to publish the article as soon as possible, so I left it as it was.</p>
 <p>The instances of the class represented alias alphabets used for generating alias values, but they also contained methods for creating aliases. They were added here because creating aliases closely depended on an alias alphabet. Still, I thought it wasn’t the cleanest design and I was considering some ideas for replacing it. I decided to replace the class with <a href="https://github.com/piotr-rusin/url-shortener/blob/0207eb20d118df9cf4139f55d9f0a9c8c0fa5b76/url_shortener/domain_and_persistence.py#L76">AliasFactory</a> class, a <a href="https://github.com/piotr-rusin/url-shortener/blob/0207eb20d118df9cf4139f55d9f0a9c8c0fa5b76/url_shortener/domain_and_persistence.py#L118">string object</a> representing alias alphabet and <a href="https://github.com/piotr-rusin/url-shortener/blob/0207eb20d118df9cf4139f55d9f0a9c8c0fa5b76/url_shortener/domain_and_persistence.py#L37">a function</a> creating a dictionary mapping homoglyphs to strings that should replace them.</p>
-			</div>
-			<div>
-				<div id="disqus_thread"></div>
+</div>
+
+<h2>Comments</h2>
+<div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -84,74 +101,21 @@
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-			</div>
-			
+    </main>
 
-
-<div>
-    <h2>Related articles</h2>
-    <ul>
     
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2016-12-04-changes-in-url-shortener/">Changes in url-shortener</a> - <time>Dec 04, 2016</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2016-11-30-the-first-stable-release-of-spam-lists/">The first stable release of spam-lists</a> - <time>Nov 30, 2016</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2016-08-05-introducing-my-url-shortener/">Introducing my URL shortener</a> - <time>Aug 05, 2016</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2016-07-09-progress-in-development-of-spam-lists/">Progress in development of spam-lists</a> - <time>Jul 09, 2016</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2016-06-16-spam-lists-a-host-blacklistwhitelist-library/">Spam-lists – a host blacklist/whitelist library</a> - <time>Jun 16, 2016</time>
-      </li>
-    
-    </ul>
-</div>
-
-		</article>
-	</main>
-
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-109495807-1', 'auto');
 	
-	<div>
-    <h2>Latest articles</h2>
-    <ul>
-    
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-12-04-revisiting-my-blog-engine-project/">Revisiting my blog engine project</a> - <time>Dec 04, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-11-12-migrating-to-hugo-and-github-pages/">Migrating to Hugo and GitHub Pages</a> - <time>Nov 12, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-11-02-designing-a-plugin-system-for-base16-theme-switcher/">Designing a plugin system for base16-theme-switcher</a> - <time>Nov 02, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-10-22-a-new-project-base16-theme-switcher/">A new project: base16-theme-switcher</a> - <time>Oct 22, 2017</time>
-      </li>
-    
-      <li>
-        <a href="https://piotr-rusin.github.io/posts/2017-09-04-the-first-working-version-of-yule/">The first working version of Yule</a> - <time>Sep 04, 2017</time>
-      </li>
-    
-    </ul>
-</div>
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
-	<footer><ul>
-    <li><span>&copy; 2016 - 2020 Piotr Rusin</li>
-    <li><a href="mailto:piotr.rusin88@gmail.com">Contact</a></li>
-    <li><a href="https://github.com/piotr-rusin">Github</a></li>
-</ul></footer>
-
-</body>
+    
+  </body>
 </html>
