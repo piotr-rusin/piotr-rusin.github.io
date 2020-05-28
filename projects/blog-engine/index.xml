@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog Engine on Reusing the wheel</title>
-    <link>https://piotr-rusin.github.io/projects/blog-engine/</link>
+    <link>https://reusingthewheel.net/projects/blog-engine/</link>
     <description>Recent content in Blog Engine on Reusing the wheel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 16 May 2017 10:59:50 +0000</lastBuildDate>
     
-	<atom:link href="https://piotr-rusin.github.io/projects/blog-engine/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://reusingthewheel.net/projects/blog-engine/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>A new blog engine project</title>
-      <link>https://piotr-rusin.github.io/posts/2017-05-16-a-new-blog-engine-project/</link>
+      <link>https://reusingthewheel.net/posts/2017-05-16-a-new-blog-engine-project/</link>
       <pubDate>Tue, 16 May 2017 10:59:50 +0000</pubDate>
       
-      <guid>https://piotr-rusin.github.io/posts/2017-05-16-a-new-blog-engine-project/</guid>
-      <description>&lt;p&gt;In &lt;a href=&#34;https://piotr-rusin.github.io/posts/2016-12-06-a-php-symfony-blog-engine/&#34;&gt;one of my previous posts&lt;/a&gt; I described a blog engine I was developing. At the time, I had returned to it after a hiatus and I was convinced I would continue working on it. However, at the same time I was still more interested in developing my python-based &lt;a href=&#34;https://piotr-rusin.github.io/projects/url-shortener/&#34;&gt;url-shortener project&lt;/a&gt; and I also already planned moving on to other projects and technologies. As a result, I got bored of blog-engine again.&lt;/p&gt;
+      <guid>https://reusingthewheel.net/posts/2017-05-16-a-new-blog-engine-project/</guid>
+      <description>&lt;p&gt;In &lt;a href=&#34;https://reusingthewheel.net/posts/2016-12-06-a-php-symfony-blog-engine/&#34;&gt;one of my previous posts&lt;/a&gt; I described a blog engine I was developing. At the time, I had returned to it after a hiatus and I was convinced I would continue working on it. However, at the same time I was still more interested in developing my python-based &lt;a href=&#34;https://reusingthewheel.net/projects/url-shortener/&#34;&gt;url-shortener project&lt;/a&gt; and I also already planned moving on to other projects and technologies. As a result, I got bored of blog-engine again.&lt;/p&gt;
 &lt;p&gt;Since then, I’ve been focusing on Java and &lt;a href=&#34;https://projects.spring.io/spring-framework/&#34;&gt;Spring Framework&lt;/a&gt;. This resulted in a new project: another blog engine, but this time based on Spring and designed with different features.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>A PHP/Symfony blog engine</title>
-      <link>https://piotr-rusin.github.io/posts/2016-12-06-a-php-symfony-blog-engine/</link>
+      <link>https://reusingthewheel.net/posts/2016-12-06-a-php-symfony-blog-engine/</link>
       <pubDate>Tue, 06 Dec 2016 13:33:10 +0000</pubDate>
       
-      <guid>https://piotr-rusin.github.io/posts/2016-12-06-a-php-symfony-blog-engine/</guid>
+      <guid>https://reusingthewheel.net/posts/2016-12-06-a-php-symfony-blog-engine/</guid>
       <description>&lt;p&gt;A few months ago I started a blog engine project based on &lt;a href=&#34;https://symfony.com/&#34;&gt;Symfony framework&lt;/a&gt;. I’ve been adding things and making changes to it from time to time. Since August, I took a longer break in its development because I wanted to focus on other things, but now I’m returning to the project.&lt;/p&gt;</description>
     </item>
     

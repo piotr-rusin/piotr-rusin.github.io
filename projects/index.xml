@@ -2,57 +2,57 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on Reusing the wheel</title>
-    <link>https://piotr-rusin.github.io/projects/</link>
+    <link>https://reusingthewheel.net/projects/</link>
     <description>Recent content in Projects on Reusing the wheel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 04 Dec 2017 14:38:10 +0100</lastBuildDate>
     
-	<atom:link href="https://piotr-rusin.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://reusingthewheel.net/projects/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Yule</title>
-      <link>https://piotr-rusin.github.io/projects/yule/</link>
+      <link>https://reusingthewheel.net/projects/yule/</link>
       <pubDate>Mon, 04 Dec 2017 14:38:10 +0100</pubDate>
       
-      <guid>https://piotr-rusin.github.io/projects/yule/</guid>
+      <guid>https://reusingthewheel.net/projects/yule/</guid>
       <description></description>
     </item>
     
     <item>
       <title>base16-theme-switcher</title>
-      <link>https://piotr-rusin.github.io/projects/base16-theme-switcher/</link>
+      <link>https://reusingthewheel.net/projects/base16-theme-switcher/</link>
       <pubDate>Thu, 02 Nov 2017 09:22:29 +0000</pubDate>
       
-      <guid>https://piotr-rusin.github.io/projects/base16-theme-switcher/</guid>
+      <guid>https://reusingthewheel.net/projects/base16-theme-switcher/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Blog Engine</title>
-      <link>https://piotr-rusin.github.io/projects/blog-engine/</link>
+      <link>https://reusingthewheel.net/projects/blog-engine/</link>
       <pubDate>Tue, 16 May 2017 10:59:50 +0000</pubDate>
       
-      <guid>https://piotr-rusin.github.io/projects/blog-engine/</guid>
+      <guid>https://reusingthewheel.net/projects/blog-engine/</guid>
       <description></description>
     </item>
     
     <item>
       <title>url-shortener</title>
-      <link>https://piotr-rusin.github.io/projects/url-shortener/</link>
+      <link>https://reusingthewheel.net/projects/url-shortener/</link>
       <pubDate>Sat, 31 Dec 2016 16:13:22 +0000</pubDate>
       
-      <guid>https://piotr-rusin.github.io/projects/url-shortener/</guid>
+      <guid>https://reusingthewheel.net/projects/url-shortener/</guid>
       <description></description>
     </item>
     
     <item>
       <title>spam-lists</title>
-      <link>https://piotr-rusin.github.io/projects/spam-lists/</link>
+      <link>https://reusingthewheel.net/projects/spam-lists/</link>
       <pubDate>Sun, 04 Dec 2016 16:09:24 +0000</pubDate>
       
-      <guid>https://piotr-rusin.github.io/projects/spam-lists/</guid>
+      <guid>https://reusingthewheel.net/projects/spam-lists/</guid>
       <description></description>
     </item>
     

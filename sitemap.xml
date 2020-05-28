@@ -3,133 +3,133 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://piotr-rusin.github.io/</loc>
+    <loc>https://reusingthewheel.net/</loc>
     <lastmod>2017-12-04T14:38:10+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/categories/</loc>
+    <loc>https://reusingthewheel.net/categories/</loc>
     <lastmod>2017-12-04T14:38:10+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/categories/development/</loc>
+    <loc>https://reusingthewheel.net/categories/development/</loc>
     <lastmod>2017-12-04T14:38:10+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/posts/</loc>
+    <loc>https://reusingthewheel.net/posts/</loc>
     <lastmod>2017-12-04T14:38:10+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/projects/</loc>
+    <loc>https://reusingthewheel.net/projects/</loc>
     <lastmod>2017-12-04T14:38:10+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/posts/2017-12-04-revisiting-my-blog-engine-project/</loc>
+    <loc>https://reusingthewheel.net/posts/2017-12-04-revisiting-my-blog-engine-project/</loc>
     <lastmod>2017-12-04T14:38:10+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/projects/yule/</loc>
+    <loc>https://reusingthewheel.net/projects/yule/</loc>
     <lastmod>2017-12-04T14:38:10+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/categories/blog/</loc>
+    <loc>https://reusingthewheel.net/categories/blog/</loc>
     <lastmod>2017-11-12T16:43:40+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/posts/2017-11-12-migrating-to-hugo-and-github-pages/</loc>
+    <loc>https://reusingthewheel.net/posts/2017-11-12-migrating-to-hugo-and-github-pages/</loc>
     <lastmod>2017-11-12T16:43:40+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/projects/base16-theme-switcher/</loc>
+    <loc>https://reusingthewheel.net/projects/base16-theme-switcher/</loc>
     <lastmod>2017-11-02T09:22:29+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/posts/2017-11-02-designing-a-plugin-system-for-base16-theme-switcher/</loc>
+    <loc>https://reusingthewheel.net/posts/2017-11-02-designing-a-plugin-system-for-base16-theme-switcher/</loc>
     <lastmod>2017-11-02T09:22:29+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/posts/2017-10-22-a-new-project-base16-theme-switcher/</loc>
+    <loc>https://reusingthewheel.net/posts/2017-10-22-a-new-project-base16-theme-switcher/</loc>
     <lastmod>2017-10-22T14:39:20+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/posts/2017-09-04-the-first-working-version-of-yule/</loc>
+    <loc>https://reusingthewheel.net/posts/2017-09-04-the-first-working-version-of-yule/</loc>
     <lastmod>2017-09-04T20:00:36+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/posts/2017-06-05-implementing-service-layer-for-yule/</loc>
+    <loc>https://reusingthewheel.net/posts/2017-06-05-implementing-service-layer-for-yule/</loc>
     <lastmod>2017-06-05T09:17:41+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/posts/2017-05-16-a-new-blog-engine-project/</loc>
+    <loc>https://reusingthewheel.net/posts/2017-05-16-a-new-blog-engine-project/</loc>
     <lastmod>2017-05-16T10:59:50+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/projects/blog-engine/</loc>
+    <loc>https://reusingthewheel.net/projects/blog-engine/</loc>
     <lastmod>2017-05-16T10:59:50+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/projects/url-shortener/</loc>
+    <loc>https://reusingthewheel.net/projects/url-shortener/</loc>
     <lastmod>2016-12-31T16:13:22+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/posts/2016-12-31-url-shortener-a-demo-and-more-refactoring/</loc>
+    <loc>https://reusingthewheel.net/posts/2016-12-31-url-shortener-a-demo-and-more-refactoring/</loc>
     <lastmod>2016-12-31T16:13:22+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/posts/2016-12-06-a-php-symfony-blog-engine/</loc>
+    <loc>https://reusingthewheel.net/posts/2016-12-06-a-php-symfony-blog-engine/</loc>
     <lastmod>2016-12-06T13:33:10+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/posts/2016-12-04-changes-in-url-shortener/</loc>
+    <loc>https://reusingthewheel.net/posts/2016-12-04-changes-in-url-shortener/</loc>
     <lastmod>2016-12-04T16:09:24+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/projects/spam-lists/</loc>
+    <loc>https://reusingthewheel.net/projects/spam-lists/</loc>
     <lastmod>2016-12-04T16:09:24+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/posts/2016-11-30-the-first-stable-release-of-spam-lists/</loc>
+    <loc>https://reusingthewheel.net/posts/2016-11-30-the-first-stable-release-of-spam-lists/</loc>
     <lastmod>2016-11-30T10:44:41+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/posts/2016-08-05-introducing-my-url-shortener/</loc>
+    <loc>https://reusingthewheel.net/posts/2016-08-05-introducing-my-url-shortener/</loc>
     <lastmod>2016-08-05T13:18:43+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/posts/2016-07-09-progress-in-development-of-spam-lists/</loc>
+    <loc>https://reusingthewheel.net/posts/2016-07-09-progress-in-development-of-spam-lists/</loc>
     <lastmod>2016-07-09T19:19:49+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/posts/2016-06-16-spam-lists-a-host-blacklistwhitelist-library/</loc>
+    <loc>https://reusingthewheel.net/posts/2016-06-16-spam-lists-a-host-blacklistwhitelist-library/</loc>
     <lastmod>2016-06-16T15:59:43+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotr-rusin.github.io/about/</loc>
+    <loc>https://reusingthewheel.net/about/</loc>
   </url>
   
 </urlset>
