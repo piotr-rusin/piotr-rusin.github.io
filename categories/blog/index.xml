@@ -6,10 +6,19 @@
     <description>Recent content in Blog on Reusing the wheel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 Nov 2017 16:43:40 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 07 Jun 2020 14:30:10 +0200</lastBuildDate>
     
 	<atom:link href="https://reusingthewheel.net/categories/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>A new hosting and domain</title>
+      <link>https://reusingthewheel.net/posts/2020-06-07-a-new-hosting-and-domain/</link>
+      <pubDate>Sun, 07 Jun 2020 14:30:10 +0200</pubDate>
+      
+      <guid>https://reusingthewheel.net/posts/2020-06-07-a-new-hosting-and-domain/</guid>
+      <description>I haven&amp;rsquo;t posted here in a long time, although I&amp;rsquo;ve been making some changes to this blog behind the scenes. One of the more recent (and more permanent) ones is switching to a different theme - this time it&amp;rsquo;s a customized version of Hyde. Another big and permanent change is switching to a custom hosting and a custom domain - from now on, this blog will be available on reusingthewheel.net.</description>
+    </item>
     
     <item>
       <title>Migrating to Hugo and GitHub Pages</title>
